@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+
 
 import BadgeCard from "@components/app/BadgeCard/BadgeCard";
 import { SimpleGrid, ScrollArea } from "@mantine/core";
@@ -23,7 +25,7 @@ const ShoppingLists = ({
           <BadgeCard
             key={list._id}
             list={list}
-            handleClick={handleClick}
+            handleClick={() => handleClick && handleClick(list)}
             handleEdit={() => handleEdit && handleEdit(list)}
             handleArchive={() => handleArchive && handleArchive(list)}
             handleDelete={() => handleDelete && handleDelete(list)}
@@ -38,6 +40,8 @@ const Feed = () => {
   const { data: session } = useSession();
   const [myLists, setMyLists] = useState([]);
   const [editList, setEditList] = useState({open:false, list:{}});
+  const router = useRouter();
+
 
   const {
     shoppingLists,
@@ -59,7 +63,9 @@ const Feed = () => {
     // if (session?.user.id) fetchPosts();
   }, [shoppingLists]);
 
-  const handleClick = (e) => {};
+  const handleClick = (list) => {
+    router.push(`app/shoppingList/${list._id}`);
+  };
 
   const handleDelete = (list) => {
     const hasConfirmed = confirm(
@@ -89,7 +95,6 @@ const Feed = () => {
         setOpened={setEditList}
         onSubmit={(listName, listId) => handleEdit(listName, listId)}
         editingList={editList.list}
-
 
 
       />

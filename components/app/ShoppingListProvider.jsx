@@ -57,9 +57,8 @@ export const ShoppingListProvider = ({ children }) => {
 
   const editShoppingList = async (listName, listId) => {
     try {
-      console.log(list);
       await fetch(
-        `/api/users/${list.owner.toString()}/shopping-lists/${listId.toString()}`,
+        `/api/users/6563357612ffb5411f5643e7/shopping-lists/${listId.toString()}`,
         {
           method: "PUT",
           body: JSON.stringify({ name: listName }),
@@ -67,7 +66,7 @@ export const ShoppingListProvider = ({ children }) => {
       );
 
       const filterLists = shoppingLists.map((item) => {
-        if (item._id !== list._id) item.name = list.name;
+        if (item._id !== listId) item.name = listName;
       });
 
       setShoppingLists(filterLists);
