@@ -14,7 +14,8 @@ function ShoppingListModal({ opened, setOpened, onSubmit, editingList }) {
   }, [editingList]);
 
   const handleSubmit = () => {
-    onSubmit(listName, editingList?.id);
+    console
+    onSubmit(listName, editingList?._id);
     setListName('');
     setOpened(false);
   };

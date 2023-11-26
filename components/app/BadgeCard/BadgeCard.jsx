@@ -32,7 +32,6 @@ const BadgeCard = ({
       radius="md"
       p="md"
       className={classes.card}
-      onClick={handleClick}
     >
       <Card.Section className={classes.section} mt="md">
         <Group justify="apart">
@@ -54,7 +53,7 @@ const BadgeCard = ({
       </Card.Section>
 
       <Group mt="xs">
-        <Button radius="md" style={{ flex: 1 }}>
+        <Button radius="md" style={{ flex: 1 }} onClick={handleClick}>
           Show details
         </Button>
         <ActionIcon
