@@ -48,6 +48,7 @@ const Feed = () => {
     deleteShoppingList,
     archiveShoppingList,
     editShoppingList,
+    archived
   } = useShoppingList();
 
   useEffect(() => {
@@ -56,11 +57,12 @@ const Feed = () => {
         `/api/users/${session?.user.id.toString()}/shopping-lists`
       );
       const data = await response.json();
-      setMyLists(data);
+      const filterLists = data.filter((item) => item.archived === archived);
+      setMyLists(filterLists);
     };
 
     if (session?.user.id) fetchLists();
-  }, [shoppingLists, session]);
+  }, [shoppingLists, session, archived]);
 
 
   const handleClick = (list) => {

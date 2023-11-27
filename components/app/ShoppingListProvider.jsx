@@ -9,6 +9,7 @@ export const useShoppingList = () => useContext(ShoppingListContext);
 export const ShoppingListProvider = ({ children }) => {
   const { data: session } = useSession();
   const [shoppingLists, setShoppingLists] = useState([]);
+  const [archived, setArchived] = useState(false);
 
   const addShoppingList = async (listName) => {
     try {
@@ -90,6 +91,8 @@ export const ShoppingListProvider = ({ children }) => {
         deleteShoppingList,
         archiveShoppingList,
         editShoppingList,
+        setArchived,
+        archived
       }}
     >
       {children}
