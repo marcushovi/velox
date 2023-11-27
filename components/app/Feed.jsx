@@ -45,6 +45,7 @@ const Feed = () => {
 
   const {
     shoppingLists,
+    setShoppingLists,
     deleteShoppingList,
     archiveShoppingList,
     editShoppingList,

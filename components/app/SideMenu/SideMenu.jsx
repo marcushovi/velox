@@ -1,6 +1,6 @@
 "use client";
 
-import { Group, Code, ScrollArea, Button } from "@mantine/core";
+import { Group, Code, ScrollArea, Button, Badge, Image } from "@mantine/core";
 import { useState } from "react";
 
 import UserSettings from "@components/app/UserSettings/UserSettings";
@@ -35,23 +35,49 @@ const SideMenu = () => {
   return (
     <nav className={classes.navbar}>
       <div className={classes.header}>
-        <Group justify="space-between">
-          <Code fw={700}>v0.0.1</Code>
+        <Group justify="space-center">
+          <Image
+            className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
+            src="/assets/images/velox.svg"
+            alt="Velox Logo"
+            width={100}
+            height={37}
+            priority
+          />
         </Group>
       </div>
 
       <div className={classes.header}>
-        <Button fullWidth onClick={() => setModalOpened(true)}>
-          Create list
-        </Button>
+        <Group justify="space-center">
+          <Button fullWidth onClick={() => setModalOpened(true)}>
+            Create list
+          </Button>
+        </Group>
       </div>
 
       <ScrollArea className={classes.links}>
-        <Button fullWidth variant="transparent" size="lg" onClick={() => setArchived(false)}>
-          Active
+        <Button
+          fullWidth
+          variant="transparent"
+          size="lg"
+          onClick={() => setArchived(false)}
+        >
+          Active&nbsp;{" "}
+          <Badge color="blue">
+            {shoppingLists.filter((item) => !item.archive).length}
+          </Badge>
         </Button>
-        <Button fullWidth color="teal"  variant="transparent" size="lg" onClick={() => setArchived(true)}>
-          Archived
+        <Button
+          fullWidth
+          color="teal"
+          variant="transparent"
+          size="lg"
+          onClick={() => setArchived(true)}
+        >
+          Archived&nbsp;{" "}
+          <Badge color="teal">
+            {shoppingLists.filter((item) => item.archive).length}
+          </Badge>
         </Button>
       </ScrollArea>
 

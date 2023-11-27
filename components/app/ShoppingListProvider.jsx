@@ -87,6 +87,7 @@ export const ShoppingListProvider = ({ children }) => {
     <ShoppingListContext.Provider
       value={{
         shoppingLists,
+        setShoppingLists,
         addShoppingList,
         deleteShoppingList,
         archiveShoppingList,
