@@ -20,14 +20,13 @@ const menuItems = [
   },
 ];
 const SideMenu = () => {
-
   const links = menuItems.map((item) => (
     <ActionButton {...item} key={item.label} />
   ));
 
   const [modalOpened, setModalOpened] = useState(false);
 
-  const { addShoppingList } = useShoppingList();
+  const { shoppingLists, addShoppingList, setArchived } = useShoppingList();
 
   const handleAddShoppingList = async (listName) => {
     addShoppingList(listName);
@@ -47,7 +46,14 @@ const SideMenu = () => {
         </Button>
       </div>
 
-      <ScrollArea className={classes.links}>{links}</ScrollArea>
+      <ScrollArea className={classes.links}>
+        <Button fullWidth variant="transparent" size="lg" onClick={() => setArchived(false)}>
+          Active
+        </Button>
+        <Button fullWidth color="teal"  variant="transparent" size="lg" onClick={() => setArchived(true)}>
+          Archived
+        </Button>
+      </ScrollArea>
 
       <div className={classes.footer}>
         <UserSettings />
