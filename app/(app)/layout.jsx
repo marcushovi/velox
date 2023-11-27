@@ -6,8 +6,8 @@ import "@mantine/core/styles.css";
 import { MantineProvider, ColorSchemeScript } from "@mantine/core";
 
 export const metadata = {
-  title: "Promptopia",
-  description: "Discover & Share AI Prompts",
+  title: "Velox App",
+  description: "App for managing shopping lists",
 };
 
 const RootLayout = ({ children }) => (
