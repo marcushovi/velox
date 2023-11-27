@@ -41,7 +41,7 @@ const UserSettings = () => {
         </UnstyledButton>
       </Menu.Target>
       <Menu.Dropdown>
-        <Menu.Item onClick={handleSignOut}>Sing Out</Menu.Item>
+        <Menu.Item color="red" onClick={handleSignOut}>Sing Out</Menu.Item>
       </Menu.Dropdown>
     </Menu>
   );
