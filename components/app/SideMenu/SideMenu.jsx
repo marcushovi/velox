@@ -1,9 +1,7 @@
 "use client";
 
 import { Group, Code, ScrollArea, Button } from "@mantine/core";
-import { useState, useEffect } from "react";
-import { useSession } from "next-auth/react";
-
+import { useState } from "react";
 
 import UserSettings from "@components/app/UserSettings/UserSettings";
 import ActionButton from "@components/app/ActionButton/ActionButton";
@@ -22,15 +20,6 @@ const menuItems = [
   },
 ];
 const SideMenu = () => {
-  const { session, loading } = useSession();
-
-  // if (loading) {
-  //   return <div>Loading...</div>; // or any other loading indicator
-  // }
-
-  // if (!session) {
-  //   return <div>Please sign in.</div>;
-  // }
 
   const links = menuItems.map((item) => (
     <ActionButton {...item} key={item.label} />

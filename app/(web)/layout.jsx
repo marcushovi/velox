@@ -1,8 +1,12 @@
 import Nav from "@components/web/Nav";
+import Provider from "@components/Provider";
+import { HeaderMegaMenu } from "@components/web/HeaderMegaMenu/HeaderMegaMenu";
+
 import { MantineProvider, ColorSchemeScript } from "@mantine/core";
+import "@mantine/core/styles.css";
 export const metadata = {
-  title: "Promptopia",
-  description: "Discover & Share AI Prompts",
+  title: "Velox Web",
+  description: "App for managing shopping lists",
 };
 
 const RootLayout = ({ children }) => (
@@ -11,16 +15,14 @@ const RootLayout = ({ children }) => (
       <ColorSchemeScript />
     </head>
     <body>
+    <Provider>
       <MantineProvider defaultColorScheme="dark">
-        <div className="main">
-          <div className="gradient" />
-        </div>
-
-        <main className="app">
-          <Nav />
+        <main>
+          <HeaderMegaMenu />
           {children}
         </main>
       </MantineProvider>
+      </Provider>
     </body>
   </html>
 );

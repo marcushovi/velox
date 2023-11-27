@@ -53,15 +53,15 @@ const Feed = () => {
   useEffect(() => {
     const fetchLists = async () => {
       const response = await fetch(
-        `/api/users/6563357612ffb5411f5643e7/shopping-lists`
+        `/api/users/${session?.user.id.toString()}/shopping-lists`
       );
       const data = await response.json();
       setMyLists(data);
     };
-    fetchLists();
 
-    // if (session?.user.id) fetchPosts();
-  }, [shoppingLists]);
+    if (session?.user.id) fetchLists();
+  }, [shoppingLists, session]);
+
 
   const handleClick = (list) => {
     router.push(`app/shoppingList/${list._id}`);
@@ -83,19 +83,18 @@ const Feed = () => {
 
   return (
     <section className="feed">
-      <ShoppingLists
+      {myLists[0]?._id ? (<ShoppingLists
         data={myLists}
         handleClick={handleClick}
         handleDelete={handleDelete}
         handleEdit={(list) => { setEditList({open:true, list:list})}}
         handleArchive={handleArchive}
-      />
+      />) : "Create your own list"}
       <ShoppingListModal
         opened={editList.open}
         setOpened={setEditList}
         onSubmit={(listName, listId) => handleEdit(listName, listId)}
         editingList={editList.list}
-
 
       />
     </section>

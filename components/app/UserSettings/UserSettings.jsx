@@ -26,7 +26,6 @@ const UserSettings = () => {
             <div style={{ flex: 1 }}>
               <Text size="sm" fw={500}>
                 {session?.user.name}
-                {session?.user.id}
               </Text>
 
               <Text c="dimmed" size="xs">
