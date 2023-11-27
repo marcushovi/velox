@@ -6,7 +6,6 @@ import {
   Button,
   UnstyledButton,
   Text,
-  Image,
   Menu,
   Divider,
   Center,
@@ -17,6 +16,7 @@ import {
   rem,
   useMantineTheme,
 } from "@mantine/core";
+import Image from 'next/image'
 import { useDisclosure } from "@mantine/hooks";
 import { IconChevronDown, IconLogout } from "@tabler/icons-react";
 import classes from "./HeaderMegaMenu.module.css";
@@ -43,12 +43,12 @@ export function HeaderMegaMenu() {
   }, []);
 
   return (
-    <Box pb={120}>
+    <Box>
       <header className={classes.header}>
         <Group justify="space-between" h="100%">
           <Image
             className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-            src="/assets/images/velox.svg"
+            src="./assets/images/velox.svg"
             alt="Velox Logo"
             width={100}
             height={37}
