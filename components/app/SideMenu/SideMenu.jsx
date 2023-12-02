@@ -29,9 +29,7 @@ const SideMenu = () => {
 
   const { shoppingLists, addShoppingList, setArchived } = useShoppingList();
 
-  const handleAddShoppingList = async (listName) => {
-    addShoppingList(listName);
-  };
+
 
   return (
     <nav className={classes.navbar}>
@@ -65,7 +63,7 @@ const SideMenu = () => {
         >
           Active&nbsp;{" "}
           <Badge color="blue">
-            {shoppingLists.filter((item) => !item.archive).length}
+            {shoppingLists.filter((item) => !item?.archived).length}
           </Badge>
         </Button>
         <Button
@@ -77,7 +75,7 @@ const SideMenu = () => {
         >
           Archived&nbsp;{" "}
           <Badge color="teal">
-            {shoppingLists.filter((item) => item.archive).length}
+            {shoppingLists.filter((item) => item?.archived).length}
           </Badge>
         </Button>
       </ScrollArea>
@@ -89,7 +87,7 @@ const SideMenu = () => {
       <ShoppingListModal
         opened={modalOpened}
         setOpened={setModalOpened}
-        onSubmit={handleAddShoppingList}
+        onSubmit={addShoppingList}
       />
     </nav>
   );

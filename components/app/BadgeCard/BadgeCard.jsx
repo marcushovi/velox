@@ -25,7 +25,6 @@ const BadgeCard = ({
       <Badge variant="light" key={member}>{member}</Badge>
     ));
   }
-
   return (
     <Card
       withBorder
