@@ -1,5 +1,6 @@
 "use client";
-import React, { createContext, useState, useContext } from "react";
+
+import React, { createContext, useState, useContext, useEffect } from "react";
 import { useSession } from "next-auth/react";
 
 const ShoppingListContext = createContext();
@@ -13,15 +14,17 @@ export const ShoppingListProvider = ({ children }) => {
 
   const addShoppingList = async (listName) => {
     try {
-      const newList = await fetch(
+      const response = await fetch(
         `/api/users/${session.user.id.toString()}/shopping-lists`,
         {
           method: "POST",
-          body: JSON.stringify({ name: listName })
+          body: JSON.stringify({ name: listName }),
         }
       );
 
-      setShoppingLists(shoppingLists => [...shoppingLists, newList]);
+      const newList = await response.json();
+
+      setShoppingLists((shoppingLists) => [...shoppingLists, newList]);
     } catch (error) {
       console.log(error);
     }
@@ -37,7 +40,7 @@ export const ShoppingListProvider = ({ children }) => {
 
       const filterLists = shoppingLists.filter((item) => item._id !== list._id);
 
-      setShoppingLists(filterLists => [...filterLists]);
+      setShoppingLists(filterLists);
     } catch (error) {
       console.log(error);
     }
@@ -45,7 +48,7 @@ export const ShoppingListProvider = ({ children }) => {
 
   const archiveShoppingList = async (list) => {
     try {
-      await fetch(
+      const response = await fetch(
         `/api/users/${session.user.id.toString()}/shopping-lists/${list._id.toString()}`,
         {
           method: "PUT",
@@ -53,11 +56,15 @@ export const ShoppingListProvider = ({ children }) => {
         }
       );
 
+      const editedList = await response.json();
+
       const filterLists = shoppingLists.map((item) => {
-        if (item._id !== list._id) item.archived = list.archived;
+        if (item._id === list._id) return editedList;
+        return item;
       });
 
-      setShoppingLists(filterLists => [...filterLists]);
+
+      setShoppingLists(filterLists);
     } catch (error) {
       console.log(error);
     }
@@ -65,7 +72,7 @@ export const ShoppingListProvider = ({ children }) => {
 
   const editShoppingList = async (listName, listId) => {
     try {
-      await fetch(
+      const response = await fetch(
         `/api/users/${session.user.id.toString()}/shopping-lists/${listId.toString()}`,
         {
           method: "PUT",
@@ -73,15 +80,30 @@ export const ShoppingListProvider = ({ children }) => {
         }
       );
 
+      const editedList = await response.json();
+
       const filterLists = shoppingLists.map((item) => {
-        if (item._id !== listId) item.name = listName;
+        if (item._id === listId) return editedList;
+        return item;
       });
 
-      setShoppingLists(filterLists => [...filterLists]);
+      setShoppingLists(filterLists);
     } catch (error) {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    const fetchLists = async () => {
+      const response = await fetch(
+        `/api/users/${session?.user.id.toString()}/shopping-lists`
+      );
+      const data = await response.json();
+      setShoppingLists(data);
+    };
+
+    if (session?.user.id) fetchLists();
+  }, [session]);
 
   return (
     <ShoppingListContext.Provider
@@ -93,7 +115,7 @@ export const ShoppingListProvider = ({ children }) => {
         archiveShoppingList,
         editShoppingList,
         setArchived,
-        archived
+        archived,
       }}
     >
       {children}

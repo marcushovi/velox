@@ -53,17 +53,9 @@ const Feed = () => {
   } = useShoppingList();
 
   useEffect(() => {
-    const fetchLists = async () => {
-      const response = await fetch(
-        `/api/users/${session?.user.id.toString()}/shopping-lists`
-      );
-      const data = await response.json();
-      const filterLists = data.filter((item) => item.archived === archived);
+      const filterLists = shoppingLists.filter((item) => item.archived === archived);
       setMyLists(filterLists);
-    };
-
-    if (session?.user.id) fetchLists();
-  }, [shoppingLists, session, archived]);
+  }, [shoppingLists, archived]);
 
 
   const handleClick = (list) => {
@@ -92,7 +84,7 @@ const Feed = () => {
         handleDelete={handleDelete}
         handleEdit={(list) => { setEditList({open:true, list:list})}}
         handleArchive={handleArchive}
-      />) : "Create your own list"}
+      />) : archived ? "You do not have archived lists." : "You do not have active lists."}
       <ShoppingListModal
         opened={editList.open}
         setOpened={setEditList}
