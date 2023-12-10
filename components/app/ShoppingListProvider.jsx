@@ -188,6 +188,44 @@ export const ShoppingListProvider = ({ children }) => {
     }
   };
 
+  const createItem = async (listId, item) => {
+    try {
+      const response = await fetch(
+        `/api/users/${session.user.id.toString()}/shopping-lists/${listId.toString()}/items`,
+        {
+          method: "POST",
+          body: JSON.stringify({
+            name: item.name,
+            quantity: item.quantity,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok && response.status === 200) {
+        notifications.show({
+          title: `Item "${item.name}" was created.`,
+          color: "green",
+        });
+
+        const filterLists = shoppingLists.map((item) => {
+          if (item._id === listId) return data;
+          return item;
+        });
+
+        setShoppingLists(filterLists);
+      } else {
+        notifications.show({
+          title: data.message,
+          color: "red",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     const fetchLists = async () => {
       const response = await fetch(
@@ -212,6 +250,7 @@ export const ShoppingListProvider = ({ children }) => {
         setArchived,
         archived,
         removeMemberFromList,
+        createItem,
       }}
     >
       {children}

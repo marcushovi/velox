@@ -17,11 +17,10 @@ const AppContainer = ({ children }) => {
       padding="md"
     >
       <AppShell.Header>
-        <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
         <Flex
           mih="100%"
           gap="md"
-          justify="start"
+          justify="space-between"
           align="center"
           direction="row"
           wrap="wrap"
@@ -34,6 +33,7 @@ const AppContainer = ({ children }) => {
             width={10}
             height={37}
           />
+          <Burger opened={opened} onClick={toggle} hiddenFrom="md" size="sm" />
         </Flex>
       </AppShell.Header>
 

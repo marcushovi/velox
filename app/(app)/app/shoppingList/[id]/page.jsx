@@ -15,13 +15,16 @@ import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import RemoveMemberButton from "@components/app/RemoveMemberButton";
 import { useRouter } from "next/navigation";
+import ItemModal from "@components/app/modals/ItemModal"
+import ItemsFeed from "@components/app/ItemsFeed";
 
 export default function ShoppingList({ params }) {
   const { data: session } = useSession();
   const router = useRouter();
-  const { shoppingLists, editShoppingList, removeMemberFromList } =
+  const { shoppingLists, editShoppingList, removeMemberFromList, createItem } =
     useShoppingList();
   const [list, setList] = useState([]);
+  const [editItemOpen, setEditItemOpen] = useState(false);
   const [editListOpen, setEditListOpen] = useState(false);
 
   useEffect(() => {
@@ -36,6 +39,10 @@ export default function ShoppingList({ params }) {
 
     if (params.id) getList();
   }, [params.id, shoppingLists, router, list]);
+
+  const handleCreateItem = (item) => {
+    createItem(params.id, item)
+  }
 
   return (
     <>
@@ -74,18 +81,24 @@ export default function ShoppingList({ params }) {
           {list?.members?.length} members
         </Badge>
 
-        <Button size="lg" onClick={() => setModalOpened(true)}>
+        <Button size="lg" onClick={() => setEditItemOpen(true)}>
           New Task
         </Button>
       </Group>
       <Divider my="md" />
-      {list?.membersNames}
+      <ItemsFeed items={list?.items}/>
 
       <ShoppingListModal
         opened={editListOpen}
         setOpened={setEditListOpen}
         onSubmit={(list) => editShoppingList(list)}
-        editingList={{ ...list }}
+        editingList={list}
+      />
+
+      <ItemModal
+        opened={editItemOpen}
+        setOpened={setEditItemOpen}
+        onSubmit={(item) => handleCreateItem(item)}
       />
     </>
   );

@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
-import Feed from "@components/app/Feed";
+import Feed from "@components/app/ShoppingListsFeed";
 
 export default function App() {
   const { data: session, status } = useSession();
