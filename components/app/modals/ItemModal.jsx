@@ -29,8 +29,7 @@ function ItemModal({ opened, setOpened, onSubmit, editingItem }) {
     },
   });
 
-  // Effect to prepopulate the form when editing
-  useEffect(() => {}, []);
+
 
   const handleSubmit = (values) => {
     const item = {

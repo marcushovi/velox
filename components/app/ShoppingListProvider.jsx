@@ -197,6 +197,7 @@ export const ShoppingListProvider = ({ children }) => {
           body: JSON.stringify({
             name: item.name,
             quantity: item.quantity,
+            archived: `${!item.purchased}`,
           }),
         }
       );
@@ -215,6 +216,110 @@ export const ShoppingListProvider = ({ children }) => {
         });
 
         setShoppingLists(filterLists);
+      } else {
+        notifications.show({
+          title: data.message,
+          color: "red",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const purchasedItem = async (listId, item) => {
+    try {
+      const response = await fetch(
+        `/api/users/${session.user.id.toString()}/shopping-lists/${listId.toString()}/items/${item._id.toString()}/purchase`,
+        {
+          method: "PUT",
+          body: JSON.stringify({ purchased: `${!item.purchased}` }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok && response.status === 200) {
+        notifications.show({
+          title: `Item "${item.name}" was purchased.`,
+          color: "green",
+        });
+
+        const filterLists = shoppingLists.map((item) => {
+          if (item._id === listId) return data;
+          return item;
+        });
+
+        setShoppingLists([...filterLists]);
+      } else {
+        notifications.show({
+          title: data.message,
+          color: "red",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const archiveItem = async (listId, item) => {
+    try {
+      const response = await fetch(
+        `/api/users/${session.user.id.toString()}/shopping-lists/${listId.toString()}/items/${item._id.toString()}/archive`,
+        {
+          method: "PUT",
+          body: JSON.stringify({ archived: `${!item.archived}` }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok && response.status === 200) {
+        notifications.show({
+          title: `Item "${item.name}" was archived.`,
+          color: "green",
+        });
+
+        const filterLists = shoppingLists.map((item) => {
+          if (item._id === listId) return data;
+          return item;
+        });
+
+        setShoppingLists([...filterLists]);
+      } else {
+        notifications.show({
+          title: data.message,
+          color: "red",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const deleteItem = async (listId, item) => {
+    try {
+      const response = await fetch(
+        `/api/users/${session.user.id.toString()}/shopping-lists/${listId.toString()}/items/${item._id.toString()}`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok && response.status === 200) {
+        notifications.show({
+          title: `Item "${item.name}" was deleted.`,
+          color: "green",
+        });
+
+        const filterLists = shoppingLists.map((item) => {
+          if (item._id === listId) return data;
+          return item;
+        });
+
+        setShoppingLists([...filterLists]);
       } else {
         notifications.show({
           title: data.message,
@@ -251,6 +356,9 @@ export const ShoppingListProvider = ({ children }) => {
         archived,
         removeMemberFromList,
         createItem,
+        purchasedItem,
+        archiveItem,
+        deleteItem,
       }}
     >
       {children}

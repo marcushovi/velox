@@ -5,8 +5,10 @@ import {
   IconArchive,
   IconEdit,
   IconDoorExit,
+  IconArchiveOff,
 } from "@tabler/icons-react";
 import RemoveMemberButton from "@components/app/RemoveMemberButton";
+import { useState } from "react";
 
 import {
   Card,
@@ -24,23 +26,23 @@ const ItemCard = ({
   item,
   handleEdit,
   handleDelete,
-  handleClick,
   handleArchive,
-  disabled,
-  handleRemoveMember,
-  session,
+  handlePurchased,
 }) => {
-  console.log(item);
+  const [checked, setChecked] = useState(item.purchased);
+
   return (
     <Card withBorder radius="md" p="md" className={classes.card}>
       <Card.Section className={classes.section} mt="md">
         <Group>
           <Checkbox
-            defaultChecked
+            checked={checked}
+            onChange={(event) => setChecked(event.currentTarget.checked)}
             labelPosition="left"
             color="green"
             radius="md"
             size="lg"
+            onClick={handlePurchased}
           />
           <Text fz="lg" fw={500}>
             {item.name}
@@ -68,11 +70,11 @@ const ItemCard = ({
             <ActionIcon
               variant="transparent"
               size="xl"
-              color="green"
+              color="teal"
               aria-label="Archive button"
               onClick={handleArchive}
             >
-              <IconArchive />
+              {item.archived ? <IconArchiveOff /> : <IconArchive />}
             </ActionIcon>
             <ActionIcon
               variant="transparent"
