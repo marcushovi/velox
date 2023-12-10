@@ -9,4 +9,4 @@ export default function Loading() {
       <Skeleton height={8} mt={6} width="70%" radius="xl" />
     </>
   );
-  }
+}
