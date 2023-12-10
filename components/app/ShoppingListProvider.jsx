@@ -197,7 +197,7 @@ export const ShoppingListProvider = ({ children }) => {
           body: JSON.stringify({
             name: item.name,
             quantity: item.quantity,
-            archived: `${!item.purchased}`,
+            archived: `${item.archived}`,
           }),
         }
       );
