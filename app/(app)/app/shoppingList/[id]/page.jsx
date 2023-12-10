@@ -17,6 +17,8 @@ import RemoveMemberButton from "@components/app/RemoveMemberButton";
 import { useRouter } from "next/navigation";
 import ItemModal from "@components/app/modals/ItemModal";
 import ItemsFeed from "@components/app/ItemsFeed";
+import { Suspense } from "react";
+import Loading from "@app/(app)/loading";
 
 export default function ShoppingList({ params }) {
   const { data: session } = useSession();
@@ -48,7 +50,7 @@ export default function ShoppingList({ params }) {
   }, [params.id, shoppingLists, router, list]);
 
   const handleCreateItem = (item) => {
-    console.log(item)
+    console.log(item);
     createItem(params.id, item);
   };
 
@@ -64,66 +66,68 @@ export default function ShoppingList({ params }) {
   };
 
   return (
-    <>
-      <Group justify="space-between">
-        <Title order={3} size="h1">
-          {list?.name}
-        </Title>
-        <Divider my="md" />
+    <Suspense fallback={<Loading />}>
+      <>
+        <Group justify="space-between">
+          <Title order={3} size="h1">
+            {list?.name}
+          </Title>
+          <Divider my="md" />
 
-        {session?.user.id === list?.owner ? (
-          <ActionIcon
-            variant="transparent"
-            size="xl"
-            aria-label="Settings"
-            onClick={() => {
-              setEditListOpen(true);
-            }}
-          >
-            <IconSettings
-              style={{ width: "70%", height: "70%" }}
-              stroke={1.5}
+          {session?.user.id === list?.owner ? (
+            <ActionIcon
+              variant="transparent"
+              size="xl"
+              aria-label="Settings"
+              onClick={() => {
+                setEditListOpen(true);
+              }}
+            >
+              <IconSettings
+                style={{ width: "70%", height: "70%" }}
+                stroke={1.5}
+              />
+            </ActionIcon>
+          ) : (
+            <RemoveMemberButton
+              action={removeMemberFromList}
+              list={list}
+              session={session}
             />
-          </ActionIcon>
-        ) : (
-          <RemoveMemberButton
-            action={removeMemberFromList}
-            list={list}
-            session={session}
-          />
-        )}
+          )}
 
-        <Badge variant="outline" color="blue" size="lg">
-          {list?.items?.length} taks
-        </Badge>
-        <Badge variant="outline" color="blue" size="lg">
-          {list?.members?.length} members
-        </Badge>
+          <Badge variant="outline" color="blue" size="lg">
+            {list?.items?.length} taks
+          </Badge>
+          <Badge variant="outline" color="blue" size="lg">
+            {list?.members?.length} members
+          </Badge>
 
-        <Button size="lg" onClick={() => setEditItemOpen(true)}>
-          New Task
-        </Button>
-      </Group>
-      <Divider my="md" />
-      <ItemsFeed
-        items={list?.items}
-        archive={handleArchivedItem}
-        purchased={handlePurchasedItem}
-        remove={handleDeleteItem}
-      />
+          <Button size="lg" onClick={() => setEditItemOpen(true)}>
+            New Task
+          </Button>
+        </Group>
+        <Divider my="md" />
+        <ItemsFeed
+          items={list?.items}
+          archive={handleArchivedItem}
+          purchased={handlePurchasedItem}
+          remove={handleDeleteItem}
+        />
 
-      <ShoppingListModal
-        opened={editListOpen}
-        setOpened={setEditListOpen}
-        onSubmit={(list) => editShoppingList(list)}
-        editingList={list}
-      />
+        <ShoppingListModal
+          opened={editListOpen}
+          setOpened={setEditListOpen}
+          onSubmit={(list) => editShoppingList(list)}
+          editingList={{ ...list }}
+        />
 
-      <ItemModal
-        opened={editItemOpen}
-        setOpened={setEditItemOpen}
-        onSubmit={(item) => handleCreateItem(item)}
-      />
-    </>
+        <ItemModal
+          opened={editItemOpen}
+          setOpened={setEditItemOpen}
+          onSubmit={(item) => handleCreateItem(item)}
+        />
+      </>
+    </Suspense>
   );
 }

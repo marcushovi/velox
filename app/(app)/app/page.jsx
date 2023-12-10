@@ -4,6 +4,8 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 import Feed from "@components/app/ShoppingListsFeed";
+import { Suspense } from "react";
+import Loading from "../loading";
 
 export default function App() {
   const { data: session, status } = useSession();
@@ -15,5 +17,9 @@ export default function App() {
       router.push("/");
     }
   }, [session, loading, router]);
-  return (<Feed />);
+  return (
+    <Suspense fallback={<Loading />}>
+      <Feed />
+    </Suspense>
+  );
 }

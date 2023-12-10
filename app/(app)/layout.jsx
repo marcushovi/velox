@@ -1,4 +1,7 @@
+
 import Provider from "@components/Provider";
+import { Suspense } from "react"
+import Loading from "./loading"
 import { ShoppingListProvider } from "@components/app/ShoppingListProvider";
 import { UserProvider } from "@components/app/UserProvider";
 import "@mantine/core/styles.css";
@@ -8,7 +11,6 @@ import { MantineProvider, ColorSchemeScript } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 
 import AppContainer from "@components/app/AppContainer";
-
 
 export const metadata = {
   title: "Velox App",
@@ -28,7 +30,9 @@ const RootLayout = ({ children }) => {
             <UserProvider>
               <ShoppingListProvider>
                 <main className="app">
-                  <AppContainer>{children}</AppContainer>
+                  <AppContainer>
+                    <Suspense fallback={<Loading />}>{children}</Suspense>
+                  </AppContainer>
                 </main>
               </ShoppingListProvider>
             </UserProvider>

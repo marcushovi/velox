@@ -32,7 +32,7 @@ export const PUT = async (request, { params }) => {
     if (!shoppingLists) {
       return ErrorHandler.handleCustomError({
         name: "NotFound",
-        message: "User was not found",
+        message: "List was not found",
         value: { shoppingList: listId },
       });
     }
