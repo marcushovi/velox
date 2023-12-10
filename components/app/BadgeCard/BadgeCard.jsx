@@ -5,6 +5,7 @@ import {
   IconArchive,
   IconEdit,
   IconDoorExit,
+  IconArchiveOff
 } from "@tabler/icons-react";
 import RemoveMemberButton from "@components/app/RemoveMemberButton";
 
@@ -93,11 +94,11 @@ const BadgeCard = ({
             <ActionIcon
               variant="transparent"
               size="xl"
-              color="green"
+              color="teal"
               aria-label="Archive button"
               onClick={handleArchive}
             >
-              <IconArchive />
+              { list.archived ? <IconArchiveOff /> : <IconArchive /> }
             </ActionIcon>
             <ActionIcon
               variant="transparent"

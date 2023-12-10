@@ -15,14 +15,21 @@ import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import RemoveMemberButton from "@components/app/RemoveMemberButton";
 import { useRouter } from "next/navigation";
-import ItemModal from "@components/app/modals/ItemModal"
+import ItemModal from "@components/app/modals/ItemModal";
 import ItemsFeed from "@components/app/ItemsFeed";
 
 export default function ShoppingList({ params }) {
   const { data: session } = useSession();
   const router = useRouter();
-  const { shoppingLists, editShoppingList, removeMemberFromList, createItem } =
-    useShoppingList();
+  const {
+    shoppingLists,
+    editShoppingList,
+    removeMemberFromList,
+    createItem,
+    purchasedItem,
+    archiveItem,
+    deleteItem,
+  } = useShoppingList();
   const [list, setList] = useState([]);
   const [editItemOpen, setEditItemOpen] = useState(false);
   const [editListOpen, setEditListOpen] = useState(false);
@@ -41,8 +48,20 @@ export default function ShoppingList({ params }) {
   }, [params.id, shoppingLists, router, list]);
 
   const handleCreateItem = (item) => {
-    createItem(params.id, item)
-  }
+    console.log(item)
+    createItem(params.id, item);
+  };
+
+  const handleDeleteItem = (item) => {
+    deleteItem(params.id, item);
+  };
+  const handlePurchasedItem = (item) => {
+    purchasedItem(params.id, item);
+  };
+
+  const handleArchivedItem = (item) => {
+    archiveItem(params.id, item);
+  };
 
   return (
     <>
@@ -86,7 +105,12 @@ export default function ShoppingList({ params }) {
         </Button>
       </Group>
       <Divider my="md" />
-      <ItemsFeed items={list?.items}/>
+      <ItemsFeed
+        items={list?.items}
+        archive={handleArchivedItem}
+        purchased={handlePurchasedItem}
+        remove={handleDeleteItem}
+      />
 
       <ShoppingListModal
         opened={editListOpen}
