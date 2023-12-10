@@ -94,7 +94,7 @@ export const PUT = async (request, { params }) => {
 
     const itemId = params.itemId;
 
-    const { name, purchased, archived } = await request.json();
+    const { name, purchased, archived, quantity } = await request.json();
 
     const item = await ShoppingList.findOneAndUpdate(
       { _id: listId, "items._id": itemId },
@@ -103,6 +103,7 @@ export const PUT = async (request, { params }) => {
           "items.$.name": name,
           "items.$.purchased": purchased,
           "items.$.archived": archived,
+          "items.$.quantity": quantity,
           "sys.mts": new Date()
         },
         $inc: { 'sys.rev': 1 } // Update the modification timestamp

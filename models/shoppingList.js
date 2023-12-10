@@ -7,7 +7,7 @@ const ItemSchema = new Schema({
     minlength: 1,
     maxlength: 255,
   },
-  dosage: {
+  quantity: {
     type: String,
     maxlength: 255,
   },

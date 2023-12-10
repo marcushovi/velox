@@ -12,119 +12,84 @@ import {
   SimpleGrid,
 } from "@mantine/core";
 
-import ComboBox from "@components/app/ComboBox/ComboBox";
-import { useUser } from "@components/app/UserProvider";
+import { useForm, hasLength } from "@mantine/form";
 
-function ShoppingListModal({
-  opened,
-  setOpened,
-  onSubmit,
-  editingList,
-  diseabled,
-}) {
+function ItemModal({ opened, setOpened, onSubmit, editingItem }) {
   const { data: session } = useSession();
-  const [listName, setListName] = useState({ name: "", error: "" });
-  const [listMembers, setListMembers] = useState([]);
-  const [listArchived, setListArchived] = useState(false);
-  const { users } = useUser();
-  const [allUsers, setAllUsers] = useState([]);
+
+  const form = useForm({
+    initialValues: {
+      name: "",
+      archived: false,
+      quantity: "",
+    },
+    validate: {
+      name: hasLength({ min: 1, max: 255 }, 'Name must be 1-255 characters long'),
+      quantity: hasLength({ max: 255 }, 'Name must be max 255 characters long'),
+    },
+  });
 
   // Effect to prepopulate the form when editing
-  useEffect(() => {
-    if (editingList) {
-      setListName({ name: editingList.name, error: "" });
-      setListMembers(editingList.members);
-      setListArchived(editingList.archived);
-    }
+  useEffect(() => {}, []);
 
-    if (session?.user.id)
-      setAllUsers(users.filter((user) => user._id !== session?.user.id));
-  }, [editingList, session, users]);
+  const handleSubmit = (values) => {
+    const item = {
+      _id: editingItem?._id,
+      name: values.name,
+      quantity: values.quantity,
+      archived: values.archived,
+    };
+    onSubmit(item);
+    handleCancel()
 
-  const handleSubmit = () => {
-    if (listName.name.length < 1 || listName.name.length > 255) {
-      setListName({
-        name: listName.name,
-        error: "Name must have 1 - 255 characters.",
-      });
-    } else {
-      const list = {
-        _id: editingList?._id,
-        name: listName.name,
-        archived: listArchived,
-        members: listMembers,
-      };
-
-      console.log(list)
-
-      onSubmit(list);
-
-      handleCancel();
-    }
   };
 
   const handleCancel = () => {
     setOpened(false);
-    setListName({ name: "", error: "" });
-    setListMembers([]);
-    setListArchived(false);
+    form.reset();
   };
 
   return (
     <Modal
       opened={opened}
       onClose={handleCancel}
-      title={editingList ? "Edit Shopping List" : "Create New Shopping List"}
+      title={editingItem ? "Edit Item" : "Create New Item"}
     >
       <Box
         component="form"
         maw={400}
         mx="auto"
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleSubmit();
-        }}
+        onSubmit={form.onSubmit((values) => handleSubmit(values))}
       >
         <SimpleGrid cols={1} verticalSpacing="xl">
           <TextInput
             label="Name"
-            placeholder="Enter list name"
-            value={listName.name}
-            onChange={(event) =>
-              setListName({ name: event.currentTarget.value, error: "" })
-            }
-            disabled={diseabled}
+            placeholder="Enter item name"
             withAsterisk
-            error={listName.error}
+            {...form.getInputProps("name")}
           />
 
-          <ComboBox
-            data={allUsers}
-            value={listMembers}
-            setValue={setListMembers}
+          <TextInput
+            label="Quantity"
+            placeholder="Enter quantity"
+            {...form.getInputProps("quantity")}
           />
 
-          {editingList ? (
-            <Group grow>
-              <Chip
-                defaultChecked
-                size="md"
-                checked={listArchived}
-                onChange={(event) => setListArchived(!listArchived)}
-              >
-                Archived
-              </Chip>
-            </Group>
-          ) : (
-            ""
-          )}
+          <Group grow>
+            <Chip
+              size="md"
+              {...form.getInputProps("archived", { type: "checkbox" })}
+            >
+              Archived
+            </Chip>
+          </Group>
         </SimpleGrid>
         <Group justify="flex-end" mt="md">
           <Button variant="default" onClick={handleCancel}>
             Cancel
           </Button>
           <Button type="submit">
-            {editingList ? "Save Changes" : "Create List"}
+            {editingItem ? "Save Changes" : "Create Item"}
           </Button>
         </Group>
       </Box>
@@ -132,4 +97,4 @@ function ShoppingListModal({
   );
 }
 
-export default ShoppingListModal;
+export default ItemModal;

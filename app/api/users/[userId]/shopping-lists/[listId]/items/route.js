@@ -80,11 +80,11 @@ export const POST = async (request, { params }) => {
       });
     }
 
-    const { name } = await request.json();
+    const { name, quantity } = await request.json();
 
     const updatedList = await ShoppingList.findByIdAndUpdate(
       listId,
-      { $push: { items: { name: name } } }, // Add the new item to the items array
+      { $push: { items: { name: name, quantity: quantity } } }, // Add the new item to the items array
       { new: true } // Return the updated document
     );
 

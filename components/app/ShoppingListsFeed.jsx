@@ -24,7 +24,7 @@ const ShoppingLists = ({
 }) => {
   return (
     <ScrollArea>
-      <SimpleGrid cols={3}>
+      <SimpleGrid cols={{ base: 1, sm: 2, lg: 3, xl: 3 }}>
         {data.map((list) => {
           list.membersNames = list.members.map((member) => {
             return users.find((user) => user._id === member)?.username;
@@ -57,7 +57,7 @@ const ShoppingLists = ({
   );
 };
 
-const Feed = () => {
+const ShoppingListsFeed = () => {
   const { data: session } = useSession();
   const { users } = useUser();
   const [myLists, setMyLists] = useState([]);
@@ -94,7 +94,7 @@ const Feed = () => {
 
 
   return (
-    <section className="feed">
+    <section>
       {myLists[0]?._id ? (
         <ShoppingLists
           data={myLists}
@@ -123,4 +123,4 @@ const Feed = () => {
   );
 };
 
-export default Feed;
+export default ShoppingListsFeed;
