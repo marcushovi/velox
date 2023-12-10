@@ -2,6 +2,7 @@
 
 import React, { createContext, useState, useContext, useEffect } from "react";
 import { useSession } from "next-auth/react";
+import { notifications } from "@mantine/notifications";
 
 const ShoppingListContext = createContext();
 
@@ -12,35 +13,64 @@ export const ShoppingListProvider = ({ children }) => {
   const [shoppingLists, setShoppingLists] = useState([]);
   const [archived, setArchived] = useState(false);
 
-  const addShoppingList = async (listName) => {
+  const addShoppingList = async (list) => {
     try {
       const response = await fetch(
         `/api/users/${session.user.id.toString()}/shopping-lists`,
         {
           method: "POST",
-          body: JSON.stringify({ name: listName }),
+          body: JSON.stringify({
+            name: list.name,
+            archived: list.archived,
+            members: list.members,
+          }),
         }
       );
+      const data = await response.json();
 
-      const newList = await response.json();
+      if (response.ok && response.status === 200) {
+        notifications.show({
+          title: `List "${data.name}" was created.`,
+          color: "green",
+        });
 
-      setShoppingLists((shoppingLists) => [...shoppingLists, newList]);
+        setShoppingLists((shoppingLists) => [...shoppingLists, data]);
+      } else {
+        notifications.show({
+          title: data.message,
+          color: "red",
+        });
+      }
     } catch (error) {
       console.log(error);
     }
   };
   const deleteShoppingList = async (list) => {
     try {
-      await fetch(
+      const response = await fetch(
         `/api/users/${session.user.id.toString()}/shopping-lists/${list._id.toString()}`,
         {
           method: "DELETE",
         }
       );
+      const data = await response.json();
 
-      const filterLists = shoppingLists.filter((item) => item._id !== list._id);
+      if (response.ok && response.status === 200) {
+        notifications.show({
+          title: `List "${list.name}" was deleted.`,
+          color: "green",
+        });
+        const filterLists = shoppingLists.filter(
+          (item) => item._id !== list._id
+        );
 
-      setShoppingLists(filterLists);
+        setShoppingLists(filterLists);
+      } else {
+        notifications.show({
+          title: data.message,
+          color: "red",
+        });
+      }
     } catch (error) {
       console.log(error);
     }
@@ -56,38 +86,103 @@ export const ShoppingListProvider = ({ children }) => {
         }
       );
 
-      const editedList = await response.json();
+      const data = await response.json();
 
-      const filterLists = shoppingLists.map((item) => {
-        if (item._id === list._id) return editedList;
-        return item;
-      });
+      if (response.ok && response.status === 200) {
+        notifications.show({
+          title: `List "${list.name}" is ${
+            !list.archived ? "archived" : "active"
+          }.`,
+          color: "green",
+        });
+        const filterLists = shoppingLists.map((item) => {
+          if (item._id === list._id) return data;
+          return item;
+        });
 
-
-      setShoppingLists(filterLists);
+        setShoppingLists(filterLists);
+      } else {
+        notifications.show({
+          title: data.message,
+          color: "red",
+        });
+      }
     } catch (error) {
       console.log(error);
     }
   };
 
-  const editShoppingList = async (listName, listId) => {
+  const editShoppingList = async (list) => {
     try {
       const response = await fetch(
-        `/api/users/${session.user.id.toString()}/shopping-lists/${listId.toString()}`,
+        `/api/users/${session.user.id.toString()}/shopping-lists/${list._id.toString()}`,
         {
           method: "PUT",
-          body: JSON.stringify({ name: listName }),
+          body: JSON.stringify({
+            name: list.name,
+            archived: `${list.archived}`,
+            members: list.members,
+          }),
         }
       );
 
-      const editedList = await response.json();
+      const data = await response.json();
 
-      const filterLists = shoppingLists.map((item) => {
-        if (item._id === listId) return editedList;
-        return item;
-      });
+      if (response.ok && response.status === 200) {
+        notifications.show({
+          title: `List "${data.name}" was edited.`,
+          color: "green",
+        });
 
-      setShoppingLists(filterLists);
+        const filterLists = shoppingLists.map((item) => {
+          if (item._id === list._id) return data;
+          return item;
+        });
+
+        setShoppingLists(filterLists);
+      } else {
+        notifications.show({
+          title: data.message,
+          color: "red",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const removeMemberFromList = async (list) => {
+    try {
+      const response = await fetch(
+        `/api/users/${session.user.id.toString()}/shopping-lists/${list._id.toString()}`,
+        {
+          method: "PUT",
+          body: JSON.stringify({
+            name: list.name,
+            members: list.members,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok && response.status === 200) {
+        notifications.show({
+          title: `You leave "${data.name}" list.`,
+          color: "green",
+        });
+
+        const filterLists = shoppingLists.filter(
+          (item) => item._id !== list._id
+        );
+
+        setShoppingLists(filterLists);
+      } else {
+        notifications.show({
+          title: data.message,
+          color: "red",
+        });
+      }
     } catch (error) {
       console.log(error);
     }
@@ -116,6 +211,7 @@ export const ShoppingListProvider = ({ children }) => {
         editShoppingList,
         setArchived,
         archived,
+        removeMemberFromList,
       }}
     >
       {children}

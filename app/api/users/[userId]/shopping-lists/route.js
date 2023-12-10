@@ -53,6 +53,36 @@ export const POST = async (request, { params }) => {
 
     const { name, members } = await request.json();
 
+    // // Check if a shopping list with the same name already exists for the user
+    // const existingList = await ShoppingList.findOne({
+    //   $or: [{ owner: userId }, { members: userId }],
+    //   name: name,
+    // });
+
+    // if (existingList) {
+    //   return ErrorHandler.handleCustomError({
+    //     name: "`DuplicateKeyError`",
+    //     message: `A shopping list with the name '${name}' already exists`,
+    //     value: { name: name },
+    //   });
+    // }
+
+    // // Check if any member being added already owns a list with the same name
+    // for (const member of members) {
+    //   const memberHasList = await ShoppingList.findOne({
+    //     owner: member,
+    //     name: name,
+    //   });
+
+    //   if (memberHasList) {
+    //     return ErrorHandler.handleCustomError({
+    //       name: "DuplicateKeyError",
+    //       message: `User ${member} already has a list named '${name}'`,
+    //       value: { user: member, name: name },
+    //     });
+    //   }
+    // }
+
     const newList = new ShoppingList({
       owner: userId,
       name: name,

@@ -1,6 +1,7 @@
 .user {
     display: block;
     width: 100%;
+    height: 75px;
     padding: var(--mantine-spacing-md);
     color: light-dark(var(--mantine-color-black), var(--mantine-color-dark-0));
   

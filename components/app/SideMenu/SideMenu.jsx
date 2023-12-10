@@ -1,53 +1,26 @@
 "use client";
 
 import { Group, Code, ScrollArea, Button, Badge } from "@mantine/core";
-import Image from 'next/image'
-import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { useState, useEffect } from "react";
 
 import UserSettings from "@components/app/UserSettings/UserSettings";
 import ActionButton from "@components/app/ActionButton/ActionButton";
-import ShoppingListModal from "@components/app/modals/listModal";
+import ShoppingListModal from "@components/app/modals/ShoppingListModal";
 import classes from "./SideMenu.module.css";
 import { useShoppingList } from "@components/app/ShoppingListProvider";
 
-const menuItems = [
-  {
-    label: "Active Lists",
-    link: "/active",
-  },
-  {
-    label: "Archived Lists",
-    link: "/archived",
-  },
-];
 const SideMenu = () => {
-  const links = menuItems.map((item) => (
-    <ActionButton {...item} key={item.label} />
-  ));
 
   const [modalOpened, setModalOpened] = useState(false);
 
   const { shoppingLists, addShoppingList, setArchived } = useShoppingList();
 
-
-
   return (
     <nav className={classes.navbar}>
       <div className={classes.header}>
-        <Group justify="space-center">
-          <Image
-            className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-            src="/velox.svg"
-            alt="Velox Logo"
-            width={100}
-            height={37}
-            priority
-          />
-        </Group>
-      </div>
-
-      <div className={classes.header}>
-        <Group justify="space-center">
+        <Group justify="space-center" grow>
           <Button fullWidth onClick={() => setModalOpened(true)}>
             Create list
           </Button>
@@ -55,29 +28,34 @@ const SideMenu = () => {
       </div>
 
       <ScrollArea className={classes.links}>
-        <Button
-          fullWidth
-          variant="transparent"
-          size="lg"
-          onClick={() => setArchived(false)}
-        >
-          Active&nbsp;{" "}
-          <Badge color="blue">
-            {shoppingLists.filter((item) => !item?.archived).length}
-          </Badge>
-        </Button>
-        <Button
-          fullWidth
-          color="teal"
-          variant="transparent"
-          size="lg"
-          onClick={() => setArchived(true)}
-        >
-          Archived&nbsp;{" "}
-          <Badge color="teal">
-            {shoppingLists.filter((item) => item?.archived).length}
-          </Badge>
-        </Button>
+        <Link href="/app" style={{ textDecoration: 'none' }}>
+          <Button
+            fullWidth
+            variant="transparent"
+            size="lg"
+            color="green"
+            onClick={() => setArchived(false)}
+          >
+            Active&nbsp;{" "}
+            <Badge color="green">
+              {shoppingLists.filter((item) => !item?.archived).length}
+            </Badge>
+          </Button>
+        </Link>
+        <Link href="/app" style={{ textDecoration: 'none' }}>
+          <Button
+            fullWidth
+            color="gray"
+            variant="transparent"
+            size="lg"
+            onClick={() => setArchived(true)}
+          >
+            Archived&nbsp;{" "}
+            <Badge color="gray">
+              {shoppingLists.filter((item) => item?.archived).length}
+            </Badge>
+          </Button>
+        </Link>
       </ScrollArea>
 
       <div className={classes.footer}>
