@@ -59,7 +59,7 @@ export const PUT = async (request, { params }) => {
 
     const existingList = await ShoppingList.findOne({
       _id: listId,
-      owner: userId,
+      $or: [{ owner: userId }, { members: userId }],
     });
 
     if (!existingList) {
@@ -68,8 +68,23 @@ export const PUT = async (request, { params }) => {
         value: { shoppingLists: userId },
       });
     }
+    // // Check if a different shopping list with the same name exists for the user
+    // const duplicateList = await ShoppingList.findOne({
+    //   $or: [{ owner: userId }, { members: userId }],
+    //   name: name,
+    //   _id: { $ne: listId }, // Exclude the current list being updated
+    // });
+
+    // if (duplicateList) {
+    //   return ErrorHandler.handleCustomError({
+    //     name: "DuplicateKeyError",
+    //     message: `A shopping list with the name '${name}' already exists`,
+    //     value: { user: userId, name: name },
+    //   });
+    // }
+
     existingList.name = name || existingList.name;
-    existingList.members = members || [];
+    existingList.members = members || existingList.members;
     existingList.archived = archived || existingList.archived;
 
     existingList.sys.mts = Date.now();

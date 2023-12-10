@@ -1,7 +1,7 @@
 import User from "@models/user";
 import { connectToDB } from "@utils/database";
 import ErrorHandler from "@utils/errorHandler";
-import handleErrors from "@utils/errors/handleErrors";
+
 
 // create user
 export const POST = async (request) => {
@@ -19,7 +19,7 @@ export const POST = async (request) => {
     await newUser.save();
     return  Response.json(newUser, { status: 201 });
   } catch (error) {
-    return handleErrors(error);
+    return ErrorHandler.handleCustomError(error);
   }
 };
 
@@ -32,6 +32,6 @@ export const GET = async () => {
 
     return Response.json(users, { status: 200 });
   } catch (error) {
-    return handleErrors(error);
+    return ErrorHandler.handleCustomError(error);
   }
 };

@@ -3,7 +3,6 @@ import GoogleProvider from "next-auth/providers/google";
 
 import User from "@models/user";
 import { connectToDB } from "@utils/database";
-import { signIn } from "next-auth/react";
 
 const handler = NextAuth({
   providers: [

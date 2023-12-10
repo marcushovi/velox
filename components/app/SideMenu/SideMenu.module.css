@@ -2,7 +2,6 @@
     background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-6));
     height: 100vh;
     max-height: 100vh;
-    width:  20vw;
     padding: var(--mantine-spacing-md);
     padding-bottom: 0;
     display: flex;

@@ -17,7 +17,7 @@ const UserSettings = () => {
     <Menu position="right" arrowPosition="center">
       <Menu.Target>
         <UnstyledButton className={classes.user}>
-          <Group>
+          <Group p={10}>
             <Avatar
               src={session?.user.image}
               radius="xl"

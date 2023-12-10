@@ -51,7 +51,7 @@ const ErrorHandler = {
 
     if (error.name === "CastError") {
       customError = CastError(error);
-    } else if (error.code === 11000) {
+    } else if (error.code === 11000 || error.name === "DuplicateKeyError") {
       customError = DuplicateKeyError(error);
     } else if (error.name === "ValidationError") {
       customError = ValidationError(error);

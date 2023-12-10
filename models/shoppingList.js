@@ -7,6 +7,10 @@ const ItemSchema = new Schema({
     minlength: 1,
     maxlength: 255,
   },
+  dosage: {
+    type: String,
+    maxlength: 255,
+  },
   purchased: {
     type: Boolean,
     default: false,
@@ -27,7 +31,6 @@ const ShoppingListSchema = new Schema(
     name: {
       type: String,
       required: [true, "Name is required."],
-      unique: [true, "Name of a list has been already used"],
       minlength: 1,
       maxlength: 255,
     },
@@ -82,6 +85,27 @@ ShoppingListSchema.pre("save", async function (next) {
 
   next();
 });
+
+// ShoppingListSchema.pre("save", async function (next) {
+//   try {
+//     const existingList = await this.constructor.findOne({
+//       owner: this.owner,
+//       name: this.name
+//     });
+
+//     if (existingList) {
+//       const err = new Error(
+//         `A shopping list with the name '${this.name}' already exists for this user.`
+//       );
+//       err.name = "DuplicateKeyError";
+//       throw err;
+//     }
+
+//     next();
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
 const ShoppingList = models.ShoppingList || model("ShoppingList", ShoppingListSchema);
 export default ShoppingList;
