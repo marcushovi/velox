@@ -33,20 +33,20 @@ export default function SearchableMultiSelect({ data = [], value, setValue }) {
 
   const values = value.map((item) => (
     <Pill key={item} withRemoveButton onRemove={() => handleValueRemove(item)}>
-      {data.filter((v) => v._id === item)[0].username}
+      {data.filter((v) => v._id === item)[0]?.username}
     </Pill>
   ));
 
   const options = data
-    // .filter((item) => !value.includes(item._id))
+    .filter((item) => !value.includes(item._id))
     .filter((item) => item.username.toLowerCase().includes(search.trim().toLowerCase()))
     .map((item, index) => (
       <Combobox.Option
         value={item._id}
         key={item._id}
         className={classes.option}
-        active={value.includes(item.username)}
-        disabled={value.length >= ITEMS_LIMIT && !value.includes(item)}
+        active={value.includes(item._id)}
+        disabled={value.length >= ITEMS_LIMIT && !value.includes(item._id)}
         onMouseOver={() => combobox.selectOption(index)}
       >
         <Group gap="sm">
