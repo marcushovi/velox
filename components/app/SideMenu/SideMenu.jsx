@@ -4,6 +4,7 @@ import { Group, Code, ScrollArea, Button, Badge } from "@mantine/core";
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
 
 import UserSettings from "@components/app/UserSettings/UserSettings";
 import ActionButton from "@components/app/ActionButton/ActionButton";
@@ -12,6 +13,7 @@ import classes from "./SideMenu.module.css";
 import { useShoppingList } from "@components/app/ShoppingListProvider";
 
 const SideMenu = () => {
+  const { data: session } = useSession();
 
   const [modalOpened, setModalOpened] = useState(false);
 
@@ -28,7 +30,7 @@ const SideMenu = () => {
       </div>
 
       <ScrollArea className={classes.links}>
-        <Link href="/app" style={{ textDecoration: 'none' }}>
+        <Link href="/app" style={{ textDecoration: "none" }}>
           <Button
             fullWidth
             variant="transparent"
@@ -42,7 +44,7 @@ const SideMenu = () => {
             </Badge>
           </Button>
         </Link>
-        <Link href="/app" style={{ textDecoration: 'none' }}>
+        <Link href="/app" style={{ textDecoration: "none" }}>
           <Button
             fullWidth
             color="gray"

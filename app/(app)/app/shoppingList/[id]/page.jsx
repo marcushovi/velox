@@ -7,6 +7,7 @@ import {
   Button,
   Divider,
   Title,
+  Skeleton,
 } from "@mantine/core";
 import { IconSettings } from "@tabler/icons-react";
 import { useShoppingList } from "@components/app/ShoppingListProvider";
@@ -17,8 +18,6 @@ import RemoveMemberButton from "@components/app/RemoveMemberButton";
 import { useRouter } from "next/navigation";
 import ItemModal from "@components/app/modals/ItemModal";
 import ItemsFeed from "@components/app/ItemsFeed";
-import { Suspense } from "react";
-import Loading from "@app/(app)/loading";
 
 export default function ShoppingList({ params }) {
   const { data: session } = useSession();
@@ -31,10 +30,12 @@ export default function ShoppingList({ params }) {
     purchasedItem,
     archiveItem,
     deleteItem,
+    editItem,
   } = useShoppingList();
   const [list, setList] = useState([]);
   const [editItemOpen, setEditItemOpen] = useState(false);
   const [editListOpen, setEditListOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getList = async () => {
@@ -42,12 +43,13 @@ export default function ShoppingList({ params }) {
         (item) => item._id === params.id
       )[0];
       setList(listById);
+      setLoading(false);
 
-      if (listById === undefined) router.push("/app");
+      // if (listById === undefined) router.push("/app");
     };
 
     if (params.id) getList();
-  }, [params.id, shoppingLists, router, list]);
+  }, [params.id, shoppingLists, router, session, list]);
 
   const handleCreateItem = (item) => {
     console.log(item);
@@ -65,69 +67,88 @@ export default function ShoppingList({ params }) {
     archiveItem(params.id, item);
   };
 
-  return (
-    <Suspense fallback={<Loading />}>
+  const handleEditItem = (item) => {
+    editItem(params.id, item);
+  };
+
+  if (loading) {
+    return (
       <>
-        <Group justify="space-between">
-          <Title order={3} size="h1">
-            {list?.name}
-          </Title>
-          <Divider my="md" />
-
-          {session?.user.id === list?.owner ? (
-            <ActionIcon
-              variant="transparent"
-              size="xl"
-              aria-label="Settings"
-              onClick={() => {
-                setEditListOpen(true);
-              }}
-            >
-              <IconSettings
-                style={{ width: "70%", height: "70%" }}
-                stroke={1.5}
-              />
-            </ActionIcon>
-          ) : (
-            <RemoveMemberButton
-              action={removeMemberFromList}
-              list={list}
-              session={session}
-            />
-          )}
-
-          <Badge variant="outline" color="blue" size="lg">
-            {list?.items?.length} taks
-          </Badge>
-          <Badge variant="outline" color="blue" size="lg">
-            {list?.members?.length} members
-          </Badge>
-
-          <Button size="lg" onClick={() => setEditItemOpen(true)}>
-            New Task
-          </Button>
-        </Group>
+        <Skeleton height={50} radius="md" p="md" />
         <Divider my="md" />
-        <ItemsFeed
-          items={list?.items}
-          archive={handleArchivedItem}
-          purchased={handlePurchasedItem}
-          remove={handleDeleteItem}
-        />
 
-        <ShoppingListModal
-          opened={editListOpen}
-          setOpened={setEditListOpen}
-          onSubmit={(list) => editShoppingList(list)}
-          editingList={{ ...list }}
-        />
+        <Skeleton height={200} radius="md" p="md" mt={30} />
+        <Skeleton height={50} radius="md" p="md" mt={30} />
+        <Skeleton height={50} radius="md" p="md" mt={30} />
 
-        <ItemModal
-          opened={editItemOpen}
-          setOpened={setEditItemOpen}
-          onSubmit={(item) => handleCreateItem(item)}
-        />
       </>
-    </Suspense>
+    );
+  }
+
+  return list !== undefined ? (
+    <>
+      <Group justify="space-between">
+        <Title order={3} size="h1">
+          {list?.name}
+        </Title>
+        <Divider my="md" />
+
+        {session?.user.id === list?.owner ? (
+          <ActionIcon
+            variant="transparent"
+            size="xl"
+            aria-label="Settings"
+            onClick={() => {
+              setEditListOpen(true);
+            }}
+          >
+            <IconSettings
+              style={{ width: "70%", height: "70%" }}
+              stroke={1.5}
+            />
+          </ActionIcon>
+        ) : (
+          <RemoveMemberButton
+            action={removeMemberFromList}
+            list={list}
+            session={session}
+          />
+        )}
+
+        <Badge variant="outline" color="blue" size="lg">
+          {list?.items?.length} taks
+        </Badge>
+        <Badge variant="outline" color="blue" size="lg">
+          {list?.members?.length} members
+        </Badge>
+
+        <Button size="lg" onClick={() => setEditItemOpen(true)}>
+          New Task
+        </Button>
+      </Group>
+      <Divider my="md" />
+      <ItemsFeed
+        items={list?.items}
+        archive={handleArchivedItem}
+        purchased={handlePurchasedItem}
+        remove={handleDeleteItem}
+        edit={handleEditItem}
+      />
+
+      <ShoppingListModal
+        opened={editListOpen}
+        setOpened={setEditListOpen}
+        onSubmit={(list) => editShoppingList(list)}
+        editingList={{ ...list }}
+      />
+
+      <ItemModal
+        opened={editItemOpen}
+        setOpened={setEditItemOpen}
+        onSubmit={(item) => handleCreateItem(item)}
+      />
+    </>
+  ) : (
+    ""
   );
 }

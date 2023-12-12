@@ -16,7 +16,7 @@ const RootLayout = ({ children }) => (
     </head>
     <body>
     <Provider>
-      <MantineProvider defaultColorScheme="dark">
+      <MantineProvider defaultColorScheme="light">
         <main>
           <HeaderMegaMenu />
           {children}

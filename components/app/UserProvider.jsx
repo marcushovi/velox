@@ -34,7 +34,7 @@ export const UserProvider = ({ children }) => {
     };
 
     if (!loading && !session) {
-      router.push("/500");
+      router.push("/");
     } else {
       fetchUsers();
     }

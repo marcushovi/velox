@@ -1,32 +1,22 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
-
-import BadgeCard from "@components/app/BadgeCard/BadgeCard";
 import { SimpleGrid, ScrollArea, Badge } from "@mantine/core";
-import ShoppingListModal from "@components/app/modals/ShoppingListModal";
 
-import { useShoppingList } from "@components/app/ShoppingListProvider";
-import { useUser } from "@components/app/UserProvider";
 import {
-  IconPhoto,
   IconCircleCheckFilled,
   IconProgress,
   IconArchive,
 } from "@tabler/icons-react";
 import { Accordion, rem } from "@mantine/core";
-import { Table } from "@mantine/core";
 import ItemCard from "./ItemCard/ItemCard";
+import ItemModal from "./modals/ItemModal";
 
 const ItemsFeed = ({ items, edit, remove, purchased, archive }) => {
-  // const [items, setItems] = useState([]);
+  const [editItem, setEditItem] = useState({ open: false, item: {} });
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // useEffect(() => {
-  //   console.log(data)
-  //   if (data !== undefined) setItems(data);
-  // }, [data]);
 
   const handleDelete = (item) => {
     const hasConfirmed = confirm(
@@ -35,11 +25,24 @@ const ItemsFeed = ({ items, edit, remove, purchased, archive }) => {
     if (hasConfirmed) remove(item);
   };
 
+  const handleEdit = (item) => {
+    setEditItem({ open: true, item: item });
+  };
+
+  useEffect(() => {
+    const getItems = async () => {
+      setData(items)
+      setLoading(false);
+    };
+
+    getItems();
+  }, [items]);
+
   return (
     <section>
       <ScrollArea>
         <Accordion variant="separated" multiple defaultValue={["inprocess"]}>
-          {items !== undefined ? (
+          {data !== undefined ? (
             <>
               <Accordion.Item value="inprocess">
                 <Accordion.Control
@@ -55,18 +58,18 @@ const ItemsFeed = ({ items, edit, remove, purchased, archive }) => {
                 >
                   In proceess{"  "}
                   <Badge color="blue">
-                    {items.filter((item) => !item?.purchased).length}
+                    {data.filter((item) => !item?.purchased).length}
                   </Badge>
                 </Accordion.Control>
                 <Accordion.Panel>
                   <SimpleGrid cols={{ base: 1, sm: 2, lg: 3, xl: 3 }}>
-                    {items.map((item) => {
+                    {data.map((item) => {
                       if (!item.purchased) {
                         return (
                           <ItemCard
                             key={item._id}
                             item={item}
-                            handleEdit={() => edit && edit(item)}
+                            handleEdit={() => handleEdit && handleEdit(item)}
                             handleArchive={() => archive && archive(item)}
                             handleDelete={() =>
                               handleDelete && handleDelete(item)
@@ -94,18 +97,18 @@ const ItemsFeed = ({ items, edit, remove, purchased, archive }) => {
                 >
                   Purchased{"  "}
                   <Badge color="green">
-                    {items.filter((item) => item?.purchased).length}
+                    {data.filter((item) => item?.purchased).length}
                   </Badge>
                 </Accordion.Control>
                 <Accordion.Panel>
                   <SimpleGrid cols={{ base: 1, sm: 2, lg: 3, xl: 3 }}>
-                    {items.map((item) => {
+                    {data.map((item) => {
                       if (item.purchased) {
                         return (
                           <ItemCard
                             key={item._id}
                             item={item}
-                            handleEdit={() => edit && edit(item)}
+                            handleEdit={() => handleEdit && handleEdit(item)}
                             handleArchive={() => archive && archive(item)}
                             handleDelete={() =>
                               handleDelete && handleDelete(item)
@@ -133,18 +136,18 @@ const ItemsFeed = ({ items, edit, remove, purchased, archive }) => {
                 >
                   Archived {"  "}
                   <Badge color="teal">
-                    {items.filter((item) => item?.archived).length}
+                    {data.filter((item) => item?.archived).length}
                   </Badge>
                 </Accordion.Control>
                 <Accordion.Panel>
                   <SimpleGrid cols={{ base: 1, sm: 2, lg: 3, xl: 3 }}>
-                    {items.map((item) => {
+                    {data.map((item) => {
                       if (item.archived) {
                         return (
                           <ItemCard
                             key={item._id}
                             item={item}
-                            handleEdit={() => edit && edit(item)}
+                            handleEdit={() => handleEdit && handleEdit(item)}
                             handleArchive={() => archive && archive(item)}
                             handleDelete={() =>
                               handleDelete && handleDelete(item)
@@ -159,10 +162,16 @@ const ItemsFeed = ({ items, edit, remove, purchased, archive }) => {
               </Accordion.Item>
             </>
           ) : (
-            "You do not have any items yet."
+            ""
           )}
         </Accordion>
       </ScrollArea>
+      <ItemModal
+        opened={editItem.open}
+        setOpened={setEditItem}
+        onSubmit={edit}
+        editingItem={editItem.item}
+      />
     </section>
   );
 };
