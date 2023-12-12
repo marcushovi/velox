@@ -15,7 +15,6 @@ import ItemModal from "./modals/ItemModal";
 const ItemsFeed = ({ items, edit, remove, purchased, archive }) => {
   const [editItem, setEditItem] = useState({ open: false, item: {} });
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
 
 
   const handleDelete = (item) => {
@@ -32,7 +31,6 @@ const ItemsFeed = ({ items, edit, remove, purchased, archive }) => {
   useEffect(() => {
     const getItems = async () => {
       setData(items)
-      setLoading(false);
     };
 
     getItems();

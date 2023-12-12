@@ -101,6 +101,9 @@ const ShoppingListsFeed = () => {
     if (hasConfirmed) deleteShoppingList(list);
   };
 
+  console.log(loading)
+  console.log(myLists)
+
 
   return (
     <ScrollArea>
