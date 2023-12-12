@@ -331,6 +331,46 @@ export const ShoppingListProvider = ({ children }) => {
     }
   };
 
+  const editItem = async (listId, item) => {
+    console.log(item)
+    try {
+      const response = await fetch(
+        `/api/users/${session.user.id.toString()}/shopping-lists/${listId.toString()}/items/${item._id.toString()}`,
+        {
+          method: "PUT",
+          body: JSON.stringify({
+            name: item.name,
+            quantity: item.quantity,
+            archived: `${item.archived}`,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok && response.status === 200) {
+        notifications.show({
+          title: `Item "${item.name}" was edited.`,
+          color: "green",
+        });
+
+        const filterLists = shoppingLists.map((item) => {
+          if (item._id === listId) return data;
+          return item;
+        });
+
+        setShoppingLists([...filterLists]);
+      } else {
+        notifications.show({
+          title: data.message,
+          color: "red",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     const fetchLists = async () => {
       const response = await fetch(
@@ -359,6 +399,7 @@ export const ShoppingListProvider = ({ children }) => {
         purchasedItem,
         archiveItem,
         deleteItem,
+        editItem,
       }}
     >
       {children}

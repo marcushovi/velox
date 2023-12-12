@@ -16,7 +16,7 @@ import {
   rem,
   useMantineTheme,
 } from "@mantine/core";
-import Image from 'next/image'
+import Image from "next/image";
 import { useDisclosure } from "@mantine/hooks";
 import { IconChevronDown, IconLogout } from "@tabler/icons-react";
 import classes from "./HeaderMegaMenu.module.css";
@@ -102,6 +102,7 @@ export function HeaderMegaMenu() {
               <Menu.Dropdown>
                 <Menu.Item>{session?.user.email}</Menu.Item>
                 <Menu.Item
+                  color="red"
                   onClick={signOut}
                   leftSection={
                     <IconLogout
@@ -110,7 +111,7 @@ export function HeaderMegaMenu() {
                     />
                   }
                 >
-                  Logout
+                  Sign Out
                 </Menu.Item>
               </Menu.Dropdown>
             </Menu>

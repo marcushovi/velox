@@ -55,8 +55,6 @@ function ShoppingListModal({
         members: listMembers,
       };
 
-      console.log(list)
-
       onSubmit(list);
 
       handleCancel();
@@ -75,6 +73,8 @@ function ShoppingListModal({
       opened={opened}
       onClose={handleCancel}
       title={editingList ? "Edit Shopping List" : "Create New Shopping List"}
+      closeOnClickOutside={false}
+      centered
     >
       <Box
         component="form"
@@ -96,6 +96,7 @@ function ShoppingListModal({
             disabled={diseabled}
             withAsterisk
             error={listName.error}
+            data-autofocus
           />
 
           <ComboBox

@@ -1,7 +1,7 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import {
   Modal,
   Button,
@@ -24,14 +24,27 @@ function ItemModal({ opened, setOpened, onSubmit, editingItem }) {
       quantity: "",
     },
     validate: {
-      name: hasLength({ min: 1, max: 255 }, 'Name must be 1-255 characters long'),
-      quantity: hasLength({ max: 255 }, 'Name must be max 255 characters long'),
+      name: hasLength(
+        { min: 1, max: 255 },
+        "Name must be 1-255 characters long"
+      ),
+      quantity: hasLength({ max: 255 }, "Name must be max 255 characters long"),
     },
   });
 
+  useEffect(() => {
+    const fetchLists = async () => {
+      form.setValues({ name: editingItem.name, archived: editingItem.archived, quantity: editingItem.quantity });
+      // form.setFieldValue('name', editingItem.name)
+      // form.setFieldValue('archived', editingItem.archived)
+      // form.setFieldValue('quantity', editingItem.quantity)
+    };
 
+    if (editingItem) fetchLists();
+  }, [editingItem]);
 
   const handleSubmit = (values) => {
+    console.log(editingItem)
     const item = {
       _id: editingItem?._id,
       name: values.name,
@@ -39,8 +52,7 @@ function ItemModal({ opened, setOpened, onSubmit, editingItem }) {
       archived: values.archived,
     };
     onSubmit(item);
-    handleCancel()
-
+    handleCancel();
   };
 
   const handleCancel = () => {
@@ -53,6 +65,8 @@ function ItemModal({ opened, setOpened, onSubmit, editingItem }) {
       opened={opened}
       onClose={handleCancel}
       title={editingItem ? "Edit Item" : "Create New Item"}
+      closeOnClickOutside={false}
+      centered
     >
       <Box
         component="form"
@@ -65,6 +79,7 @@ function ItemModal({ opened, setOpened, onSubmit, editingItem }) {
             label="Name"
             placeholder="Enter item name"
             withAsterisk
+            data-autofocus
             {...form.getInputProps("name")}
           />
 
