@@ -21,13 +21,13 @@ const ShoppingLists = ({
   session,
   users,
 }) => {
-  // if (data.length === 0) {
-  //   return (
-  //     <Text ta="center" c="dimmed" size="lg" fw={700}>
-  //       You do not have any lists
-  //     </Text>
-  //   );
-  // }
+  if (data.length === 0) {
+    return (
+      <Text ta="center" c="dimmed" size="lg" fw={700}>
+        You do not have any lists
+      </Text>
+    );
+  }
   return (
     <>
       {data.map((list) => {
@@ -87,7 +87,7 @@ const ShoppingListsFeed = () => {
       setLoading(false);
     };
 
-    getLists();
+    if ( shoppingLists !== null ) getLists();
   }, [shoppingLists, archived, session]);
 
   const handleClick = (list) => {
@@ -101,15 +101,12 @@ const ShoppingListsFeed = () => {
     if (hasConfirmed) deleteShoppingList(list);
   };
 
-  console.log(loading)
-  console.log(myLists)
-
 
   return (
     <ScrollArea>
       <SimpleGrid cols={{ base: 1, sm: 2, lg: 3, xl: 3 }}>
         {loading ? (
-          [...Array(10)].map((x, i) => <Skeleton key={i} height={300} radius="md" p="md" />)
+          [...Array(10)].map((x, i) => <Skeleton key={i} height={300} radius="md" p="md" animate={false} />)
         ) : (
           <>
             {myLists !== undefined ? (

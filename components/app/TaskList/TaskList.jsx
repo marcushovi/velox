@@ -24,7 +24,6 @@ export function TaskList(props) {
       }
       return item;
     });
-    console.log("ok")
     setList({ ...list, items: updatedItems });
   };
 

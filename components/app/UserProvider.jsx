@@ -33,7 +33,7 @@ export const UserProvider = ({ children }) => {
       }
     };
 
-    if (!loading && !session) {
+    if (!loading && !session?.user?.id) {
       router.push("/");
     } else {
       fetchUsers();

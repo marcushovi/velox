@@ -40,11 +40,11 @@ const UserSettings = () => {
           <Menu.Target>
             <UnstyledButton className={classes.user}>
               <Group p={10}>
-                <Skeleton height={50} circle />
+                <Skeleton height={50} circle animate={false} />
 
                 <div style={{ flex: 1 }}>
-                  <Skeleton height={8} radius="xl" />
-                  <Skeleton height={8} mt={6} radius="xl" />
+                  <Skeleton height={8} radius="xl" animate={false} />
+                  <Skeleton height={8} mt={6} radius="xl"  animate={false}/>
                 </div>
               </Group>
             </UnstyledButton>
@@ -55,7 +55,7 @@ const UserSettings = () => {
   }
 
   return (
-    <Menu position="right" arrowPosition="center">
+    <Menu position="top-end" withArrow arrowPosition="center" transitionProps={{ transition: 'pop', duration: 150 }}>
       <Menu.Target>
         <UnstyledButton className={classes.user}>
           <Group p={10}>

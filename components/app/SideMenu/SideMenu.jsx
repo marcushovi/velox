@@ -1,6 +1,13 @@
 "use client";
 
-import { Group, Code, ScrollArea, Button, Badge } from "@mantine/core";
+import {
+  Group,
+  Code,
+  ScrollArea,
+  Button,
+  Badge,
+  Skeleton,
+} from "@mantine/core";
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
@@ -12,12 +19,24 @@ import ShoppingListModal from "@components/app/modals/ShoppingListModal";
 import classes from "./SideMenu.module.css";
 import { useShoppingList } from "@components/app/ShoppingListProvider";
 
-const SideMenu = () => {
+const SideMenu = ({ closeMenu }) => {
   const { data: session } = useSession();
+  const [loading, setLoading] = useState(true);
 
   const [modalOpened, setModalOpened] = useState(false);
+  const [lists, setLists] = useState([]);
 
   const { shoppingLists, addShoppingList, setArchived } = useShoppingList();
+
+  useEffect(() => {
+    const getLists = async () => {
+      setLists(shoppingLists);
+      setLoading(false);
+    };
+
+    if (shoppingLists !== null) getLists();
+  }, [shoppingLists]);
+
 
   return (
     <nav className={classes.navbar}>
@@ -36,11 +55,18 @@ const SideMenu = () => {
             variant="transparent"
             size="lg"
             color="green"
-            onClick={() => setArchived(false)}
+            onClick={() => {
+              setArchived(false);
+              closeMenu();
+            }}
           >
             Active&nbsp;{" "}
             <Badge color="green">
-              {shoppingLists.filter((item) => !item?.archived).length}
+              {loading ? (
+                <Skeleton height={10} width={8} radius="xl" animate={false} />
+              ) : (
+                lists.filter((item) => !item?.archived).length
+              )}
             </Badge>
           </Button>
         </Link>
@@ -50,11 +76,18 @@ const SideMenu = () => {
             color="gray"
             variant="transparent"
             size="lg"
-            onClick={() => setArchived(true)}
+            onClick={() => {
+              setArchived(true);
+              closeMenu();
+            }}
           >
             Archived&nbsp;{" "}
             <Badge color="gray">
-              {shoppingLists.filter((item) => item?.archived).length}
+              {loading ? (
+                <Skeleton height={10} width={8} radius="xl" animate={false} />
+              ) : (
+                lists.filter((item) => item?.archived).length
+              )}
             </Badge>
           </Button>
         </Link>
