@@ -14,6 +14,8 @@ import {
 
 import ComboBox from "@components/app/ComboBox/ComboBox";
 import { useUser } from "@components/app/UserProvider";
+import { useRouter } from "next/navigation";
+
 
 function ShoppingListModal({
   opened,
@@ -28,6 +30,8 @@ function ShoppingListModal({
   const [listArchived, setListArchived] = useState(false);
   const { users } = useUser();
   const [allUsers, setAllUsers] = useState([]);
+  const router = useRouter();
+
 
   // Effect to prepopulate the form when editing
   useEffect(() => {
@@ -58,6 +62,8 @@ function ShoppingListModal({
       onSubmit(list);
 
       handleCancel();
+
+      router.push("/app");
     }
   };
 
