@@ -37,12 +37,17 @@ const SideMenu = ({ closeMenu }) => {
     if (shoppingLists !== null) getLists();
   }, [shoppingLists]);
 
-
   return (
     <nav className={classes.navbar}>
       <div className={classes.header}>
         <Group justify="space-center" grow>
-          <Button fullWidth onClick={() => setModalOpened(true)}>
+          <Button
+            fullWidth
+            onClick={() => {
+              setModalOpened(true);
+              closeMenu();
+            }}
+          >
             Create list
           </Button>
         </Group>
