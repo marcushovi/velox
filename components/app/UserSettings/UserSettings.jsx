@@ -40,11 +40,11 @@ const UserSettings = () => {
           <Menu.Target>
             <UnstyledButton className={classes.user}>
               <Group p={10}>
-                <Skeleton height={50} circle animate={false} />
+                <Skeleton height={50} circle />
 
                 <div style={{ flex: 1 }}>
-                  <Skeleton height={8} radius="xl" animate={false} />
-                  <Skeleton height={8} mt={6} radius="xl"  animate={false}/>
+                  <Skeleton height={8} radius="xl" />
+                  <Skeleton height={8} mt={6} radius="xl" />
                 </div>
               </Group>
             </UnstyledButton>

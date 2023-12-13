@@ -75,12 +75,12 @@ export default function ShoppingList({ params }) {
   if (loading) {
     return (
       <>
-        <Skeleton height={50} radius="md" p="md" animate={false} />
+        <Skeleton height={50} radius="md" p="md" />
         <Divider my="md" />
 
-        <Skeleton height={200} radius="md" p="md" mt={30} animate={false} />
-        <Skeleton height={50} radius="md" p="md" mt={30} animate={false} />
-        <Skeleton height={50} radius="md" p="md" mt={30} animate={false} />
+        <Skeleton height={200} radius="md" p="md" mt={30} />
+        <Skeleton height={50} radius="md" p="md" mt={30} />
+        <Skeleton height={50} radius="md" p="md" mt={30} />
       </>
     );
   }

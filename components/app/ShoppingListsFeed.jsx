@@ -106,7 +106,7 @@ const ShoppingListsFeed = () => {
     <ScrollArea>
       <SimpleGrid cols={{ base: 1, sm: 2, lg: 3, xl: 3 }}>
         {loading ? (
-          [...Array(10)].map((x, i) => <Skeleton key={i} height={300} radius="md" p="md" animate={false} />)
+          [...Array(10)].map((x, i) => <Skeleton key={i} height={300} radius="md" p="md" />)
         ) : (
           <>
             {myLists !== undefined ? (
