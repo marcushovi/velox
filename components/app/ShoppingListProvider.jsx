@@ -34,7 +34,7 @@ export const ShoppingListProvider = ({ children }) => {
           color: "green",
         });
 
-        setShoppingLists((shoppingLists) => [...shoppingLists, data]);
+        setShoppingLists((shoppingLists) => [data, ...shoppingLists,]);
       } else {
         notifications.show({
           title: data.message,
@@ -375,7 +375,9 @@ export const ShoppingListProvider = ({ children }) => {
       const response = await fetch(
         `/api/users/${session?.user.id.toString()}/shopping-lists`
       );
-      const data = await response.json();
+      let data = await response.json();
+
+      data = data.sort((a, b) => new Date(b.sys.cts) - new Date(a.sys.cts));
       setShoppingLists(data);
     };
 
