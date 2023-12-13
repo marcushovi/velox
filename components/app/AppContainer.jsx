@@ -5,7 +5,7 @@ import { useDisclosure } from "@mantine/hooks";
 import SideMenu from "@components/app/SideMenu/SideMenu";
 
 const AppContainer = ({ children }) => {
-  const [opened, { toggle }] = useDisclosure(false);
+  const [opened, { toggle, close }] = useDisclosure(false);
   return (
     <AppShell
       header={{ height: 60 }}
@@ -38,7 +38,7 @@ const AppContainer = ({ children }) => {
       </AppShell.Header>
 
       <AppShell.Navbar>
-        <SideMenu />
+        <SideMenu closeMenu={close} />
       </AppShell.Navbar>
 
       <AppShell.Main>{children}</AppShell.Main>

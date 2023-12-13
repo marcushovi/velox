@@ -8,6 +8,7 @@ import {
   Divider,
   Title,
   Skeleton,
+  SimpleGrid,
 } from "@mantine/core";
 import { IconSettings } from "@tabler/icons-react";
 import { useShoppingList } from "@components/app/ShoppingListProvider";
@@ -48,7 +49,7 @@ export default function ShoppingList({ params }) {
       // if (listById === undefined) router.push("/app");
     };
 
-    if (params.id) getList();
+    if (params.id && shoppingLists !== null) getList();
   }, [params.id, shoppingLists, router, session, list]);
 
   const handleCreateItem = (item) => {
@@ -74,58 +75,60 @@ export default function ShoppingList({ params }) {
   if (loading) {
     return (
       <>
-        <Skeleton height={50} radius="md" p="md" />
+        <Skeleton height={50} radius="md" p="md" animate={false} />
         <Divider my="md" />
 
-        <Skeleton height={200} radius="md" p="md" mt={30} />
-        <Skeleton height={50} radius="md" p="md" mt={30} />
-        <Skeleton height={50} radius="md" p="md" mt={30} />
-
+        <Skeleton height={200} radius="md" p="md" mt={30} animate={false} />
+        <Skeleton height={50} radius="md" p="md" mt={30} animate={false} />
+        <Skeleton height={50} radius="md" p="md" mt={30} animate={false} />
       </>
     );
   }
 
   return list !== undefined ? (
     <>
-      <Group justify="space-between">
-        <Title order={3} size="h1">
-          {list?.name}
-        </Title>
-        <Divider my="md" />
+      <SimpleGrid cols={{ base: 1, lg: 3, xl: 3 }}>
+        <Group justify="space-around">
+          <Title order={3} size="h1">
+            {list?.name}
+          </Title>
+          <Divider my="md" />
 
-        {session?.user.id === list?.owner ? (
-          <ActionIcon
-            variant="transparent"
-            size="xl"
-            aria-label="Settings"
-            onClick={() => {
-              setEditListOpen(true);
-            }}
-          >
-            <IconSettings
-              style={{ width: "70%", height: "70%" }}
-              stroke={1.5}
+          {session?.user.id === list?.owner ? (
+            <ActionIcon
+              variant="transparent"
+              size="xl"
+              aria-label="Settings"
+              onClick={() => {
+                setEditListOpen(true);
+              }}
+            >
+              <IconSettings
+                style={{ width: "70%", height: "70%" }}
+                stroke={1.5}
+              />
+            </ActionIcon>
+          ) : (
+            <RemoveMemberButton
+              action={removeMemberFromList}
+              list={list}
+              session={session}
             />
-          </ActionIcon>
-        ) : (
-          <RemoveMemberButton
-            action={removeMemberFromList}
-            list={list}
-            session={session}
-          />
-        )}
-
-        <Badge variant="outline" color="blue" size="lg">
-          {list?.items?.length} taks
-        </Badge>
-        <Badge variant="outline" color="blue" size="lg">
-          {list?.members?.length} members
-        </Badge>
+          )}
+        </Group>
+        <Group justify="space-around">
+          <Badge variant="outline" color="blue" size="lg">
+            {list?.items?.length} taks
+          </Badge>
+          <Badge variant="outline" color="blue" size="lg">
+            {list?.members?.length} members
+          </Badge>
+        </Group>
 
         <Button size="lg" onClick={() => setEditItemOpen(true)}>
           New Task
         </Button>
-      </Group>
+      </SimpleGrid>
       <Divider my="md" />
       <ItemsFeed
         items={list?.items}

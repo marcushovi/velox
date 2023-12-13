@@ -10,7 +10,7 @@ export const useShoppingList = () => useContext(ShoppingListContext);
 
 export const ShoppingListProvider = ({ children }) => {
   const { data: session } = useSession();
-  const [shoppingLists, setShoppingLists] = useState([]);
+  const [shoppingLists, setShoppingLists] = useState(null);
   const [archived, setArchived] = useState(false);
 
   const addShoppingList = async (list) => {
@@ -332,7 +332,6 @@ export const ShoppingListProvider = ({ children }) => {
   };
 
   const editItem = async (listId, item) => {
-    console.log(item)
     try {
       const response = await fetch(
         `/api/users/${session.user.id.toString()}/shopping-lists/${listId.toString()}/items/${item._id.toString()}`,

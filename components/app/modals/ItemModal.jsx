@@ -44,7 +44,6 @@ function ItemModal({ opened, setOpened, onSubmit, editingItem }) {
   }, [editingItem]);
 
   const handleSubmit = (values) => {
-    console.log(editingItem)
     const item = {
       _id: editingItem?._id,
       name: values.name,

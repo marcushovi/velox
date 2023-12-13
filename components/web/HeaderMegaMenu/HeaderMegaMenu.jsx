@@ -14,7 +14,7 @@ import {
   Drawer,
   ScrollArea,
   rem,
-  useMantineTheme,
+  Stack,
   Skeleton,
 } from "@mantine/core";
 import Image from "next/image";
@@ -51,7 +51,7 @@ export function HeaderMegaMenu() {
     if (session?.user?.id === undefined) getPro();
     else isLoggedIn();
   }, [session]);
-  
+
   return (
     <Box>
       <header className={classes.header}>
@@ -166,23 +166,89 @@ export function HeaderMegaMenu() {
         onClose={closeDrawer}
         size="100%"
         padding="md"
-        title="Navigation"
         hiddenFrom="sm"
         zIndex={1000000}
       >
         <ScrollArea h={`calc(100vh - ${rem(80)})`} mx="-md">
           <Divider my="sm" />
-
-          <a href="#" className={classes.link}>
-            API Docs
-          </a>
+          <Group h="100%" gap={0}>
+            <a href="#" className={classes.link}>
+              API Docs
+            </a>
+            {isLoggedIn ? (
+              loading ? (
+                <Skeleton height={40} width={44} radius="md" p="md" />
+              ) : (
+                <a href="/app" className={classes.link}>
+                  App
+                </a>
+              )
+            ) : (
+              ""
+            )}
+          </Group>
 
           <Divider my="sm" />
 
-          <Group justify="center" grow pb="xl" px="md">
-            <Button variant="default">Log in</Button>
-            <Button>Sign up</Button>
-          </Group>
+          {loading ? (
+            <Skeleton height={40} width={84} radius="md" p="md" />
+          ) : (
+            <>
+              {isLoggedIn ? (
+                <>
+                  <Group gap={7} p="md">
+                    <Avatar
+                      src={session?.user.image}
+                      alt={session?.user.name}
+                      radius="xxl"
+                      size={80}
+                    />
+                    <Stack justify="space-around" h="100%" ml={30}>
+                      <Text fw={500} size="md" lh={1} mr={3}>
+                        {session?.user.name}
+                      </Text>
+                      <Text fw={500} c="dimmed" size="md" lh={1} mr={3}>
+                        {session?.user.email}
+                      </Text>
+                    </Stack>
+                  </Group>
+
+                  <Button
+                    color="red"
+                    fullWidth
+                    onClick={signOut}
+                    mt="md"
+                    leftSection={
+                      <IconLogout
+                        style={{ width: rem(16), height: rem(16) }}
+                        stroke={1.5}
+                      />
+                    }
+                  >
+                    Sign Out
+                  </Button>
+                </>
+              ) : (
+                <Group>
+                  {providers &&
+                    Object.values(providers).map((provider) => (
+                      <Button
+                        type="button"
+                        key={provider.name}
+                        fullWidth
+                        onClick={() => {
+                          signIn(provider.id);
+                        }}
+                        variant="light"
+                        
+                      >
+                        Sign in
+                      </Button>
+                    ))}
+                </Group>
+              )}
+            </>
+          )}
         </ScrollArea>
       </Drawer>
     </Box>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { SimpleGrid, ScrollArea, Badge } from "@mantine/core";
+import { SimpleGrid, ScrollArea, Badge, Text, Mark } from "@mantine/core";
 
 import {
   IconCircleCheckFilled,
@@ -16,7 +16,6 @@ const ItemsFeed = ({ items, edit, remove, purchased, archive }) => {
   const [editItem, setEditItem] = useState({ open: false, item: {} });
   const [data, setData] = useState([]);
 
-
   const handleDelete = (item) => {
     const hasConfirmed = confirm(
       `Are you sure you want to delete list ${item.name}?`
@@ -30,7 +29,7 @@ const ItemsFeed = ({ items, edit, remove, purchased, archive }) => {
 
   useEffect(() => {
     const getItems = async () => {
-      setData(items)
+      setData(items);
     };
 
     getItems();
@@ -61,22 +60,30 @@ const ItemsFeed = ({ items, edit, remove, purchased, archive }) => {
                 </Accordion.Control>
                 <Accordion.Panel>
                   <SimpleGrid cols={{ base: 1, sm: 2, lg: 3, xl: 3 }}>
-                    {data.map((item) => {
-                      if (!item.purchased) {
-                        return (
-                          <ItemCard
-                            key={item._id}
-                            item={item}
-                            handleEdit={() => handleEdit && handleEdit(item)}
-                            handleArchive={() => archive && archive(item)}
-                            handleDelete={() =>
-                              handleDelete && handleDelete(item)
-                            }
-                            handlePurchased={() => purchased && purchased(item)}
-                          />
-                        );
-                      }
-                    })}
+                    {data.filter((item) => !item?.purchased).length === 0 ? (
+                      <Text ta="center" c="dimmed" size="lg" fw={700}>
+                        You do not have any items in <Mark color="blue">process</Mark>.
+                      </Text>
+                    ) : (
+                      data.map((item) => {
+                        if (!item.purchased) {
+                          return (
+                            <ItemCard
+                              key={item._id}
+                              item={item}
+                              handleEdit={() => handleEdit && handleEdit(item)}
+                              handleArchive={() => archive && archive(item)}
+                              handleDelete={() =>
+                                handleDelete && handleDelete(item)
+                              }
+                              handlePurchased={() =>
+                                purchased && purchased(item)
+                              }
+                            />
+                          );
+                        }
+                      })
+                    )}
                   </SimpleGrid>
                 </Accordion.Panel>
               </Accordion.Item>
@@ -100,22 +107,30 @@ const ItemsFeed = ({ items, edit, remove, purchased, archive }) => {
                 </Accordion.Control>
                 <Accordion.Panel>
                   <SimpleGrid cols={{ base: 1, sm: 2, lg: 3, xl: 3 }}>
-                    {data.map((item) => {
-                      if (item.purchased) {
-                        return (
-                          <ItemCard
-                            key={item._id}
-                            item={item}
-                            handleEdit={() => handleEdit && handleEdit(item)}
-                            handleArchive={() => archive && archive(item)}
-                            handleDelete={() =>
-                              handleDelete && handleDelete(item)
-                            }
-                            handlePurchased={() => purchased && purchased(item)}
-                          />
-                        );
-                      }
-                    })}
+                  {data.filter((item) => item?.purchased).length === 0 ? (
+                      <Text ta="center" c="dimmed" size="lg" fw={700}>
+                        You do not have any <Mark color="green">purchased</Mark> items.
+                      </Text>
+                    ) : (
+                      data.map((item) => {
+                        if (item.purchased) {
+                          return (
+                            <ItemCard
+                              key={item._id}
+                              item={item}
+                              handleEdit={() => handleEdit && handleEdit(item)}
+                              handleArchive={() => archive && archive(item)}
+                              handleDelete={() =>
+                                handleDelete && handleDelete(item)
+                              }
+                              handlePurchased={() =>
+                                purchased && purchased(item)
+                              }
+                            />
+                          );
+                        }
+                      })
+                    )}
                   </SimpleGrid>
                 </Accordion.Panel>
               </Accordion.Item>
@@ -139,22 +154,31 @@ const ItemsFeed = ({ items, edit, remove, purchased, archive }) => {
                 </Accordion.Control>
                 <Accordion.Panel>
                   <SimpleGrid cols={{ base: 1, sm: 2, lg: 3, xl: 3 }}>
-                    {data.map((item) => {
-                      if (item.archived) {
-                        return (
-                          <ItemCard
-                            key={item._id}
-                            item={item}
-                            handleEdit={() => handleEdit && handleEdit(item)}
-                            handleArchive={() => archive && archive(item)}
-                            handleDelete={() =>
-                              handleDelete && handleDelete(item)
-                            }
-                            handlePurchased={() => purchased && purchased(item)}
-                          />
-                        );
-                      }
-                    })}
+                  {data.filter((item) => item?.archived).length === 0 ? (
+                      <Text ta="center" c="dimmed" size="lg" fw={700}>
+                        You do not have any <Mark color="teal">archived</Mark> items.
+                        
+                      </Text>
+                    ) : (
+                      data.map((item) => {
+                        if (item.archived) {
+                          return (
+                            <ItemCard
+                              key={item._id}
+                              item={item}
+                              handleEdit={() => handleEdit && handleEdit(item)}
+                              handleArchive={() => archive && archive(item)}
+                              handleDelete={() =>
+                                handleDelete && handleDelete(item)
+                              }
+                              handlePurchased={() =>
+                                purchased && purchased(item)
+                              }
+                            />
+                          );
+                        }
+                      })
+                    )}
                   </SimpleGrid>
                 </Accordion.Panel>
               </Accordion.Item>
