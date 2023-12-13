@@ -68,7 +68,7 @@ const SideMenu = ({ closeMenu }) => {
             Active&nbsp;{" "}
             <Badge color="green">
               {loading ? (
-                <Skeleton height={10} width={8} radius="xl" animate={false} />
+                <Skeleton height={10} width={8} radius="xl" />
               ) : (
                 lists.filter((item) => !item?.archived).length
               )}
@@ -89,7 +89,7 @@ const SideMenu = ({ closeMenu }) => {
             Archived&nbsp;{" "}
             <Badge color="gray">
               {loading ? (
-                <Skeleton height={10} width={8} radius="xl" animate={false} />
+                <Skeleton height={10} width={8} radius="xl" />
               ) : (
                 lists.filter((item) => item?.archived).length
               )}
