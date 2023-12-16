@@ -55,7 +55,12 @@ const UserSettings = () => {
   }
 
   return (
-    <Menu position="top-end" withArrow arrowPosition="center" transitionProps={{ transition: 'pop', duration: 150 }}>
+    <Menu
+      position="top-end"
+      withArrow
+      arrowPosition="center"
+      transitionProps={{ transition: "pop", duration: 150 }}
+    >
       <Menu.Target>
         <UnstyledButton className={classes.user}>
           <Group p={10}>
@@ -87,6 +92,7 @@ const UserSettings = () => {
         >
           Homepage
         </Menu.Item>
+
         <Menu.Item
           color="red"
           onClick={handleSignOut}

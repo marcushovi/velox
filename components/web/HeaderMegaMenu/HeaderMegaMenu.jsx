@@ -17,13 +17,14 @@ import {
   Stack,
   Skeleton,
 } from "@mantine/core";
-import Image from "next/image";
+import AppLogo from "@components/AppLogo/AppLogo";
 import { useDisclosure } from "@mantine/hooks";
 import { IconChevronDown, IconLogout } from "@tabler/icons-react";
 import classes from "./HeaderMegaMenu.module.css";
 
 import { useEffect, useState } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
+import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle";
 
 export function HeaderMegaMenu() {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
@@ -56,14 +57,7 @@ export function HeaderMegaMenu() {
     <Box>
       <header className={classes.header}>
         <Group justify="space-between" h="100%">
-          <Image
-            className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-            src="/velox.svg"
-            alt="Velox Logo"
-            width={100}
-            height={37}
-            priority
-          />
+          <AppLogo />
           <Group h="100%" gap={0} visibleFrom="sm">
             <a href="#" className={classes.link}>
               API Docs
@@ -84,7 +78,7 @@ export function HeaderMegaMenu() {
           {loading ? (
             <Skeleton height={40} width={84} radius="md" p="md" />
           ) : (
-            <>
+            <Group>
               {isLoggedIn ? (
                 <Menu
                   width={260}
@@ -150,14 +144,14 @@ export function HeaderMegaMenu() {
                     ))}
                 </Group>
               )}
-            </>
+              <DarkModeToggle />
+              <Burger
+                opened={drawerOpened}
+                onClick={toggleDrawer}
+                hiddenFrom="sm"
+              />
+            </Group>
           )}
-
-          <Burger
-            opened={drawerOpened}
-            onClick={toggleDrawer}
-            hiddenFrom="sm"
-          />
         </Group>
       </header>
 
@@ -240,7 +234,6 @@ export function HeaderMegaMenu() {
                           signIn(provider.id);
                         }}
                         variant="light"
-                        
                       >
                         Sign in
                       </Button>
