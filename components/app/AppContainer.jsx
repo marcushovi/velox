@@ -1,10 +1,17 @@
 "use client";
 
-import { AppShell, Burger, Image, Flex } from "@mantine/core";
+import {
+  AppShell,
+  Burger,
+  Flex,
+} from "@mantine/core";
+import AppLogo from "@components/AppLogo/AppLogo";
 import { useDisclosure } from "@mantine/hooks";
 import SideMenu from "@components/app/SideMenu/SideMenu";
+import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle";
 
 const AppContainer = ({ children }) => {
+
   const [opened, { toggle, close }] = useDisclosure(false);
   return (
     <AppShell
@@ -26,13 +33,10 @@ const AppContainer = ({ children }) => {
           wrap="wrap"
           px={10}
         >
-          <Image
-            className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-            src="/velox.svg"
-            alt="Velox Logo"
-            width={10}
-            height={37}
-          />
+          <AppLogo />
+
+          <DarkModeToggle />
+
           <Burger opened={opened} onClick={toggle} hiddenFrom="md" size="sm" />
         </Flex>
       </AppShell.Header>

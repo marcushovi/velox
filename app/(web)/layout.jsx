@@ -1,8 +1,7 @@
-import Nav from "@components/web/Nav";
+import { MantineProvider, ColorSchemeScript } from "@mantine/core";
 import Provider from "@components/Provider";
 import { HeaderMegaMenu } from "@components/web/HeaderMegaMenu/HeaderMegaMenu";
 
-import { MantineProvider, ColorSchemeScript } from "@mantine/core";
 import "@mantine/core/styles.css";
 export const metadata = {
   title: "Velox Web",
@@ -12,17 +11,17 @@ export const metadata = {
 const RootLayout = ({ children }) => (
   <html lang="en">
     <head>
-      <ColorSchemeScript />
+      <ColorSchemeScript defaultColorScheme="auto" />
     </head>
     <body>
-    <Provider>
-      <MantineProvider defaultColorScheme="light">
-        <main>
-          <HeaderMegaMenu />
-          {children}
-        </main>
+      <MantineProvider defaultColorScheme="auto">
+        <Provider>
+          <main>
+            <HeaderMegaMenu />
+            {children}
+          </main>
+        </Provider>
       </MantineProvider>
-      </Provider>
     </body>
   </html>
 );
