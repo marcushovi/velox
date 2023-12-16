@@ -1,14 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { SimpleGrid, ScrollArea, Badge, Text, Mark } from "@mantine/core";
+import { Badge, Mark, ScrollArea, SimpleGrid, Text } from "@mantine/core";
+import { useEffect, useState } from "react";
 
+import { Accordion, rem } from "@mantine/core";
 import {
+  IconArchive,
   IconCircleCheckFilled,
   IconProgress,
-  IconArchive,
 } from "@tabler/icons-react";
-import { Accordion, rem } from "@mantine/core";
 import ItemCard from "./ItemCard/ItemCard";
 import ItemModal from "./modals/ItemModal";
 
@@ -62,7 +62,8 @@ const ItemsFeed = ({ items, edit, remove, purchased, archive }) => {
                   <SimpleGrid cols={{ base: 1, sm: 2, lg: 3, xl: 3 }}>
                     {data.filter((item) => !item?.purchased).length === 0 ? (
                       <Text ta="center" c="dimmed" size="lg" fw={700}>
-                        You do not have any items in <Mark color="blue">process</Mark>.
+                        You do not have any items in{" "}
+                        <Mark color="blue">process</Mark>.
                       </Text>
                     ) : (
                       data.map((item) => {
@@ -107,9 +108,10 @@ const ItemsFeed = ({ items, edit, remove, purchased, archive }) => {
                 </Accordion.Control>
                 <Accordion.Panel>
                   <SimpleGrid cols={{ base: 1, sm: 2, lg: 3, xl: 3 }}>
-                  {data.filter((item) => item?.purchased).length === 0 ? (
+                    {data.filter((item) => item?.purchased).length === 0 ? (
                       <Text ta="center" c="dimmed" size="lg" fw={700}>
-                        You do not have any <Mark color="green">purchased</Mark> items.
+                        You do not have any <Mark color="green">purchased</Mark>{" "}
+                        items.
                       </Text>
                     ) : (
                       data.map((item) => {
@@ -154,10 +156,10 @@ const ItemsFeed = ({ items, edit, remove, purchased, archive }) => {
                 </Accordion.Control>
                 <Accordion.Panel>
                   <SimpleGrid cols={{ base: 1, sm: 2, lg: 3, xl: 3 }}>
-                  {data.filter((item) => item?.archived).length === 0 ? (
+                    {data.filter((item) => item?.archived).length === 0 ? (
                       <Text ta="center" c="dimmed" size="lg" fw={700}>
-                        You do not have any <Mark color="teal">archived</Mark> items.
-                        
+                        You do not have any <Mark color="teal">archived</Mark>{" "}
+                        items.
                       </Text>
                     ) : (
                       data.map((item) => {

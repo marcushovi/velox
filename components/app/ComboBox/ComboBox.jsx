@@ -1,14 +1,13 @@
-import { useState } from "react";
 import {
-  PillsInput,
-  Pill,
-  Combobox,
   CheckIcon,
+  Combobox,
   Group,
-  useCombobox,
+  Pill,
+  PillsInput,
   Text,
-  ScrollArea,
+  useCombobox,
 } from "@mantine/core";
+import { useState } from "react";
 import classes from "./ComboBox.module.css";
 
 const ITEMS_LIMIT = 30;
@@ -39,7 +38,9 @@ export default function SearchableMultiSelect({ data = [], value, setValue }) {
 
   const options = data
     .filter((item) => !value.includes(item._id))
-    .filter((item) => item.username.toLowerCase().includes(search.trim().toLowerCase()))
+    .filter((item) =>
+      item.username.toLowerCase().includes(search.trim().toLowerCase())
+    )
     .map((item, index) => (
       <Combobox.Option
         value={item._id}
@@ -93,12 +94,12 @@ export default function SearchableMultiSelect({ data = [], value, setValue }) {
       </Combobox.DropdownTarget>
 
       <Combobox.Dropdown onMouseLeave={() => combobox.resetSelectedOption()}>
-        <Combobox.Options mah={200} style={{ overflowY: 'auto' }} >
-            {options.length > 0 ? (
-              options
-            ) : (
-              <Combobox.Empty>Nothing found...</Combobox.Empty>
-            )}
+        <Combobox.Options mah={200} style={{ overflowY: "auto" }}>
+          {options.length > 0 ? (
+            options
+          ) : (
+            <Combobox.Empty>Nothing found...</Combobox.Empty>
+          )}
         </Combobox.Options>
       </Combobox.Dropdown>
     </Combobox>

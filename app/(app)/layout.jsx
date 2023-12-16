@@ -1,13 +1,12 @@
-
 import Provider from "@components/Provider";
-import { Suspense } from "react"
-import Loading from "./loading"
 import { ShoppingListProvider } from "@components/app/ShoppingListProvider";
 import { UserProvider } from "@components/app/UserProvider";
 import "@mantine/core/styles.css";
 import "@mantine/notifications/styles.css";
+import { Suspense } from "react";
+import Loading from "./loading";
 
-import { MantineProvider, ColorSchemeScript } from "@mantine/core";
+import { ColorSchemeScript, MantineProvider } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 
 import AppContainer from "@components/app/AppContainer";

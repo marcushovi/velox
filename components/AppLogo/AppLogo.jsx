@@ -1,7 +1,6 @@
 import Image from "next/image";
 import classes from "./AppLogo.module.css";
 
-
 function AppLogo() {
   return (
     <Image

@@ -1,20 +1,19 @@
 "use client";
 
 import {
-  UnstyledButton,
-  Group,
   Avatar,
-  Text,
+  Group,
   Menu,
-  rem,
   Skeleton,
-  Divider,
+  Text,
+  UnstyledButton,
+  rem,
 } from "@mantine/core";
 import { IconChevronRight, IconHome, IconLogout } from "@tabler/icons-react";
-import classes from "./UserSettings.module.css";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import classes from "./UserSettings.module.css";
 
 const UserSettings = () => {
   const { data: session } = useSession();

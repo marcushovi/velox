@@ -1,21 +1,13 @@
-'use client'
+"use client";
 
-import {
-  Table,
-  Progress,
-  Anchor,
-  Text,
-  Group,
-  Checkbox,
-  Button,
-  ActionIcon,
-} from "@mantine/core";
-import classes from "./TaskList.module.css";
-import { IconPhoto, IconDownload, IconArrowRight, IconHeart, IconArchive, IconEdit, IconTrash } from "@tabler/icons-react";
+import { ActionIcon, Checkbox, Table } from "@mantine/core";
+import { IconArchive, IconEdit, IconTrash } from "@tabler/icons-react";
 import { useState } from "react";
 
 export function TaskList(props) {
-  const [list, setList] = useState({ items: {...sampleShoppingLists[props.id].items}});
+  const [list, setList] = useState({
+    items: { ...sampleShoppingLists[props.id].items },
+  });
 
   const toggleItemResolved = (itemId) => {
     const updatedItems = list.items.map((item) => {
@@ -36,15 +28,16 @@ export function TaskList(props) {
     return (
       <Table.Tr key={row.id}>
         <Table.Td>
-          <Checkbox checked={row.resolved} color="green" size="lg" onClick={() => toggleItemResolved(row.id)} />
+          <Checkbox
+            checked={row.resolved}
+            color="green"
+            size="lg"
+            onClick={() => toggleItemResolved(row.id)}
+          />
         </Table.Td>
         <Table.Td>{row.name}</Table.Td>
         <Table.Td>
-          <ActionIcon
-            variant="transparent"
-            size="xl"
-            aria-label="Edit button"
-          >
+          <ActionIcon variant="transparent" size="xl" aria-label="Edit button">
             <IconEdit />
           </ActionIcon>
         </Table.Td>
@@ -65,7 +58,6 @@ export function TaskList(props) {
             color="red"
             aria-label="Delete button"
             // onClick={deleteItem(row.id)}
-            
           >
             <IconTrash />
           </ActionIcon>

@@ -1,23 +1,14 @@
 "use client";
 
-import {
-  IconTrash,
-  IconArchive,
-  IconEdit,
-  IconDoorExit,
-  IconArchiveOff
-} from "@tabler/icons-react";
 import RemoveMemberButton from "@components/app/RemoveMemberButton";
-
 import {
-  Card,
-  Image,
-  Text,
-  Group,
-  Badge,
-  Button,
-  ActionIcon,
-} from "@mantine/core";
+  IconArchive,
+  IconArchiveOff,
+  IconEdit,
+  IconTrash,
+} from "@tabler/icons-react";
+
+import { ActionIcon, Badge, Button, Card, Group, Text } from "@mantine/core";
 import classes from "./BadgeCard.module.css";
 
 const BadgeCard = ({
@@ -28,7 +19,7 @@ const BadgeCard = ({
   handleArchive,
   disabled,
   handleRemoveMember,
-  session
+  session,
 }) => {
   let members;
   if (list.membersNames) {
@@ -98,7 +89,7 @@ const BadgeCard = ({
               aria-label="Archive button"
               onClick={handleArchive}
             >
-              { list.archived ? <IconArchiveOff /> : <IconArchive /> }
+              {list.archived ? <IconArchiveOff /> : <IconArchive />}
             </ActionIcon>
             <ActionIcon
               variant="transparent"

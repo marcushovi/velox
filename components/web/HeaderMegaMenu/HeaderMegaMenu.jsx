@@ -1,30 +1,29 @@
 "use client";
-import cx from "clsx";
+import AppLogo from "@components/AppLogo/AppLogo";
 import {
   Avatar,
-  Group,
-  Button,
-  UnstyledButton,
-  Text,
-  Menu,
-  Divider,
-  Center,
   Box,
   Burger,
+  Button,
+  Divider,
   Drawer,
+  Group,
+  Menu,
   ScrollArea,
-  rem,
-  Stack,
   Skeleton,
+  Stack,
+  Text,
+  UnstyledButton,
+  rem
 } from "@mantine/core";
-import AppLogo from "@components/AppLogo/AppLogo";
 import { useDisclosure } from "@mantine/hooks";
 import { IconChevronDown, IconLogout } from "@tabler/icons-react";
+import cx from "clsx";
 import classes from "./HeaderMegaMenu.module.css";
 
-import { useEffect, useState } from "react";
-import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle";
+import { getProviders, signIn, signOut, useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
 
 export function HeaderMegaMenu() {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =

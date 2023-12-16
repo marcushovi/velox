@@ -1,26 +1,15 @@
 "use client";
 
-import {
-  Group,
-  Code,
-  ScrollArea,
-  Button,
-  Badge,
-  Skeleton,
-} from "@mantine/core";
+import { Badge, Button, Group, ScrollArea, Skeleton } from "@mantine/core";
 import Link from "next/link";
-import Image from "next/image";
-import { useState, useEffect } from "react";
-import { useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
 
+import { useShoppingList } from "@components/app/ShoppingListProvider";
 import UserSettings from "@components/app/UserSettings/UserSettings";
-import ActionButton from "@components/app/ActionButton/ActionButton";
 import ShoppingListModal from "@components/app/modals/ShoppingListModal";
 import classes from "./SideMenu.module.css";
-import { useShoppingList } from "@components/app/ShoppingListProvider";
 
 const SideMenu = ({ closeMenu }) => {
-  const { data: session } = useSession();
   const [loading, setLoading] = useState(true);
 
   const [modalOpened, setModalOpened] = useState(false);

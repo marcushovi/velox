@@ -1,22 +1,19 @@
 "use client";
 
-import { useSession } from "next-auth/react";
-import React, { useEffect } from "react";
 import {
-  Modal,
-  Button,
-  TextInput,
-  Group,
   Box,
+  Button,
   Chip,
+  Group,
+  Modal,
   SimpleGrid,
+  TextInput,
 } from "@mantine/core";
+import { useEffect } from "react";
 
-import { useForm, hasLength } from "@mantine/form";
+import { hasLength, useForm } from "@mantine/form";
 
 function ItemModal({ opened, setOpened, onSubmit, editingItem }) {
-  const { data: session } = useSession();
-
   const form = useForm({
     initialValues: {
       name: "",
@@ -34,7 +31,11 @@ function ItemModal({ opened, setOpened, onSubmit, editingItem }) {
 
   useEffect(() => {
     const fetchLists = async () => {
-      form.setValues({ name: editingItem.name, archived: editingItem.archived, quantity: editingItem.quantity });
+      form.setValues({
+        name: editingItem.name,
+        archived: editingItem.archived,
+        quantity: editingItem.quantity,
+      });
       // form.setFieldValue('name', editingItem.name)
       // form.setFieldValue('archived', editingItem.archived)
       // form.setFieldValue('quantity', editingItem.quantity)

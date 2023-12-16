@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 import BadgeCard from "@components/app/BadgeCard/BadgeCard";
-import { SimpleGrid, ScrollArea, Skeleton, Text } from "@mantine/core";
 import ShoppingListModal from "@components/app/modals/ShoppingListModal";
+import { ScrollArea, SimpleGrid, Skeleton, Text } from "@mantine/core";
 
 import { useShoppingList } from "@components/app/ShoppingListProvider";
 import { useUser } from "@components/app/UserProvider";
@@ -87,7 +87,7 @@ const ShoppingListsFeed = () => {
       setLoading(false);
     };
 
-    if ( shoppingLists !== null ) getLists();
+    if (shoppingLists !== null) getLists();
   }, [shoppingLists, archived, session]);
 
   const handleClick = (list) => {
@@ -101,12 +101,13 @@ const ShoppingListsFeed = () => {
     if (hasConfirmed) deleteShoppingList(list);
   };
 
-
   return (
     <ScrollArea>
       <SimpleGrid cols={{ base: 1, sm: 2, lg: 3, xl: 3 }}>
         {loading ? (
-          [...Array(10)].map((x, i) => <Skeleton key={i} height={300} radius="md" p="md" />)
+          [...Array(10)].map((x, i) => (
+            <Skeleton key={i} height={300} radius="md" p="md" />
+          ))
         ) : (
           <>
             {myLists !== undefined ? (
