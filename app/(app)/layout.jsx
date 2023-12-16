@@ -7,6 +7,7 @@ import { Suspense } from "react";
 import Loading from "./loading";
 
 import { ColorSchemeScript, MantineProvider } from "@mantine/core";
+import { ModalsProvider } from "@mantine/modals";
 import { Notifications } from "@mantine/notifications";
 
 import AppContainer from "@components/app/AppContainer";
@@ -26,15 +27,17 @@ const RootLayout = ({ children }) => {
         <Provider>
           <MantineProvider defaultColorScheme="light">
             <Notifications />
-            <UserProvider>
-              <ShoppingListProvider>
-                <main className="app">
-                  <AppContainer>
-                    <Suspense fallback={<Loading />}>{children}</Suspense>
-                  </AppContainer>
-                </main>
-              </ShoppingListProvider>
-            </UserProvider>
+            <ModalsProvider>
+              <UserProvider>
+                <ShoppingListProvider>
+                  <main className="app">
+                    <AppContainer>
+                      <Suspense fallback={<Loading />}>{children}</Suspense>
+                    </AppContainer>
+                  </main>
+                </ShoppingListProvider>
+              </UserProvider>
+            </ModalsProvider>
           </MantineProvider>
         </Provider>
       </body>

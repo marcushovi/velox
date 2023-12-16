@@ -6,7 +6,8 @@ import { useEffect, useState } from "react";
 
 import BadgeCard from "@components/app/BadgeCard/BadgeCard";
 import ShoppingListModal from "@components/app/modals/ShoppingListModal";
-import { ScrollArea, SimpleGrid, Skeleton, Text } from "@mantine/core";
+import { Mark, ScrollArea, SimpleGrid, Skeleton, Text } from "@mantine/core";
+import { modals } from "@mantine/modals";
 
 import { useShoppingList } from "@components/app/ShoppingListProvider";
 import { useUser } from "@components/app/UserProvider";
@@ -95,10 +96,23 @@ const ShoppingListsFeed = () => {
   };
 
   const handleDelete = (list) => {
-    const hasConfirmed = confirm(
-      `Are you sure you want to delete list ${list.name}?`
-    );
-    if (hasConfirmed) deleteShoppingList(list);
+    modals.openConfirmModal({
+      title: `Delete your list`,
+      centered: true,
+      children: (
+        <Text size="sm">
+          Are you sure you want to delete your list{" "}
+          <Mark color="red" fw={600}>
+            {list.name}
+          </Mark>{" "}
+          ? This action is destructive and you will have to contact support to
+          restore your data.
+        </Text>
+      ),
+      labels: { confirm: "Delete list", cancel: "No don't delete it" },
+      confirmProps: { color: "red" },
+      onConfirm: () => deleteShoppingList(list),
+    });
   };
 
   return (

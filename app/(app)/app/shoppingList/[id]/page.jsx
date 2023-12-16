@@ -53,7 +53,6 @@ export default function ShoppingList({ params }) {
   }, [params.id, shoppingLists, router, session, list]);
 
   const handleCreateItem = (item) => {
-    console.log(item);
     createItem(params.id, item);
   };
 
