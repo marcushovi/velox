@@ -1,25 +1,14 @@
 "use client";
 
 import {
-  IconTrash,
   IconArchive,
-  IconEdit,
-  IconDoorExit,
   IconArchiveOff,
+  IconEdit,
+  IconTrash,
 } from "@tabler/icons-react";
-import RemoveMemberButton from "@components/app/RemoveMemberButton";
 import { useState } from "react";
 
-import {
-  Card,
-  Image,
-  Text,
-  Group,
-  Badge,
-  Button,
-  ActionIcon,
-  Checkbox,
-} from "@mantine/core";
+import { ActionIcon, Card, Checkbox, Group, Text } from "@mantine/core";
 import classes from "./ItemCard.module.css";
 
 const ItemCard = ({

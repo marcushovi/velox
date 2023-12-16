@@ -1,24 +1,24 @@
 "use client";
 
+import ItemsFeed from "@components/app/ItemsFeed";
+import RemoveMemberButton from "@components/app/RemoveMemberButton";
+import { useShoppingList } from "@components/app/ShoppingListProvider";
+import ItemModal from "@components/app/modals/ItemModal";
+import ShoppingListModal from "@components/app/modals/ShoppingListModal";
 import {
-  Group,
   ActionIcon,
   Badge,
   Button,
   Divider,
-  Title,
-  Skeleton,
+  Group,
   SimpleGrid,
+  Skeleton,
+  Title,
 } from "@mantine/core";
 import { IconSettings } from "@tabler/icons-react";
-import { useShoppingList } from "@components/app/ShoppingListProvider";
-import ShoppingListModal from "@components/app/modals/ShoppingListModal";
-import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
-import RemoveMemberButton from "@components/app/RemoveMemberButton";
 import { useRouter } from "next/navigation";
-import ItemModal from "@components/app/modals/ItemModal";
-import ItemsFeed from "@components/app/ItemsFeed";
+import { useEffect, useState } from "react";
 
 export default function ShoppingList({ params }) {
   const { data: session } = useSession();

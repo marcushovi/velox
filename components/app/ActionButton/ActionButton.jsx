@@ -1,16 +1,8 @@
-'use client'
-import { useState } from "react";
-import {
-  IconGauge,
-  IconFingerprint,
-  IconActivity,
-  IconChevronRight,
-} from "@tabler/icons-react";
+"use client";
 import { Box, NavLink } from "@mantine/core";
 import Link from "next/link";
 
 const ActionButton = (menuItem) => {
-
   return (
     <Box w={220}>
       <NavLink
@@ -21,6 +13,6 @@ const ActionButton = (menuItem) => {
       />
     </Box>
   );
-}
+};
 
-export default ActionButton
+export default ActionButton;

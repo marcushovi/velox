@@ -1,17 +1,12 @@
 "use client";
 
-import {
-  AppShell,
-  Burger,
-  Flex,
-} from "@mantine/core";
 import AppLogo from "@components/AppLogo/AppLogo";
-import { useDisclosure } from "@mantine/hooks";
-import SideMenu from "@components/app/SideMenu/SideMenu";
 import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle";
+import SideMenu from "@components/app/SideMenu/SideMenu";
+import { AppShell, Burger, Flex } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
 
 const AppContainer = ({ children }) => {
-
   const [opened, { toggle, close }] = useDisclosure(false);
   return (
     <AppShell

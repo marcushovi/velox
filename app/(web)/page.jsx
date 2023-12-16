@@ -1,8 +1,5 @@
-import { HeroContentLeft } from '@components/web/HeroContentLeft/HeroContentLeft'
-import Image from 'next/image'
+import { HeroContentLeft } from "@components/web/HeroContentLeft/HeroContentLeft";
 
 export default function Home() {
-  return (
-    <HeroContentLeft />
-  )
+  return <HeroContentLeft />;
 }

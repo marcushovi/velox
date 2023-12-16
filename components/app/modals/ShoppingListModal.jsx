@@ -1,16 +1,16 @@
 "use client";
 
-import { useSession } from "next-auth/react";
-import React, { useState, useEffect } from "react";
 import {
-  Modal,
-  Button,
-  TextInput,
-  Group,
   Box,
+  Button,
   Chip,
+  Group,
+  Modal,
   SimpleGrid,
+  TextInput,
 } from "@mantine/core";
+import { useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
 
 import ComboBox from "@components/app/ComboBox/ComboBox";
 import { useUser } from "@components/app/UserProvider";

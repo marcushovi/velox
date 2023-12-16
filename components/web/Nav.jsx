@@ -1,7 +1,6 @@
-import Link from "next/link";
-import Image from "next/image";
 import { Button } from "@mantine/core";
-
+import Image from "next/image";
+import Link from "next/link";
 
 const Nav = () => {
   return (
@@ -18,11 +17,11 @@ const Nav = () => {
 
       {/* Desktop Navigation */}
       <div className="sm:flex">
-          <div className="flex gap-3 md:gap-5">
-            <Button component="a" href="/app" ariant="filled">
-              App
-            </Button>
-          </div>
+        <div className="flex gap-3 md:gap-5">
+          <Button component="a" href="/app" ariant="filled">
+            App
+          </Button>
+        </div>
       </div>
     </nav>
   );

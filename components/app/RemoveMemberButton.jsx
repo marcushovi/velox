@@ -1,5 +1,5 @@
-import { IconDoorExit } from "@tabler/icons-react";
 import { ActionIcon } from "@mantine/core";
+import { IconDoorExit } from "@tabler/icons-react";
 import { useRouter } from "next/navigation";
 
 const RemoveMemberButton = ({ action, list, session }) => {

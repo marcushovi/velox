@@ -1,6 +1,6 @@
-import { MantineProvider, ColorSchemeScript } from "@mantine/core";
 import Provider from "@components/Provider";
 import { HeaderMegaMenu } from "@components/web/HeaderMegaMenu/HeaderMegaMenu";
+import { ColorSchemeScript, MantineProvider } from "@mantine/core";
 
 import "@mantine/core/styles.css";
 export const metadata = {

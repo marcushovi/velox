@@ -1,8 +1,8 @@
 "use client";
 
-import React, { createContext, useState, useContext, useEffect } from "react";
-import { useSession } from "next-auth/react";
 import { notifications } from "@mantine/notifications";
+import { useSession } from "next-auth/react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const ShoppingListContext = createContext();
 
@@ -34,7 +34,7 @@ export const ShoppingListProvider = ({ children }) => {
           color: "green",
         });
 
-        setShoppingLists((shoppingLists) => [data, ...shoppingLists,]);
+        setShoppingLists((shoppingLists) => [data, ...shoppingLists]);
       } else {
         notifications.show({
           title: data.message,
