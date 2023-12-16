@@ -4,6 +4,7 @@ import { Badge, Mark, ScrollArea, SimpleGrid, Text } from "@mantine/core";
 import { useEffect, useState } from "react";
 
 import { Accordion, rem } from "@mantine/core";
+import { modals } from "@mantine/modals";
 import {
   IconArchive,
   IconCircleCheckFilled,
@@ -17,10 +18,23 @@ const ItemsFeed = ({ items, edit, remove, purchased, archive }) => {
   const [data, setData] = useState([]);
 
   const handleDelete = (item) => {
-    const hasConfirmed = confirm(
-      `Are you sure you want to delete list ${item.name}?`
-    );
-    if (hasConfirmed) remove(item);
+    modals.openConfirmModal({
+      title: `Delete your item`,
+      centered: true,
+      children: (
+        <Text size="sm">
+          Are you sure you want to delete your item{" "}
+          <Mark color="red" fw={600}>
+            {item.name}
+          </Mark>{" "}
+          ? This action is destructive and you will have to contact support to
+          restore your data.
+        </Text>
+      ),
+      labels: { confirm: "Delete item", cancel: "No don't delete it" },
+      confirmProps: { color: "red" },
+      onConfirm: () => remove(item),
+    });
   };
 
   const handleEdit = (item) => {
