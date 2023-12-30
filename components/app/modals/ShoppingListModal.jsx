@@ -14,7 +14,8 @@ import { useEffect, useState } from "react";
 
 import ComboBox from "@components/app/ComboBox/ComboBox";
 import { useUser } from "@components/app/UserProvider";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@navigation.js";
+import { useTranslations } from "next-intl";
 
 function ShoppingListModal({
   opened,
@@ -30,6 +31,7 @@ function ShoppingListModal({
   const { users } = useUser();
   const [allUsers, setAllUsers] = useState([]);
   const router = useRouter();
+  const t = useTranslations("app.modals.list.modal");
 
   // Effect to prepopulate the form when editing
   useEffect(() => {
@@ -47,7 +49,7 @@ function ShoppingListModal({
     if (listName.name.length < 1 || listName.name.length > 255) {
       setListName({
         name: listName.name,
-        error: "Name must have 1 - 255 characters.",
+        error: t("validation.name"),
       });
     } else {
       const list = {
@@ -76,7 +78,7 @@ function ShoppingListModal({
     <Modal
       opened={opened}
       onClose={handleCancel}
-      title={editingList ? "Edit Shopping List" : "Create New Shopping List"}
+      title={editingList ? t("edit.title") : t("create.title")}
       closeOnClickOutside={false}
       centered
     >
@@ -91,8 +93,8 @@ function ShoppingListModal({
       >
         <SimpleGrid cols={1} verticalSpacing="xl">
           <TextInput
-            label="Name"
-            placeholder="Enter list name"
+            label={t("name.label")}
+            placeholder={t("name.placeholder")}
             value={listName.name}
             onChange={(event) =>
               setListName({ name: event.currentTarget.value, error: "" })
@@ -107,6 +109,9 @@ function ShoppingListModal({
             data={allUsers}
             value={listMembers}
             setValue={setListMembers}
+            label={t('members.label')}
+            placeholder={t('members.placeholder')}
+            empty={t('members.empty')}
           />
 
           {editingList ? (
@@ -117,7 +122,7 @@ function ShoppingListModal({
                 checked={listArchived}
                 onChange={(event) => setListArchived(!listArchived)}
               >
-                Archived
+                {listArchived ? t("archived") : t("notArchived")}
               </Chip>
             </Group>
           ) : (
@@ -126,10 +131,10 @@ function ShoppingListModal({
         </SimpleGrid>
         <Group justify="flex-end" mt="md">
           <Button variant="default" onClick={handleCancel}>
-            Cancel
+            {t("cancel")}
           </Button>
           <Button type="submit">
-            {editingList ? "Save Changes" : "Create List"}
+            {editingList ? t("edit.confirm") : t("create.confirm")}
           </Button>
         </Group>
       </Box>

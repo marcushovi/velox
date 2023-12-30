@@ -1,11 +1,15 @@
 "use client";
 
 import { Button, Container, Overlay, Text, Title } from "@mantine/core";
+import { Link } from "@navigation.js";
 import { signIn, useSession } from "next-auth/react";
 import classes from "./HeroContentLeft.module.css";
+import { useTranslations } from "next-intl";
 
 export function HeroContentLeft() {
   const { data: session } = useSession();
+  const t = useTranslations("web");
+
   return (
     <div className={classes.hero}>
       <Overlay
@@ -15,24 +19,23 @@ export function HeroContentLeft() {
       />
       <Container className={classes.container} size="md">
         <Title className={classes.title}>
-          A fully featured Shopping List App
+        {t("title")}
         </Title>
         <Text className={classes.description} size="xl" mt="xl">
-          Fully functional accessible web applications faster than ever – And
-          many more is on the way.
+        {t("description")}
         </Text>
 
         {session?.user ? (
-          <Button
-            component="a"
-            variant="gradient"
-            size="xl"
-            radius="xl"
-            className={classes.control}
-            href="/app"
-          >
-            Get started with App
-          </Button>
+          <Link href="/app">
+            <Button
+              variant="gradient"
+              size="xl"
+              radius="xl"
+              className={classes.control}
+            >
+              {t("app")}
+            </Button>
+          </Link>
         ) : (
           <Button
             variant="gradient"
@@ -41,7 +44,7 @@ export function HeroContentLeft() {
             className={classes.control}
             onClick={signIn}
           >
-            Sign in
+            {t("signIn")}
           </Button>
         )}
       </Container>

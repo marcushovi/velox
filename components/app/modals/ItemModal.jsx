@@ -12,8 +12,11 @@ import {
 import { useEffect } from "react";
 
 import { hasLength, useForm } from "@mantine/form";
+import { useTranslations } from "next-intl";
 
 function ItemModal({ opened, setOpened, onSubmit, editingItem }) {
+  const t = useTranslations("app.modals.item");
+
   const form = useForm({
     initialValues: {
       name: "",
@@ -21,11 +24,8 @@ function ItemModal({ opened, setOpened, onSubmit, editingItem }) {
       quantity: "",
     },
     validate: {
-      name: hasLength(
-        { min: 1, max: 255 },
-        "Name must be 1-255 characters long"
-      ),
-      quantity: hasLength({ max: 255 }, "Name must be max 255 characters long"),
+      name: hasLength({ min: 1, max: 255 }, t("modal.validation.name")),
+      quantity: hasLength({ max: 255 }, t("modal.validation.quantity")),
     },
   });
 
@@ -64,7 +64,7 @@ function ItemModal({ opened, setOpened, onSubmit, editingItem }) {
     <Modal
       opened={opened}
       onClose={handleCancel}
-      title={editingItem ? "Edit Item" : "Create New Item"}
+      title={editingItem ? t("modal.edit.title") : t("modal.create.title")}
       closeOnClickOutside={false}
       centered
     >
@@ -76,16 +76,16 @@ function ItemModal({ opened, setOpened, onSubmit, editingItem }) {
       >
         <SimpleGrid cols={1} verticalSpacing="xl">
           <TextInput
-            label="Name"
-            placeholder="Enter item name"
+            label={t("modal.name.label")}
+            placeholder={t("modal.name.placeholder")}
             withAsterisk
             data-autofocus
             {...form.getInputProps("name")}
           />
 
           <TextInput
-            label="Quantity"
-            placeholder="Enter quantity"
+            label={t("modal.quantity.label")}
+            placeholder={t("modal.quantity.label")}
             {...form.getInputProps("quantity")}
           />
 
@@ -94,16 +94,18 @@ function ItemModal({ opened, setOpened, onSubmit, editingItem }) {
               size="md"
               {...form.getInputProps("archived", { type: "checkbox" })}
             >
-              Archived
+              {form.values.archived
+                ? t("modal.archived")
+                : t("modal.notArchived")}
             </Chip>
           </Group>
         </SimpleGrid>
         <Group justify="flex-end" mt="md">
           <Button variant="default" onClick={handleCancel}>
-            Cancel
+            {t("modal.cancel")}
           </Button>
           <Button type="submit">
-            {editingItem ? "Save Changes" : "Create Item"}
+            {editingItem ? t("modal.edit.confirm") : t("modal.create.confirm")}
           </Button>
         </Group>
       </Box>

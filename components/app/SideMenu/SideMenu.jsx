@@ -1,13 +1,14 @@
 "use client";
 
 import { Badge, Button, Group, ScrollArea, Skeleton } from "@mantine/core";
-import Link from "next/link";
+import {Link} from '@navigation.js';
 import { useEffect, useState } from "react";
 
 import { useShoppingList } from "@components/app/ShoppingListProvider";
 import UserSettings from "@components/app/UserSettings/UserSettings";
 import ShoppingListModal from "@components/app/modals/ShoppingListModal";
 import classes from "./SideMenu.module.css";
+import { useTranslations } from "next-intl";
 
 const SideMenu = ({ closeMenu }) => {
   const [loading, setLoading] = useState(true);
@@ -16,6 +17,7 @@ const SideMenu = ({ closeMenu }) => {
   const [lists, setLists] = useState([]);
 
   const { shoppingLists, addShoppingList, setArchived } = useShoppingList();
+  const t = useTranslations("app");
 
   useEffect(() => {
     const getLists = async () => {
@@ -37,7 +39,7 @@ const SideMenu = ({ closeMenu }) => {
               closeMenu();
             }}
           >
-            Create list
+            {t("menu.createList")}
           </Button>
         </Group>
       </div>
@@ -54,7 +56,7 @@ const SideMenu = ({ closeMenu }) => {
               closeMenu();
             }}
           >
-            Active&nbsp;{" "}
+            {t("menu.active")}&nbsp;{" "}
             <Badge color="green">
               {loading ? (
                 <Skeleton height={10} width={8} radius="xl" />
@@ -75,7 +77,7 @@ const SideMenu = ({ closeMenu }) => {
               closeMenu();
             }}
           >
-            Archived&nbsp;{" "}
+            {t("menu.archive")}&nbsp;{" "}
             <Badge color="gray">
               {loading ? (
                 <Skeleton height={10} width={8} radius="xl" />

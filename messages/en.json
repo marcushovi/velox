@@ -1,0 +1,129 @@
+{
+  "LocaleSwitcher": {
+    "current": "current",
+    "locale": "{locale, select, sk {Slovak} en {English} cz {Czech} de {German} fr {French} es {Spanish} ua {Ukrainian} other {Unknown}}"
+  },
+  "web": {
+    "menu": {
+      "api": "Api documentation",
+      "app": "App"
+    },
+    "title": "A fully featured Shopping List App",
+    "description": "Fully functional accessible web applications faster than ever - And many more is on the way.",
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "app": "Get started with app"
+  },
+  "app": {
+    "menu": {
+      "createList": "Create list",
+      "active": "Active",
+      "archive": "Archived",
+      "homepage": "Homepage",
+      "signOut": "Sign out"
+    },
+    "list": {
+      "owner": "Owner",
+      "active": "Active",
+      "archive": "Archived",
+      "members": "Members",
+      "showDetails": "Show Details",
+      "empty": "You do not have any lists"
+    },
+    "item": {
+      "task": "{count, plural, =0 {# tasks} =1 {# task} other {# tasks}}",
+      "members": "{count, plural, =0 {# members} =1 {# member} other {# members}}",
+      "createTask": "Create Task",
+      "inProcess": {
+        "label": "In process",
+        "empty": "You do not have any items in <guidelines>process</guidelines>."
+      },
+      "purchased": {
+        "label": "Purchased",
+        "empty": "You do not have any <guidelines>purchased</guidelines> items."
+      },
+      "archived": {
+        "label": "Archived",
+        "empty": "You do not have any <guidelines>archived</guidelines> items."
+      },
+      "edit": "Edit",
+      "archive": "Archive",
+      "unarchive": "Unarchive",
+      "delete": "Delete"
+    },
+    "modals": {
+      "item": {
+        "delete": {
+          "title": "Delete your item",
+          "confirm": "Delete item",
+          "cancel": "No don't delete it",
+          "message": "Are you sure you want to delete your item <guidelines>{item}</guidelines> ? This action is destructive and you will have to contact support to restore your data."
+        },
+        "modal": {
+          "name": {
+            "label": "Name",
+            "placeholder": "Enter item name"
+          },
+          "quantity": {
+            "label": "Quantity",
+            "placeholder": "Enter quantity"
+          },
+          "archived": "Archived",
+          "notArchived": "Not Archived",
+          "create": {
+            "title": "Create New Item",
+            "confirm": "Create Item"
+          },
+          "edit": {
+            "title": "Edit Item",
+            "confirm": "Save Changes"
+          },
+          "cancel": "Cancel",
+          "validation": {
+            "name": "Name must be 1-255 characters long",
+            "quantity": "Name must be max 255 characters long"
+          }
+        }
+      },
+      "memberDelete": {
+        "title": "Leave your list",
+        "confirm": "Leave List",
+        "cancel": "No don't leave it",
+        "message": "Are you sure you want to leave your list <guidelines>{list}</guidelines> ? This action is destructive and you will have to contact support to restore your data."
+      },
+      "list": {
+        "delete": {
+          "title": "Delete your list",
+          "confirm": "Delete list",
+          "cancel": "No don't delete it",
+          "message": "Are you sure you want to delete your list <guidelines>{list}</guidelines> ? This action is destructive and you will have to contact support to restore your data."
+        },
+        "modal": {
+          "name": {
+            "label": "Name",
+            "placeholder": "Enter list name"
+          },
+          "members": {
+            "label": "Members",
+            "placeholder": "Search Members",
+            "empty": "Nothing found..."
+          },
+          "archived": "Archived",
+          "notArchived": "Not Archived",
+          "create": {
+            "title": "Create New Shopping List",
+            "confirm": "Create List"
+          },
+          "edit": {
+            "title": "Edit Shopping List",
+            "confirm": "Save Changes"
+          },
+          "cancel": "Cancel",
+          "validation": {
+            "name": "Name must be 1-255 characters long"
+          }
+        }
+      }
+    }
+  }
+}

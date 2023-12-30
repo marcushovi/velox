@@ -10,6 +10,7 @@ import {
 
 import { ActionIcon, Badge, Button, Card, Group, Text } from "@mantine/core";
 import classes from "./BadgeCard.module.css";
+import { useTranslations } from "next-intl";
 
 const BadgeCard = ({
   list,
@@ -23,15 +24,24 @@ const BadgeCard = ({
 }) => {
   let members;
   if (list.membersNames) {
-    members = list.membersNames.map((member) => (
-      <Badge variant="light" c="dimmed" key={member}>
-        {member}
-      </Badge>
-    ));
+    members = list.membersNames.map((member, index) => {
+      if (index < 5) {
+        return (
+          <Badge variant="light" c="dimmed" key={member}>
+            {member}
+          </Badge>
+        );
+      } else if (index === 5) {
+        return (
+            "..."
+        );
+      }
+    });
   }
+  const t = useTranslations("app.list");
 
   return (
-    <Card withBorder radius="md" p="md" className={classes.card}>
+    <Card withBorder radius="md" p="md">
       <Card.Section className={classes.section} mt="md">
         <Group justify="apart">
           <Text fz="lg" fw={500}>
@@ -42,15 +52,15 @@ const BadgeCard = ({
             variant={list.archived ? "light" : ""}
             color={list.archived ? "gray" : "green"}
           >
-            {list.archived ? "ARCHIVED" : "ACTIVE"}
+            {list.archived ? t("archive") : t("active")}
           </Badge>
         </Group>
       </Card.Section>
 
       <Card.Section className={classes.section} mt="md">
         <Group justify="apart">
-          <Text mt="md" className={classes.label} c="dimmed">
-            Owner
+          <Text className={classes.label} c="dimmed">
+            {t("owner")}
           </Text>
           <Badge fz="xs" size="sm" variant="dot">
             {list.ownerName}
@@ -58,11 +68,11 @@ const BadgeCard = ({
         </Group>
       </Card.Section>
 
-      <Card.Section className={classes.section}>
+      <Card.Section className={classes.section} mt="md">
         <Group gap={7} mt={5}>
           {" "}
-          <Text mt="md" className={classes.label} c="dimmed">
-            Members:
+          <Text className={classes.label} c="dimmed">
+            {t("members")}:
           </Text>
           {members.length !== 0 ? members : "none"}
         </Group>
@@ -70,7 +80,7 @@ const BadgeCard = ({
 
       <Group mt="xs">
         <Button radius="md" style={{ flex: 1 }} onClick={handleClick}>
-          Show details
+          {t("showDetails")}
         </Button>
         {!disabled ? (
           <>

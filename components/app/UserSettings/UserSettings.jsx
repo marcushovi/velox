@@ -11,14 +11,16 @@ import {
 } from "@mantine/core";
 import { IconChevronRight, IconHome, IconLogout } from "@tabler/icons-react";
 import { signOut, useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@navigation.js";
 import { useEffect, useState } from "react";
 import classes from "./UserSettings.module.css";
+import { useTranslations } from "next-intl";
 
 const UserSettings = () => {
   const { data: session } = useSession();
   const router = useRouter();
   const [loading, setLoading] = useState(true);
+  const t = useTranslations("app");
 
   const handleSignOut = () => {
     signOut({ callbackUrl: "/" });
@@ -89,9 +91,11 @@ const UserSettings = () => {
           }}
           leftSection={<IconHome style={{ width: rem(14), height: rem(14) }} />}
         >
-          Homepage
+          {t("menu.homepage")}
         </Menu.Item>
 
+        <Menu.Divider />
+        
         <Menu.Item
           color="red"
           onClick={handleSignOut}
@@ -99,7 +103,7 @@ const UserSettings = () => {
             <IconLogout style={{ width: rem(14), height: rem(14) }} />
           }
         >
-          Sing Out
+          {t("menu.signOut")}
         </Menu.Item>
       </Menu.Dropdown>
     </Menu>

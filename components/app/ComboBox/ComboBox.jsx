@@ -12,7 +12,7 @@ import classes from "./ComboBox.module.css";
 
 const ITEMS_LIMIT = 30;
 
-export default function SearchableMultiSelect({ data = [], value, setValue }) {
+export default function SearchableMultiSelect({ data = [], value, setValue, label, placeholder, empty}) {
   const combobox = useCombobox({
     onDropdownClose: () => combobox.resetSelectedOption(),
     onDropdownOpen: () => combobox.updateSelectedOptionIndex("active"),
@@ -63,7 +63,7 @@ export default function SearchableMultiSelect({ data = [], value, setValue }) {
       store={combobox}
       onOptionSubmit={handleValueSelect}
       withinPortal={false}
-      label="Members"
+      label={label}
     >
       <Combobox.DropdownTarget>
         <PillsInput onClick={() => combobox.openDropdown()}>
@@ -76,7 +76,7 @@ export default function SearchableMultiSelect({ data = [], value, setValue }) {
                 onFocus={() => combobox.openDropdown()}
                 onBlur={() => combobox.closeDropdown()}
                 value={search}
-                placeholder="Search members"
+                placeholder={placeholder}
                 onChange={(event) => {
                   combobox.updateSelectedOptionIndex();
                   setSearch(event.currentTarget.value);
@@ -98,7 +98,7 @@ export default function SearchableMultiSelect({ data = [], value, setValue }) {
           {options.length > 0 ? (
             options
           ) : (
-            <Combobox.Empty>Nothing found...</Combobox.Empty>
+            <Combobox.Empty>{empty}.</Combobox.Empty>
           )}
         </Combobox.Options>
       </Combobox.Dropdown>

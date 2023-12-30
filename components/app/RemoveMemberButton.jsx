@@ -1,23 +1,46 @@
-import { ActionIcon } from "@mantine/core";
+import { ActionIcon, Text, Mark } from "@mantine/core";
 import { IconDoorExit } from "@tabler/icons-react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@navigation.js";
+import { modals } from "@mantine/modals";
+import { useTranslations } from "next-intl";
+
 
 const RemoveMemberButton = ({ action, list, session }) => {
   const router = useRouter();
+  const t = useTranslations("app.modals.memberDelete");
+
 
   const handleAction = () => {
-    const hasConfirmed = confirm(
-      `Are you sure you want to leave list ${list.name}?`
-    );
-    if (hasConfirmed) {
-      const withoutMember = list.members.filter(
-        (member) => member !== session.user.id
-      );
-      list.members = withoutMember;
-      action(list);
+    modals.openConfirmModal({
+      title: t("title"),
+      centered: true,
+      children: (
+        <Text size="sm">
+          {t.rich("message", {
+            list: list.name,
+            guidelines: (chunks) => (
+              <Mark color="red" fw={600}>
+                {chunks}
+              </Mark>
+            ),
+          })}
+        </Text>
+      ),
+      labels: {
+        confirm: t("confirm"),
+        cancel: t("cancel"),
+      },
+      confirmProps: { color: "red" },
+      onConfirm: () => {
+        const withoutMember = list.members.filter(
+          (member) => member !== session.user.id
+        );
+        list.members = withoutMember;
+        action(list);
 
-      router.push("/app");
-    }
+        router.push("/app");
+      },
+    });
   };
 
   return (

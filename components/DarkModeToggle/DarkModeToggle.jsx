@@ -1,3 +1,5 @@
+"use client";
+
 import {
   ActionIcon,
   useComputedColorScheme,
@@ -6,12 +8,21 @@ import {
 import { IconMoon, IconSun } from "@tabler/icons-react";
 import cx from "clsx";
 import classes from "./DarkModeToggle.module.css";
+import { useEffect, useState } from "react";
 
 export default function DarkModeToggle() {
   const { setColorScheme } = useMantineColorScheme();
   const computedColorScheme = useComputedColorScheme("light", {
     getInitialValueInEffect: true,
   });
+  const [color, setColor] = useState("gray");
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (computedColorScheme === "dark") setColor("yellow");
+    else setColor("violet");
+    setLoading(false);
+  }, [computedColorScheme]);
 
   return (
     <ActionIcon
@@ -19,9 +30,11 @@ export default function DarkModeToggle() {
         setColorScheme(computedColorScheme === "light" ? "dark" : "light")
       }
       variant="light"
-      size="lg"
+      size="xl"
+      radius="md"
       aria-label="Toggle color scheme"
-      color={computedColorScheme === "light" ? "violet" : "yellow"}
+      color={color}
+      loading={loading}
     >
       <IconSun className={cx(classes.icon, classes.light)} stroke={1.5} />
       <IconMoon className={cx(classes.icon, classes.dark)} stroke={1.5} />
