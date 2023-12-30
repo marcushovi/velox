@@ -1,0 +1,130 @@
+{
+    "LocaleSwitcher": {
+      "current": "aktuell",
+      "locale": "{locale, select, sk {Slowakisch} en {Englisch} cz {Tschechisch} de {Deutsch} fr {Französisch} es {Spanisch} ua {Ukrainisch} other {Unbekannt}}"
+    },
+    "web": {
+      "menu": {
+        "api": "API-Dokumentation",
+        "app": "App"
+      },
+      "title": "Eine voll ausgestattete Einkaufslisten-App",
+      "description": "Voll funktionsfähige zugängliche Webanwendungen schneller als je zuvor - Und noch viel mehr ist auf dem Weg.",
+      "signIn": "Anmelden",
+      "signOut": "Abmelden",
+      "app": "Mit der App starten"
+    },
+    "app": {
+      "menu": {
+        "createList": "Liste erstellen",
+        "active": "Aktiv",
+        "archive": "Archiviert",
+        "homepage": "Startseite",
+        "signOut": "Abmelden"
+      },
+      "list": {
+        "owner": "Besitzer",
+        "active": "Aktiv",
+        "archive": "Archiviert",
+        "members": "Mitglieder",
+        "showDetails": "Details",
+        "empty": "Sie haben keine Listen"
+      },
+      "item": {
+        "task": "{count, plural, =0 {# Aufgaben} =1 {# Aufgabe} other {# Aufgaben}}",
+        "members": "{count, plural, =0 {# Mitglieder} =1 {# Mitglied} other {# Mitglieder}}",
+        "createTask": "Aufgabe erstellen",
+        "inProcess": {
+          "label": "In Bearbeitung",
+          "empty": "Sie haben keine Elemente <guidelines> im Prozess </guidelines>."
+        },
+        "purchased": {
+          "label": "Gekauft",
+          "empty": "Sie haben keine <guidelines> gekauften </guidelines> Artikel."
+        },
+        "archived": {
+          "label": "Archiviert",
+          "empty": "Sie haben keine <guidelines> archivierten </guidelines> Artikel."
+        },
+        "edit": "Bearbeiten",
+        "archive": "Archivieren",
+        "unarchive": "Archivierung aufheben",
+        "delete": "Löschen"
+      },
+      "modals": {
+        "item": {
+          "delete": {
+            "title": "Ihr Element löschen",
+            "confirm": "Element löschen",
+            "cancel": "Nein, nicht löschen",
+            "message": "Sind Sie sicher, dass Sie Ihr Element <guidelines>{item}</guidelines> löschen möchten? Diese Aktion ist zerstörerisch und Sie müssen sich an den Support wenden, um Ihre Daten wiederherzustellen."
+          },
+          "modal": {
+            "name": {
+              "label": "Name",
+              "placeholder": "Geben Sie den Namen des Elements ein"
+            },
+            "quantity": {
+              "label": "Menge",
+              "placeholder": "Menge eingeben"
+            },
+            "archived": "Archiviert",
+            "notArchived": "Nicht archiviert",
+            "create": {
+              "title": "Neues Element erstellen",
+              "confirm": "Element erstellen"
+            },
+            "edit": {
+              "title": "Element bearbeiten",
+              "confirm": "Änderungen speichern"
+            },
+            "cancel": "Abbrechen",
+            "validation": {
+              "name": "Name muss 1-255 Zeichen lang sein",
+              "quantity": "Name darf maximal 255 Zeichen lang sein"
+            }
+          }
+        },
+        "memberDelete": {
+          "title": "Verlassen Sie Ihre Liste",
+          "confirm": "Liste verlassen",
+          "cancel": "Nein, nicht verlassen",
+          "message": "Sind Sie sicher, dass Sie Ihre Liste <guidelines>{list}</guidelines> verlassen möchten? Diese Aktion ist zerstörerisch und Sie müssen sich an den Support wenden, um Ihre Daten wiederherzustellen."
+        },
+        "list": {
+          "delete": {
+            "title": "Ihre Liste löschen",
+            "confirm": "Liste löschen",
+            "cancel": "Nein, nicht löschen",
+            "message": "Sind Sie sicher, dass Sie Ihre Liste <guidelines>{list}</guidelines> löschen möchten? Diese Aktion ist zerstörerisch und Sie müssen sich an den Support wenden, um Ihre Daten wiederherzustellen."
+          },
+          "modal": {
+            "name": {
+              "label": "Name",
+              "placeholder": "Geben Sie den Listennamen ein"
+            },
+            "members": {
+              "label": "Mitglieder",
+              "placeholder": "Mitglieder suchen",
+              "empty": "Nichts gefunden..."
+            },
+            "archived": "Archiviert",
+            "notArchived": "Nicht archiviert",
+            "create": {
+              "title": "Neue Einkaufsliste erstellen",
+              "confirm": "Liste erstellen"
+            },
+            "edit": {
+              "title": "Einkaufsliste bearbeiten",
+              "confirm": "Änderungen speichern"
+            },
+            "cancel": "Abbrechen",
+            "validation": {
+              "name": "Name muss 1-255 Zeichen lang sein"
+            }
+          }
+        }
+      }
+    }
+  }
+  

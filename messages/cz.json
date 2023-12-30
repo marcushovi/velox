@@ -1,0 +1,129 @@
+{
+  "LocaleSwitcher": {
+    "current": "aktuální",
+    "locale": "{locale, select, sk {Slovensky} en {Anglicky} cz {Česky} de {Německy} fr {Francouzsky} es {Španělsky} ua {Ukrajinsky} other {Neznámý}}"
+  },
+  "web": {
+    "menu": {
+      "api": "API dokumentace",
+      "app": "Aplikace"
+    },
+    "title": "Plně vybavená aplikace pro seznam nákupů",
+    "description": "Plně funkční a přístupné webové aplikace rychleji než kdy dříve - A mnohem víc je na cestě.",
+    "signIn": "Přihlásit se",
+    "signOut": "Odhlásit se",
+    "app": "Začít s aplikací"
+  },
+  "app": {
+    "menu": {
+      "createList": "Vytvořit seznam",
+      "active": "Aktivní",
+      "archive": "Archivováno",
+      "homepage": "Domovská stránka",
+      "signOut": "Odhlásit se"
+    },
+    "list": {
+      "owner": "Vlastník",
+      "active": "Aktivní",
+      "archive": "Archivováno",
+      "members": "Členové",
+      "showDetails": "Zobrazit",
+      "empty": "Nemáte žádné seznamy"
+    },
+    "item": {
+      "task": "{count, plural, =0 {# úkolů} =1 {# úkol} other {# úkolů}}",
+      "members": "{count, plural, =0 {# členů} =1 {# člen} other {# členů}}",
+      "createTask": "Vytvořit úkol",
+      "inProcess": {
+        "label": "V procesu",
+        "empty": "Nemáte žádné položky v <guidelines>procesu</guidelines>."
+      },
+      "purchased": {
+        "label": "Zakoupeno",
+        "empty": "Nemáte žádné <guidelines>zakoupené</guidelines> položky."
+      },
+      "archived": {
+        "label": "Archivováno",
+        "empty": "Nemáte žádné <guidelines>archivované</guidelines> položky."
+      },
+      "edit": "Upravit",
+      "archive": "Archivovat",
+      "unarchive": "Odarchivovat",
+      "delete": "Smazat"
+    },
+    "modals": {
+      "item": {
+        "delete": {
+          "title": "Smazat váš prvek",
+          "confirm": "Smazat prvek",
+          "cancel": "Ne, nesmazat",
+          "message": "Opravdu chcete smazat váš prvek <guidelines>{item}</guidelines>? Tato akce je destruktivní a budete muset kontaktovat podporu pro obnovení dat."
+        },
+        "modal": {
+          "name": {
+            "label": "Název",
+            "placeholder": "Zadejte název položky"
+          },
+          "quantity": {
+            "label": "Množství",
+            "placeholder": "Zadejte množství"
+          },
+          "archived": "Archivováno",
+          "notArchived": "Nearchivováno",
+          "create": {
+            "title": "Vytvořit novou položku",
+            "confirm": "Vytvořit položku"
+          },
+          "edit": {
+            "title": "Upravit položku",
+            "confirm": "Uložit změny"
+          },
+          "cancel": "Zrušit",
+          "validation": {
+            "name": "Název musí mít 1 až 255 znaků",
+            "quantity": "Množství musí mít maximálně 255 znaků"
+          }
+        }
+      },
+      "memberDelete": {
+        "title": "Opustit váš seznam",
+        "confirm": "Opustit seznam",
+        "cancel": "Ne, neopouštět",
+        "message": "Opravdu chcete opustit váš seznam <guidelines>{list}</guidelines>? Tato akce je destruktivní a budete muset kontaktovat podporu pro obnovení dat."
+      },
+      "list": {
+        "delete": {
+          "title": "Smazat váš seznam",
+          "confirm": "Smazat seznam",
+          "cancel": "Ne, nesmazat",
+          "message": "Opravdu chcete smazat váš seznam <guidelines>{list}</guidelines>? Tato akce je destruktivní a budete muset kontaktovat podporu pro obnovení dat."
+        },
+        "modal": {
+          "name": {
+            "label": "Název",
+            "placeholder": "Zadejte název seznamu"
+          },
+          "members": {
+            "label": "Členové",
+            "placeholder": "Hledat členy",
+            "empty": "Nic nenalezeno..."
+          },
+          "archived": "Archivováno",
+          "notArchived": "Nearchivováno",
+          "create": {
+            "title": "Vytvořit nový seznam nákupů",
+            "confirm": "Vytvořit seznam"
+          },
+          "edit": {
+            "title": "Upravit seznam nákupů",
+            "confirm": "Uložit změny"
+          },
+          "cancel": "Zrušit",
+          "validation": {
+            "name": "Název musí mít 1 až 255 znaků"
+          }
+        }
+      }
+    }
+  }
+}

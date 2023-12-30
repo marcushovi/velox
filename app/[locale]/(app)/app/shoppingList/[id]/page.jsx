@@ -19,6 +19,7 @@ import { IconSettings } from "@tabler/icons-react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
 export default function ShoppingList({ params }) {
   const { data: session } = useSession();
@@ -37,6 +38,7 @@ export default function ShoppingList({ params }) {
   const [editItemOpen, setEditItemOpen] = useState(false);
   const [editListOpen, setEditListOpen] = useState(false);
   const [loading, setLoading] = useState(true);
+  const t = useTranslations("app.item");
 
   useEffect(() => {
     const getList = async () => {
@@ -50,7 +52,7 @@ export default function ShoppingList({ params }) {
     };
 
     if (params.id && shoppingLists !== null) getList();
-  }, [params.id, shoppingLists, router, session, list]);
+  }, [params.id, shoppingLists, session, list]);
 
   const handleCreateItem = (item) => {
     createItem(params.id, item);
@@ -117,15 +119,15 @@ export default function ShoppingList({ params }) {
         </Group>
         <Group justify="space-around">
           <Badge variant="outline" color="blue" size="lg">
-            {list?.items?.length} taks
+            {t("task", { count: list?.items?.length })}
           </Badge>
           <Badge variant="outline" color="blue" size="lg">
-            {list?.members?.length} members
+          {t("members", { count: list?.members?.length })}
           </Badge>
         </Group>
 
         <Button size="lg" onClick={() => setEditItemOpen(true)}>
-          New Task
+        {t("createTask")}
         </Button>
       </SimpleGrid>
       <Divider my="md" />

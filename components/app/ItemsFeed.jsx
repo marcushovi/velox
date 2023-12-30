@@ -12,26 +12,33 @@ import {
 } from "@tabler/icons-react";
 import ItemCard from "./ItemCard/ItemCard";
 import ItemModal from "./modals/ItemModal";
+import { useTranslations } from "next-intl";
 
 const ItemsFeed = ({ items, edit, remove, purchased, archive }) => {
   const [editItem, setEditItem] = useState({ open: false, item: {} });
   const [data, setData] = useState([]);
+  const t = useTranslations("app");
 
   const handleDelete = (item) => {
     modals.openConfirmModal({
-      title: `Delete your item`,
+      title: t("modals.item.delete.title"),
       centered: true,
       children: (
         <Text size="sm">
-          Are you sure you want to delete your item{" "}
-          <Mark color="red" fw={600}>
-            {item.name}
-          </Mark>{" "}
-          ? This action is destructive and you will have to contact support to
-          restore your data.
+          {t.rich("modals.item.delete.message", {
+            item: item.name,
+            guidelines: (chunks) => (
+              <Mark color="red" fw={600}>
+                {chunks}
+              </Mark>
+            ),
+          })}
         </Text>
       ),
-      labels: { confirm: "Delete item", cancel: "No don't delete it" },
+      labels: {
+        confirm: t("modals.item.delete.confirm"),
+        cancel: t("modals.item.delete.cancel"),
+      },
       confirmProps: { color: "red" },
       onConfirm: () => remove(item),
     });
@@ -67,7 +74,8 @@ const ItemsFeed = ({ items, edit, remove, purchased, archive }) => {
                     />
                   }
                 >
-                  In proceess{"  "}
+                  {t("item.inProcess.label")}
+                  {"  "}
                   <Badge color="blue">
                     {data.filter((item) => !item?.purchased).length}
                   </Badge>
@@ -76,8 +84,11 @@ const ItemsFeed = ({ items, edit, remove, purchased, archive }) => {
                   <SimpleGrid cols={{ base: 1, sm: 2, lg: 3, xl: 3 }}>
                     {data.filter((item) => !item?.purchased).length === 0 ? (
                       <Text ta="center" c="dimmed" size="lg" fw={700}>
-                        You do not have any items in{" "}
-                        <Mark color="blue">process</Mark>.
+                        {t.rich("item.inProcess.empty", {
+                          guidelines: (chunks) => (
+                            <Mark color="blue">{chunks}</Mark>
+                          ),
+                        })}
                       </Text>
                     ) : (
                       data.map((item) => {
@@ -115,7 +126,8 @@ const ItemsFeed = ({ items, edit, remove, purchased, archive }) => {
                     />
                   }
                 >
-                  Purchased{"  "}
+                  {t("item.purchased.label")}
+                  {"  "}
                   <Badge color="green">
                     {data.filter((item) => item?.purchased).length}
                   </Badge>
@@ -124,8 +136,11 @@ const ItemsFeed = ({ items, edit, remove, purchased, archive }) => {
                   <SimpleGrid cols={{ base: 1, sm: 2, lg: 3, xl: 3 }}>
                     {data.filter((item) => item?.purchased).length === 0 ? (
                       <Text ta="center" c="dimmed" size="lg" fw={700}>
-                        You do not have any <Mark color="green">purchased</Mark>{" "}
-                        items.
+                        {t.rich("item.purchased.empty", {
+                          guidelines: (chunks) => (
+                            <Mark color="green">{chunks}</Mark>
+                          ),
+                        })}
                       </Text>
                     ) : (
                       data.map((item) => {
@@ -163,7 +178,8 @@ const ItemsFeed = ({ items, edit, remove, purchased, archive }) => {
                     />
                   }
                 >
-                  Archived {"  "}
+                  {t("item.archived.label")}
+                  {"  "}
                   <Badge color="teal">
                     {data.filter((item) => item?.archived).length}
                   </Badge>
@@ -172,8 +188,11 @@ const ItemsFeed = ({ items, edit, remove, purchased, archive }) => {
                   <SimpleGrid cols={{ base: 1, sm: 2, lg: 3, xl: 3 }}>
                     {data.filter((item) => item?.archived).length === 0 ? (
                       <Text ta="center" c="dimmed" size="lg" fw={700}>
-                        You do not have any <Mark color="teal">archived</Mark>{" "}
-                        items.
+                        {t.rich("item.archived.empty", {
+                          guidelines: (chunks) => (
+                            <Mark color="teal">{chunks}</Mark>
+                          ),
+                        })}
                       </Text>
                     ) : (
                       data.map((item) => {

@@ -1,7 +1,7 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@navigation.js";
 import { createContext, useContext, useEffect, useState } from "react";
 
 const UserContext = createContext();
@@ -38,7 +38,7 @@ export const UserProvider = ({ children }) => {
     } else {
       fetchUsers();
     }
-  }, [session, loading, router]);
+  }, [session, loading]);
 
   return (
     <UserContext.Provider value={{ users }}>{children}</UserContext.Provider>

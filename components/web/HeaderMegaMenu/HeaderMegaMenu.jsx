@@ -14,16 +14,18 @@ import {
   Stack,
   Text,
   UnstyledButton,
-  rem
+  rem,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconChevronDown, IconLogout } from "@tabler/icons-react";
 import cx from "clsx";
 import classes from "./HeaderMegaMenu.module.css";
+import { LanguageSwitcher } from "@components/LanguageSwitcher/LanguageSwitcher";
 
 import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle";
 import { getProviders, signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
 export function HeaderMegaMenu() {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
@@ -33,6 +35,7 @@ export function HeaderMegaMenu() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const { data: session } = useSession();
+  const t = useTranslations("web");
 
   const [providers, setProviders] = useState(null);
 
@@ -59,14 +62,14 @@ export function HeaderMegaMenu() {
           <AppLogo />
           <Group h="100%" gap={0} visibleFrom="sm">
             <a href="#" className={classes.link}>
-              API Docs
+              {t("menu.api")}
             </a>
             {isLoggedIn ? (
               loading ? (
                 <Skeleton height={40} width={44} radius="md" p="md" />
               ) : (
                 <a href="/app" className={classes.link}>
-                  App
+                  {t("menu.app")}
                 </a>
               )
             ) : (
@@ -75,7 +78,7 @@ export function HeaderMegaMenu() {
           </Group>
 
           {loading ? (
-            <Skeleton height={40} width={84} radius="md" p="md" />
+            <Skeleton height={40} width={300} radius="md" p="md" />
           ) : (
             <Group>
               {isLoggedIn ? (
@@ -122,7 +125,7 @@ export function HeaderMegaMenu() {
                         />
                       }
                     >
-                      Sign Out
+                      {t("signOut")}
                     </Menu.Item>
                   </Menu.Dropdown>
                 </Menu>
@@ -138,12 +141,13 @@ export function HeaderMegaMenu() {
                         }}
                         variant="light"
                       >
-                        Sign in
+                        {t("signIn")}
                       </Button>
                     ))}
                 </Group>
               )}
               <DarkModeToggle />
+              <LanguageSwitcher />
               <Burger
                 opened={drawerOpened}
                 onClick={toggleDrawer}
@@ -166,14 +170,14 @@ export function HeaderMegaMenu() {
           <Divider my="sm" />
           <Group h="100%" gap={0}>
             <a href="#" className={classes.link}>
-              API Docs
+              {t("menu.api")}
             </a>
             {isLoggedIn ? (
               loading ? (
                 <Skeleton height={40} width={44} radius="md" p="md" />
               ) : (
                 <a href="/app" className={classes.link}>
-                  App
+                  {t("menu.app")}
                 </a>
               )
             ) : (
@@ -218,7 +222,7 @@ export function HeaderMegaMenu() {
                       />
                     }
                   >
-                    Sign Out
+                    {t("signOut")}
                   </Button>
                 </>
               ) : (
@@ -234,7 +238,7 @@ export function HeaderMegaMenu() {
                         }}
                         variant="light"
                       >
-                        Sign in
+                        {t("signIn")}
                       </Button>
                     ))}
                 </Group>

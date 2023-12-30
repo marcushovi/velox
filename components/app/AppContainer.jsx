@@ -2,8 +2,9 @@
 
 import AppLogo from "@components/AppLogo/AppLogo";
 import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle";
+import { LanguageSwitcher } from "@components/LanguageSwitcher/LanguageSwitcher";
 import SideMenu from "@components/app/SideMenu/SideMenu";
-import { AppShell, Burger, Flex } from "@mantine/core";
+import { AppShell, Burger, Flex, Group } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 
 const AppContainer = ({ children }) => {
@@ -30,7 +31,10 @@ const AppContainer = ({ children }) => {
         >
           <AppLogo />
 
-          <DarkModeToggle />
+          <Group>
+            <DarkModeToggle />
+            <LanguageSwitcher />
+          </Group>
 
           <Burger opened={opened} onClick={toggle} hiddenFrom="md" size="sm" />
         </Flex>

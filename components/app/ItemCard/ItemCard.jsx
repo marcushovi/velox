@@ -5,11 +5,23 @@ import {
   IconArchiveOff,
   IconEdit,
   IconTrash,
+  IconDotsVertical,
 } from "@tabler/icons-react";
 import { useState } from "react";
 
-import { ActionIcon, Card, Checkbox, Group, Text } from "@mantine/core";
+import {
+  ActionIcon,
+  Card,
+  Checkbox,
+  Group,
+  Text,
+  Stack,
+  Menu,
+  rem,
+  Grid,
+} from "@mantine/core";
 import classes from "./ItemCard.module.css";
+import { useTranslations } from "next-intl";
 
 const ItemCard = ({
   item,
@@ -19,63 +31,103 @@ const ItemCard = ({
   handlePurchased,
 }) => {
   const [checked, setChecked] = useState(item.purchased);
+  const t = useTranslations("app.item");
 
   return (
-    <Card withBorder radius="md" p="md" className={classes.card}>
-      <Card.Section className={classes.section} mt="md">
-        <Group>
-          <Checkbox
-            checked={checked}
-            onChange={(event) => setChecked(event.currentTarget.checked)}
-            labelPosition="left"
-            color="green"
-            radius="md"
-            size="lg"
-            onClick={handlePurchased}
-          />
-          <Text fz="lg" fw={500}>
-            {item.name}
-          </Text>
-          {/* <Badge
-            size="sm"
-            variant={item.archived ? "light" : ""}
-            color={item.archived ? "gray" : "green"}
-          >
-            {item.archived ? "ARCHIVED" : "ACTIVE"}
-          </Badge> */}
+    <Card
+      withBorder
+      radius="md"
+      p="md"
+      data-checked={checked || undefined}
+      className={classes.card}
+    >
+      <Card.Section className={classes.section} my="xs">
+        <Grid>
+          <Grid.Col span={2}>
+            <Stack align="center" h="100%" justify="space-around">
+              <Checkbox
+                checked={checked}
+                onChange={(event) => setChecked(event.currentTarget.checked)}
+                labelPosition="left"
+                color="green"
+                radius="md"
+                size="lg"
+                onClick={handlePurchased}
+              />
+            </Stack>
+          </Grid.Col>
+          <Grid.Col span={10}>
+            <Group justify="space-between">
+              <Stack>
+                <Text fz="lg" fw={500}>
+                  {item.name}
+                </Text>
 
-          <Text mt="md" className={classes.label} c="dimmed">
-            Quantity {item.quantity}
-          </Text>
-          <Group>
-            <ActionIcon
-              variant="transparent"
-              size="xl"
-              aria-label="Edit button"
-              onClick={handleEdit}
-            >
-              <IconEdit />
-            </ActionIcon>
-            <ActionIcon
-              variant="transparent"
-              size="xl"
-              color="teal"
-              aria-label="Archive button"
-              onClick={handleArchive}
-            >
-              {item.archived ? <IconArchiveOff /> : <IconArchive />}
-            </ActionIcon>
-            <ActionIcon
-              variant="transparent"
-              size="xl"
-              color="red"
-              aria-label="Delete button"
-              onClick={handleDelete}
-            >
-              <IconTrash />
-            </ActionIcon>
-          </Group>
-        </Group>
+                <Text className={classes.label} c="dimmed">
+                  {item.quantity}
+                </Text>
+              </Stack>
+
+              <Menu
+                withinPortal
+                position="bottom-end"
+                withArrow
+                arrowPosition="center"
+              >
+                <Menu.Target>
+                  <ActionIcon variant="transparent" color={item.archived ? "teal" : "gray"} withBorder size="lg">
+                    <IconDotsVertical style={{ width: "90%", height: "90%" }} />
+                  </ActionIcon>
+                </Menu.Target>
+
+                <Menu.Dropdown>
+                  <Menu.Item
+                    leftSection={
+                      <IconEdit style={{ width: rem(14), height: rem(14) }} />
+                    }
+                    color="blue"
+                    aria-label="Edit button"
+                    onClick={handleEdit}
+                    size="xl"
+                  >
+                    {t("edit")}
+                  </Menu.Item>
+                  <Menu.Item
+                    leftSection={
+                      item.archived ? (
+                        <IconArchiveOff
+                          style={{ width: rem(14), height: rem(14) }}
+                        />
+                      ) : (
+                        <IconArchive
+                          style={{ width: rem(14), height: rem(14) }}
+                        />
+                      )
+                    }
+                    color="teal"
+                    aria-label="Archive button"
+                    onClick={handleArchive}
+                    size="xl"
+                  >
+                    {item.archived ? t("unarchive") : t("archive")}
+                  </Menu.Item>
+                  <Menu.Divider />
+                  <Menu.Item
+                    leftSection={
+                      <IconTrash style={{ width: rem(14), height: rem(14) }} />
+                    }
+                    color="red"
+                    aria-label="Delete button"
+                    onClick={handleDelete}
+                    size="xl"
+                  >
+                    {t("delete")}
+                  </Menu.Item>
+                </Menu.Dropdown>
+              </Menu>
+            </Group>
+          </Grid.Col>
+        </Grid>
       </Card.Section>
     </Card>
   );

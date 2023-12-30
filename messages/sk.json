@@ -1,0 +1,129 @@
+{
+  "LocaleSwitcher": {
+    "current": "aktuálny",
+    "locale": "{locale, select, sk {Slovensky} en {Anglicky} cz {Česky} de {Nemecky} fr {Francúzsky} es {Španielsky} ua {Ukrajinský} other {Neznámy}}"
+  },
+  "web": {
+    "menu": {
+      "api": "API dokumentácia",
+      "app": "Aplikácia"
+    },
+    "title": "Plne vybavená aplikácia zoznamu nákupov",
+    "description": "Plne funkčné prístupné webové aplikácie rýchlejšie ako kedykoľvek predtým - A mnoho ďalšieho je na ceste.",
+    "signIn": "Prihlásiť sa",
+    "signOut": "Odhlásiť sa",
+    "app": "Začnite s aplikáciou"
+  },
+  "app": {
+    "menu": {
+      "createList": "Vytvoriť zoznam",
+      "active": "Aktívne",
+      "archive": "Archivované",
+      "homepage": "Domovská stránka",
+      "signOut": "Odhlásiť sa"
+    },
+    "list": {
+      "owner": "Vlastník",
+      "active": "Aktívne",
+      "archive": "Archivované",
+      "members": "Členovia",
+      "showDetails": "Zobraziť",
+      "empty": "Nemáte žiadne zoznamy"
+    },
+    "item": {
+      "task": "{count, plural, =0 {# úloh} =1 {# úloha} other {# úloh}}",
+      "members": "{count, plural, =0 {# členov} =1 {# člen} other {# členov}}",
+      "createTask": "Vytvoriť úlohu",
+      "inProcess": {
+        "label": "V procese",
+        "empty": "Nemáte žiadne položky <guidelines> v procese </guidelines>."
+      },
+      "purchased": {
+        "label": "Kúpené",
+        "empty": "Nemáte žiadne <guidelines> kúpené </guidelines> položky."
+      },
+      "archived": {
+        "label": "Archivované",
+        "empty": "Nemáte žiadne <guidelines> archivované </guidelines> položky."
+      },
+      "edit": "Upraviť",
+      "archive": "Archivovať",
+      "unarchive": "Zrušiť archiváciu",
+      "delete": "Vymazať"
+    },
+    "modals": {
+      "item": {
+        "delete": {
+          "title": "Vymazať vašu položku",
+          "confirm": "Vymazať položku",
+          "cancel": "Nie, nevymazávať",
+          "message": "Ste si istí, že chcete vymazať vašu položku <guidelines>{item}</guidelines>? Táto akcia je deštruktívna a budete musieť kontaktovať podporu, aby ste obnovili svoje dáta."
+        },
+        "modal": {
+          "name": {
+            "label": "Názov",
+            "placeholder": "Zadajte názov položky"
+          },
+          "quantity": {
+            "label": "Množstvo",
+            "placeholder": "Zadajte množstvo"
+          },
+          "archived": "Archivované",
+          "notArchived": "Nearchivované",
+          "create": {
+            "title": "Vytvoriť novú položku",
+            "confirm": "Vytvoriť položku"
+          },
+          "edit": {
+            "title": "Upraviť položku",
+            "confirm": "Uložiť zmeny"
+          },
+          "cancel": "Zrušiť",
+          "validation": {
+            "name": "Názov musí byť dlhý 1-255 znakov",
+            "quantity": "Množstvo musí byť najviac 255 znakov dlhé"
+          }
+        }
+      },
+      "memberDelete": {
+        "title": "Opustiť váš zoznam",
+        "confirm": "Opustiť zoznam",
+        "cancel": "Nie, neopúšťajte ho",
+        "message": "Ste si istí, že chcete opustiť váš zoznam <guidelines>{list}</guidelines>? Táto akcia je deštruktívna a budete musieť kontaktovať podporu, aby ste obnovili svoje dáta."
+      },
+      "list": {
+        "delete": {
+          "title": "Vymazať váš zoznam",
+          "confirm": "Vymazať zoznam",
+          "cancel": "Nie, nevymazávať",
+          "message": "Ste si istí, že chcete vymazať váš zoznam <guidelines>{list}</guidelines>? Táto akcia je deštruktívna a budete musieť kontaktovať podporu, aby ste obnovili svoje dáta."
+        },
+        "modal": {
+          "name": {
+            "label": "Názov",
+            "placeholder": "Zadajte názov zoznamu"
+          },
+          "members": {
+            "label": "Členovia",
+            "placeholder": "Hľadať členov",
+            "empty": "Nič sa nenašlo..."
+          },
+          "archived": "Archivované",
+          "notArchived": "Nearchivované",
+          "create": {
+            "title": "Vytvoriť nový zoznam nákupov",
+            "confirm": "Vytvoriť zoznam"
+          },
+          "edit": {
+            "title": "Upraviť zoznam nákupov",
+            "confirm": "Uložiť zmeny"
+          },
+          "cancel": "Zrušiť",
+          "validation": {
+            "name": "Názov musí byť dlhý 1-255 znakov"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,7 +1,7 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@navigation.js";
 import { useEffect, useState } from "react";
 
 import BadgeCard from "@components/app/BadgeCard/BadgeCard";
@@ -11,6 +11,7 @@ import { modals } from "@mantine/modals";
 
 import { useShoppingList } from "@components/app/ShoppingListProvider";
 import { useUser } from "@components/app/UserProvider";
+import { useTranslations } from "next-intl";
 
 const ShoppingLists = ({
   data,
@@ -22,10 +23,12 @@ const ShoppingLists = ({
   session,
   users,
 }) => {
+  const t = useTranslations("app");
+
   if (data.length === 0) {
     return (
       <Text ta="center" c="dimmed" size="lg" fw={700}>
-        You do not have any lists
+        {t('list.empty')}
       </Text>
     );
   }
@@ -69,6 +72,7 @@ const ShoppingListsFeed = () => {
   const [myLists, setMyLists] = useState([]);
   const [editList, setEditList] = useState({ open: false, list: {} });
   const router = useRouter();
+  const t = useTranslations("app");
 
   const {
     shoppingLists,
@@ -97,19 +101,21 @@ const ShoppingListsFeed = () => {
 
   const handleDelete = (list) => {
     modals.openConfirmModal({
-      title: `Delete your list`,
+      title: t('modals.list.delete.title'),
       centered: true,
       children: (
         <Text size="sm">
-          Are you sure you want to delete your list{" "}
-          <Mark color="red" fw={600}>
-            {list.name}
-          </Mark>{" "}
-          ? This action is destructive and you will have to contact support to
-          restore your data.
+          {t.rich("modals.list.delete.message", {
+            list: list.name,
+            guidelines: (chunks) => (
+              <Mark color="red" fw={600}>
+                {chunks}
+              </Mark>
+            ),
+          })}
         </Text>
       ),
-      labels: { confirm: "Delete list", cancel: "No don't delete it" },
+      labels: { confirm: t('modals.list.delete.confirm'), cancel: t('modals.list.delete.cancel') },
       confirmProps: { color: "red" },
       onConfirm: () => deleteShoppingList(list),
     });
