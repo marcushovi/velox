@@ -1,3 +1,5 @@
+import { Analytics } from "@vercel/analytics/react";
+
 import Provider from "@components/Provider";
 import { NextIntlClientProvider, useMessages } from "next-intl";
 import { ShoppingListProvider } from "@components/app/ShoppingListProvider";
@@ -33,7 +35,10 @@ const RootLayout = ({ children, params: { locale } }) => {
                 <UserProvider>
                   <ShoppingListProvider>
                     <main className="app">
-                      <AppContainer>{children}</AppContainer>
+                      <AppContainer>
+                        {children}
+                        <Analytics />
+                      </AppContainer>
                     </main>
                   </ShoppingListProvider>
                 </UserProvider>
