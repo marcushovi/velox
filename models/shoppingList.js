@@ -62,29 +62,35 @@ ShoppingListSchema.index({ members: 1 });
 // Create an index on the archived field
 ShoppingListSchema.index({ archived: 1 });
 
-ShoppingListSchema.path("members").validate(function (value) {
-  return value.length <= process.env.MAX_MEMBERS_PER_LIST;
-}, `You cannot have more than ${process.env.MAX_MEMBERS_PER_LIST} members in a shopping list`);
+// ShoppingListSchema.path("members").validate(function (value) {
+//   return (
+//     process.env.MAX_MEMBERS_PER_LIST !== undefined &&
+//     value.length <= process.env.MAX_MEMBERS_PER_LIST
+//   );
+// }, `You cannot have more than ${process.env.MAX_MEMBERS_PER_LIST} members in a shopping list`);
 
-ShoppingListSchema.path("items").validate(function (value) {
-  return value.length <= process.env.MAX_ITEMS_PER_LIST;
-}, `You cannot have more than ${process.env.MAX_ITEMS_PER_LIST} items in a shopping list`);
+// ShoppingListSchema.path("items").validate(function (value) {
+//   return (
+//     process.env.MAX_ITEMS_PER_LIST !== undefined &&
+//     value.length <= process.env.MAX_ITEMS_PER_LIST
+//   );
+// }, `You cannot have more than ${process.env.MAX_ITEMS_PER_LIST} items in a shopping list`);
 
-ShoppingListSchema.pre("save", async function (next) {
-  const maxLists = process.env.MAX_LISTS_PER_USER;
-  const count = await this.model("ShoppingList").countDocuments({
-    owner: this.owner,
-  });
+// ShoppingListSchema.pre("save", async function (next) {
+//   const maxLists = process.env.MAX_LISTS_PER_USER;
+//   const count = await this.model("ShoppingList").countDocuments({
+//     owner: this.owner,
+//   });
 
-  if (count >= maxLists) {
-    throw new Error(
-      `Each user can only create up to ${maxLists} shopping lists.`,
-      { cause: "MaxListsPerUserError" }
-    );
-  }
+//   if (maxLists !== undefined && count >= maxLists) {
+//     throw new Error(
+//       `Each user can only create up to ${maxLists} shopping lists.`,
+//       { cause: "MaxListsPerUserError" }
+//     );
+//   }
 
-  next();
-});
+//   next();
+// });
 
 // ShoppingListSchema.pre("save", async function (next) {
 //   try {
@@ -107,5 +113,6 @@ ShoppingListSchema.pre("save", async function (next) {
 //   }
 // });
 
-const ShoppingList = models.ShoppingList || model("ShoppingList", ShoppingListSchema);
+const ShoppingList =
+  models.ShoppingList || model("ShoppingList", ShoppingListSchema);
 export default ShoppingList;
