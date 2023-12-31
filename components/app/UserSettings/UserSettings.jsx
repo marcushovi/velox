@@ -37,7 +37,7 @@ const UserSettings = () => {
   if (loading) {
     return (
       <>
-        <Menu position="right" arrowPosition="center">
+        <Menu position="left" arrowPosition="center">
           <Menu.Target>
             <UnstyledButton className={classes.user}>
               <Group p={10}>
@@ -95,7 +95,7 @@ const UserSettings = () => {
         </Menu.Item>
 
         <Menu.Divider />
-        
+
         <Menu.Item
           color="red"
           onClick={handleSignOut}

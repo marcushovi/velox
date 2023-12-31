@@ -146,12 +146,14 @@ export function HeaderMegaMenu() {
                     ))}
                 </Group>
               )}
-              <DarkModeToggle />
-              <LanguageSwitcher />
+              <Group visibleFrom="md">
+                <DarkModeToggle />
+                <LanguageSwitcher />
+              </Group>
               <Burger
                 opened={drawerOpened}
                 onClick={toggleDrawer}
-                hiddenFrom="sm"
+                hiddenFrom="md"
               />
             </Group>
           )}
@@ -163,7 +165,7 @@ export function HeaderMegaMenu() {
         onClose={closeDrawer}
         size="100%"
         padding="md"
-        hiddenFrom="sm"
+        hiddenFrom="md"
         zIndex={1000000}
       >
         <ScrollArea h={`calc(100vh - ${rem(80)})`} mx="-md">
@@ -185,6 +187,11 @@ export function HeaderMegaMenu() {
             )}
           </Group>
 
+          <Divider my="sm" />
+          <Group justify="center" gap="xl" grow px="md" hiddenFrom="md">
+            <DarkModeToggle />
+            <LanguageSwitcher />
+          </Group>
           <Divider my="sm" />
 
           {loading ? (

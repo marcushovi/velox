@@ -1,15 +1,15 @@
 {
     "LocaleSwitcher": {
       "current": "actual",
-      "locale": "{locale, select, sk {Eslovaco} en {Inglés} cz {Checo} de {Alemán} fr {Francés} es {Español} ua {Ucraniano} other {Desconocido}}"
+      "locale": "{locale, select, sk {Eslovaco} en {Inglés} cz {Checo} de {Alemán} fr {Francés} es {Español} ua {Ucraniano} pl {Polaco} hu {Húngaro} other {Desconocido}}"
     },
     "web": {
       "menu": {
         "api": "Documentación de la API",
         "app": "Aplicación"
       },
-      "title": "Una aplicación de lista de compras totalmente funcional",
-      "description": "Aplicaciones web totalmente funcionales y accesibles más rápidas que nunca, y muchas más están en camino.",
+      "title": "Una aplicación de lista de compras completamente equipada",
+      "description": "Aplicaciones web completamente funcionales y accesibles más rápidas que nunca, y muchas más están en camino.",
       "signIn": "Iniciar sesión",
       "signOut": "Cerrar sesión",
       "app": "Empezar con la aplicación"
@@ -27,8 +27,8 @@
         "active": "Activo",
         "archive": "Archivado",
         "members": "Miembros",
-        "showDetails": "Detalles",
-        "empty": "No tienes listas"
+        "showDetails": "Mostrar",
+        "empty": "No tienes ninguna lista"
       },
       "item": {
         "task": "{count, plural, =0 {# tareas} =1 {# tarea} other {# tareas}}",
@@ -36,15 +36,15 @@
         "createTask": "Crear tarea",
         "inProcess": {
           "label": "En proceso",
-          "empty": "No tienes elementos <guidelines> en proceso </guidelines>."
+          "empty": "No tienes ningún elemento en <guidelines>proceso</guidelines>."
         },
         "purchased": {
           "label": "Comprado",
-          "empty": "No tienes elementos <guidelines> comprados </guidelines>."
+          "empty": "No tienes ningún elemento <guidelines>comprado</guidelines>."
         },
         "archived": {
           "label": "Archivado",
-          "empty": "No tienes elementos <guidelines> archivados </guidelines>."
+          "empty": "No tienes ningún elemento <guidelines>archivado</guidelines>."
         },
         "edit": "Editar",
         "archive": "Archivar",
@@ -86,10 +86,10 @@
           }
         },
         "memberDelete": {
-          "title": "Salir de tu lista",
-          "confirm": "Salir de la lista",
-          "cancel": "No, no salir",
-          "message": "¿Estás seguro de que quieres salir de tu lista <guidelines>{list}</guidelines>? Esta acción es destructiva y deberás contactar al soporte para restaurar tus datos."
+          "title": "Abandonar tu lista",
+          "confirm": "Abandonar lista",
+          "cancel": "No, no abandonar",
+          "message": "¿Estás seguro de que quieres abandonar tu lista <guidelines>{list}</guidelines>? Esta acción es destructiva y deberás contactar al soporte para restaurar tus datos."
         },
         "list": {
           "delete": {
@@ -106,7 +106,7 @@
             "members": {
               "label": "Miembros",
               "placeholder": "Buscar miembros",
-              "empty": "Nada encontrado..."
+              "empty": "No se encontró nada..."
             },
             "archived": "Archivado",
             "notArchived": "No archivado",
@@ -124,6 +124,18 @@
             }
           }
         }
+      },
+      "notifications": {
+        "addList": "Se ha creado la lista <guidelines>{list}</guidelines>.",
+        "deleteList": "Se ha eliminado la lista <guidelines>{list}</guidelines>.",
+        "editList": "Se ha editado la lista <guidelines>{list}</guidelines>.",
+        "archiveList": "La lista <guidelines>{list}</guidelines> está {archive, select, true {archivada} other {activa}}.",
+        "removeMember": "Estás abandonando la lista <guidelines>{list}</guidelines>.",
+        "addItem": "Se ha creado el elemento <guidelines>{item}</guidelines>.",
+        "deleteItem": "Se ha eliminado el elemento <guidelines>{item}</guidelines>.",
+        "editItem": "Se ha editado el elemento <guidelines>{item}</guidelines>.",
+        "archiveItem": "El elemento <guidelines>{item}</guidelines> está {archive, select, true {archivado} other {activo}}.",
+        "purchasedItem": "El elemento <guidelines>{item}</guidelines> {purchased, select, true {ha sido comprado} other {está en proceso}}."
       }
     }
   }

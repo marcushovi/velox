@@ -1,8 +1,10 @@
 "use client";
 
 import { notifications } from "@mantine/notifications";
+import { Mark } from "@mantine/core";
 import { useSession } from "next-auth/react";
 import { createContext, useContext, useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
 const ShoppingListContext = createContext();
 
@@ -12,6 +14,7 @@ export const ShoppingListProvider = ({ children }) => {
   const { data: session } = useSession();
   const [shoppingLists, setShoppingLists] = useState(null);
   const [archived, setArchived] = useState(false);
+  const t = useTranslations("app.notifications");
 
   const addShoppingList = async (list) => {
     try {
@@ -30,7 +33,14 @@ export const ShoppingListProvider = ({ children }) => {
 
       if (response.ok && response.status === 200) {
         notifications.show({
-          title: `List "${data.name}" was created.`,
+          title: t.rich("addList", {
+            list: list.name,
+            guidelines: (chunks) => (
+              <Mark color="green" fw={600}>
+                {chunks}
+              </Mark>
+            ),
+          }),
           color: "green",
         });
 
@@ -57,7 +67,14 @@ export const ShoppingListProvider = ({ children }) => {
 
       if (response.ok && response.status === 200) {
         notifications.show({
-          title: `List "${list.name}" was deleted.`,
+          title: t.rich("deleteList", {
+            list: list.name,
+            guidelines: (chunks) => (
+              <Mark color="green" fw={600}>
+                {chunks}
+              </Mark>
+            ),
+          }),
           color: "green",
         });
         const filterLists = shoppingLists.filter(
@@ -90,9 +107,15 @@ export const ShoppingListProvider = ({ children }) => {
 
       if (response.ok && response.status === 200) {
         notifications.show({
-          title: `List "${list.name}" is ${
-            !list.archived ? "archived" : "active"
-          }.`,
+          title: t.rich("archiveList", {
+            list: list.name,
+            archive: !list.archived,
+            guidelines: (chunks) => (
+              <Mark color="green" fw={600}>
+                {chunks}
+              </Mark>
+            ),
+          }),
           color: "green",
         });
         const filterLists = shoppingLists.map((item) => {
@@ -130,7 +153,14 @@ export const ShoppingListProvider = ({ children }) => {
 
       if (response.ok && response.status === 200) {
         notifications.show({
-          title: `List "${data.name}" was edited.`,
+          title: t.rich("editList", {
+            list: list.name,
+            guidelines: (chunks) => (
+              <Mark color="green" fw={600}>
+                {chunks}
+              </Mark>
+            ),
+          }),
           color: "green",
         });
 
@@ -168,7 +198,14 @@ export const ShoppingListProvider = ({ children }) => {
 
       if (response.ok && response.status === 200) {
         notifications.show({
-          title: `You leave "${data.name}" list.`,
+          title: t.rich("removeMember", {
+            list: list.name,
+            guidelines: (chunks) => (
+              <Mark color="green" fw={600}>
+                {chunks}
+              </Mark>
+            ),
+          }),
           color: "green",
         });
 
@@ -206,7 +243,14 @@ export const ShoppingListProvider = ({ children }) => {
 
       if (response.ok && response.status === 200) {
         notifications.show({
-          title: `Item "${item.name}" was created.`,
+          title: t.rich("addItem", {
+            item: item.name,
+            guidelines: (chunks) => (
+              <Mark color="green" fw={600}>
+                {chunks}
+              </Mark>
+            ),
+          }),
           color: "green",
         });
 
@@ -241,7 +285,15 @@ export const ShoppingListProvider = ({ children }) => {
 
       if (response.ok && response.status === 200) {
         notifications.show({
-          title: `Item "${item.name}" was purchased.`,
+          title: t.rich("purchasedItem", {
+            item: item.name,
+            purchased: !item.purchased,
+            guidelines: (chunks) => (
+              <Mark color="green" fw={600}>
+                {chunks}
+              </Mark>
+            ),
+          }),
           color: "green",
         });
 
@@ -276,7 +328,15 @@ export const ShoppingListProvider = ({ children }) => {
 
       if (response.ok && response.status === 200) {
         notifications.show({
-          title: `Item "${item.name}" was archived.`,
+          title: t.rich("archiveItem", {
+            item: item.name,
+            archive: !item.archived,
+            guidelines: (chunks) => (
+              <Mark color="green" fw={600}>
+                {chunks}
+              </Mark>
+            ),
+          }),
           color: "green",
         });
 
@@ -310,7 +370,14 @@ export const ShoppingListProvider = ({ children }) => {
 
       if (response.ok && response.status === 200) {
         notifications.show({
-          title: `Item "${item.name}" was deleted.`,
+          title: t.rich("deleteItem", {
+            item: item.name,
+            guidelines: (chunks) => (
+              <Mark color="green" fw={600}>
+                {chunks}
+              </Mark>
+            ),
+          }),
           color: "green",
         });
 
@@ -349,7 +416,14 @@ export const ShoppingListProvider = ({ children }) => {
 
       if (response.ok && response.status === 200) {
         notifications.show({
-          title: `Item "${item.name}" was edited.`,
+          title: t.rich("editItem", {
+            item: item.name,
+            guidelines: (chunks) => (
+              <Mark color="green" fw={600}>
+                {chunks}
+              </Mark>
+            ),
+          }),
           color: "green",
         });
 

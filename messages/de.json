@@ -1,18 +1,18 @@
 {
     "LocaleSwitcher": {
       "current": "aktuell",
-      "locale": "{locale, select, sk {Slowakisch} en {Englisch} cz {Tschechisch} de {Deutsch} fr {Französisch} es {Spanisch} ua {Ukrainisch} other {Unbekannt}}"
+      "locale": "{locale, select, sk {Slowakisch} en {Englisch} cz {Tschechisch} de {Deutsch} fr {Französisch} es {Spanisch} ua {Ukrainisch} pl {Polnisch} hu {Ungarisch} other {Unbekannt}}"
     },
     "web": {
       "menu": {
         "api": "API-Dokumentation",
-        "app": "App"
+        "app": "Anwendung"
       },
       "title": "Eine voll ausgestattete Einkaufslisten-App",
-      "description": "Voll funktionsfähige zugängliche Webanwendungen schneller als je zuvor - Und noch viel mehr ist auf dem Weg.",
+      "description": "Voll funktionsfähige und zugängliche Webanwendungen schneller als je zuvor – Und viele weitere sind auf dem Weg.",
       "signIn": "Anmelden",
       "signOut": "Abmelden",
-      "app": "Mit der App starten"
+      "app": "Starte mit der App"
     },
     "app": {
       "menu": {
@@ -27,8 +27,8 @@
         "active": "Aktiv",
         "archive": "Archiviert",
         "members": "Mitglieder",
-        "showDetails": "Details",
-        "empty": "Sie haben keine Listen"
+        "showDetails": "Anzeigen",
+        "empty": "Du hast keine Listen"
       },
       "item": {
         "task": "{count, plural, =0 {# Aufgaben} =1 {# Aufgabe} other {# Aufgaben}}",
@@ -36,15 +36,15 @@
         "createTask": "Aufgabe erstellen",
         "inProcess": {
           "label": "In Bearbeitung",
-          "empty": "Sie haben keine Elemente <guidelines> im Prozess </guidelines>."
+          "empty": "Du hast keine Elemente in <guidelines>Bearbeitung</guidelines>."
         },
         "purchased": {
           "label": "Gekauft",
-          "empty": "Sie haben keine <guidelines> gekauften </guidelines> Artikel."
+          "empty": "Du hast keine <guidelines>gekauften</guidelines> Elemente."
         },
         "archived": {
           "label": "Archiviert",
-          "empty": "Sie haben keine <guidelines> archivierten </guidelines> Artikel."
+          "empty": "Du hast keine <guidelines>archivierten</guidelines> Elemente."
         },
         "edit": "Bearbeiten",
         "archive": "Archivieren",
@@ -54,15 +54,15 @@
       "modals": {
         "item": {
           "delete": {
-            "title": "Ihr Element löschen",
+            "title": "Element löschen",
             "confirm": "Element löschen",
             "cancel": "Nein, nicht löschen",
-            "message": "Sind Sie sicher, dass Sie Ihr Element <guidelines>{item}</guidelines> löschen möchten? Diese Aktion ist zerstörerisch und Sie müssen sich an den Support wenden, um Ihre Daten wiederherzustellen."
+            "message": "Bist du sicher, dass du dein Element <guidelines>{item}</guidelines> löschen möchtest? Diese Aktion ist endgültig und du musst den Support kontaktieren, um deine Daten wiederherzustellen."
           },
           "modal": {
             "name": {
               "label": "Name",
-              "placeholder": "Geben Sie den Namen des Elements ein"
+              "placeholder": "Elementnamen eingeben"
             },
             "quantity": {
               "label": "Menge",
@@ -81,27 +81,27 @@
             "cancel": "Abbrechen",
             "validation": {
               "name": "Name muss 1-255 Zeichen lang sein",
-              "quantity": "Name darf maximal 255 Zeichen lang sein"
+              "quantity": "Menge darf maximal 255 Zeichen lang sein"
             }
           }
         },
         "memberDelete": {
-          "title": "Verlassen Sie Ihre Liste",
+          "title": "Liste verlassen",
           "confirm": "Liste verlassen",
           "cancel": "Nein, nicht verlassen",
-          "message": "Sind Sie sicher, dass Sie Ihre Liste <guidelines>{list}</guidelines> verlassen möchten? Diese Aktion ist zerstörerisch und Sie müssen sich an den Support wenden, um Ihre Daten wiederherzustellen."
+          "message": "Bist du sicher, dass du deine Liste <guidelines>{list}</guidelines> verlassen möchtest? Diese Aktion ist endgültig und du musst den Support kontaktieren, um deine Daten wiederherzustellen."
         },
         "list": {
           "delete": {
-            "title": "Ihre Liste löschen",
+            "title": "Liste löschen",
             "confirm": "Liste löschen",
             "cancel": "Nein, nicht löschen",
-            "message": "Sind Sie sicher, dass Sie Ihre Liste <guidelines>{list}</guidelines> löschen möchten? Diese Aktion ist zerstörerisch und Sie müssen sich an den Support wenden, um Ihre Daten wiederherzustellen."
+            "message": "Bist du sicher, dass du deine Liste <guidelines>{list}</guidelines> löschen möchtest? Diese Aktion ist endgültig und du musst den Support kontaktieren, um deine Daten wiederherzustellen."
           },
           "modal": {
             "name": {
               "label": "Name",
-              "placeholder": "Geben Sie den Listennamen ein"
+              "placeholder": "Listenname eingeben"
             },
             "members": {
               "label": "Mitglieder",
@@ -124,6 +124,18 @@
             }
           }
         }
+      },
+      "notifications": {
+        "addList": "Liste <guidelines>{list}</guidelines> wurde erstellt.",
+        "deleteList": "Liste <guidelines>{list}</guidelines> wurde gelöscht.",
+        "editList": "Liste <guidelines>{list}</guidelines> wurde bearbeitet.",
+        "archiveList": "Liste <guidelines>{list}</guidelines> ist {archive, select, true {archiviert} other {aktiv}}.",
+        "removeMember": "Du verlässt die Liste <guidelines>{list}</guidelines>.",
+        "addItem": "Element <guidelines>{item}</guidelines> wurde erstellt.",
+        "deleteItem": "Element <guidelines>{item}</guidelines> wurde gelöscht.",
+        "editItem": "Element <guidelines>{item}</guidelines> wurde bearbeitet.",
+        "archiveItem": "Element <guidelines>{item}</guidelines> ist {archive, select, true {archiviert} other {aktiv}}.",
+        "purchasedItem": "Element <guidelines>{item}</guidelines> {purchased, select, true {wurde gekauft} other {ist in Bearbeitung}}."
       }
     }
   }

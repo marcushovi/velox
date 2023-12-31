@@ -1,7 +1,7 @@
 {
   "LocaleSwitcher": {
     "current": "current",
-    "locale": "{locale, select, sk {Slovak} en {English} cz {Czech} de {German} fr {French} es {Spanish} ua {Ukrainian} other {Unknown}}"
+    "locale": "{locale, select, sk {Slovak} en {English} cz {Czech} de {German} fr {French} es {Spanish} ua {Ukrainian} pl {Polish} hu {Hungarian} other {Unknown}}"
   },
   "web": {
     "menu": {
@@ -124,6 +124,18 @@
           }
         }
       }
+    },
+    "notifications": {
+      "addList": "List <guidelines>{list}</guidelines> was created.",
+      "deleteList": "List <guidelines>{list}</guidelines> was deleted.",
+      "editList": "List <guidelines>{list}</guidelines> was edited.",
+      "archiveList": "List <guidelines>{list}</guidelines> is {archive, select, true {archive} other {active}}.",
+      "removeMember": "You leave <guidelines>{list}</guidelines> list.",
+      "addItem": "Item <guidelines>{item}</guidelines> was created.",
+      "deleteItem": "Item <guidelines>{item}</guidelines> was deleted.",
+      "editItem": "Item <guidelines>{item}</guidelines> was edited.",
+      "archiveItem": "Item <guidelines>{item}</guidelines> is {archive, select, true {archive} other {active}}.",
+      "purchasedItem": "Item <guidelines>{item}</guidelines> {purchased, select, true {was purchased} other {is in process}}."
     }
   }
 }

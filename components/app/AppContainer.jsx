@@ -31,11 +31,6 @@ const AppContainer = ({ children }) => {
         >
           <AppLogo />
 
-          <Group>
-            <DarkModeToggle />
-            <LanguageSwitcher />
-          </Group>
-
           <Burger opened={opened} onClick={toggle} hiddenFrom="md" size="sm" />
         </Flex>
       </AppShell.Header>
