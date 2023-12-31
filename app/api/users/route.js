@@ -1,6 +1,6 @@
-import User from "@models/user";
-import { connectToDB } from "@utils/database";
-import ErrorHandler from "@utils/errorHandler";
+import User from "../../../models/user";
+import { connectToDB } from "../../../utils/database";
+import ErrorHandler from "../../../utils/errorHandler";
 
 
 // create user

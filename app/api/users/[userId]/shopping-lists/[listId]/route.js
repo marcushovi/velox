@@ -1,7 +1,7 @@
-import ShoppingList from "@models/shoppingList";
-import User from "@models/user";
-import { connectToDB } from "@utils/database";
-import ErrorHandler from "@utils/errorHandler";
+import ShoppingList from "../../../../../../models/shoppingList";
+import User from "../../../../../../models/user";
+import { connectToDB } from "../../../../../../utils/database";
+import ErrorHandler from "../../../../../../utils/errorHandler";
 
 export const GET = async (request, { params }) => {
   try {
