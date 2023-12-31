@@ -20,7 +20,7 @@ export const pathnames = {
   },
   "/app/shoppingList/[id]": {
     en: "/app/shoppingList/[id]",
-    sk: "/aplikacia/nakupnyZoznam/[id]]",
+    sk: "/aplikacia/nakupnyZoznam/[id]",
     cz: "/aplikace/nakupniSeznam/[id]",
     de: "/anmeldung/einkaufsliste/[id]",
     fr: "/application/listeDeCourses/[id]",

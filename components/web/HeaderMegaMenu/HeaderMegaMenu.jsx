@@ -1,5 +1,6 @@
 "use client";
 import AppLogo from "@components/AppLogo/AppLogo";
+import { Link } from "@navigation.js";
 import {
   Avatar,
   Box,
@@ -68,9 +69,9 @@ export function HeaderMegaMenu() {
               loading ? (
                 <Skeleton height={40} width={44} radius="md" p="md" />
               ) : (
-                <a href="/app" className={classes.link}>
+                <Link href="/app" className={classes.link}>
                   {t("menu.app")}
-                </a>
+                </Link>
               )
             ) : (
               ""
