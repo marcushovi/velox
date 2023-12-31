@@ -14,8 +14,12 @@ import {
   SimpleGrid,
   Skeleton,
   Title,
+  Text,
+  RingProgress,
+  Center,
+  rem,
 } from "@mantine/core";
-import { IconSettings } from "@tabler/icons-react";
+import { IconSettings, IconCheck } from "@tabler/icons-react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -38,6 +42,7 @@ export default function ShoppingList({ params }) {
   const [editItemOpen, setEditItemOpen] = useState(false);
   const [editListOpen, setEditListOpen] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [progress, setProgress] = useState(0);
   const t = useTranslations("app.item");
 
   useEffect(() => {
@@ -46,6 +51,13 @@ export default function ShoppingList({ params }) {
         (item) => item._id === params.id
       )[0];
       setList(listById);
+      setProgress(
+        Math.round(
+          (list?.items?.filter((item) => item?.purchased).length /
+            list?.items?.length) *
+            100
+        )
+      );
       setLoading(false);
 
       // if (listById === undefined) router.push("/app");
@@ -88,13 +100,13 @@ export default function ShoppingList({ params }) {
 
   return list !== undefined ? (
     <>
-      <SimpleGrid cols={{ base: 1, lg: 3, xl: 3 }}>
-        <Group justify="space-around">
+      <SimpleGrid cols={{ base: 1, sm: 2, xl: 2 }}>
+        <Group justify="flex-start">
           <Title order={3} size="h1">
             {list?.name}
           </Title>
-          <Divider my="md" />
-
+        </Group>
+        <Group justify="space-around">
           {session?.user.id === list?.owner ? (
             <ActionIcon
               variant="transparent"
@@ -116,21 +128,56 @@ export default function ShoppingList({ params }) {
               session={session}
             />
           )}
+          <Button size="lg" onClick={() => setEditItemOpen(true)}>
+            {t("createTask")}
+          </Button>
         </Group>
-        <Group justify="space-around">
-          <Badge variant="outline" color="blue" size="lg">
-            {t("task", { count: list?.items?.length })}
-          </Badge>
-          <Badge variant="outline" color="blue" size="lg">
-          {t("members", { count: list?.members?.length })}
-          </Badge>
-        </Group>
-
-        <Button size="lg" onClick={() => setEditItemOpen(true)}>
-        {t("createTask")}
-        </Button>
       </SimpleGrid>
       <Divider my="md" />
+      <Group justify="space-around" mb="md">
+        {progress === 100 ? (
+          <RingProgress
+            size={80}
+            thickness={8}
+            roundCaps
+            sections={[{ value: 100, color: "green" }]}
+            label={
+              <Center>
+                <ActionIcon color="green" variant="light" radius="xl" size="lg">
+                  <IconCheck style={{ width: rem(22), height: rem(22) }} />
+                </ActionIcon>
+              </Center>
+            }
+          />
+        ) : (
+          <RingProgress
+            size={80}
+            thickness={8}
+            roundCaps
+            sections={[
+              {
+                value: progress,
+                color: "blue",
+              },
+            ]}
+            label={
+              <Text c="blue" fw={700} ta="center" size="sm">
+                {progress}%
+              </Text>
+            }
+            transitionProps={{ transition: "pop", duration: 150 }}
+          />
+        )}
+
+        <Badge variant="outline" color="blue" size="lg">
+          {t("task", { count: list?.items?.length })}
+        </Badge>
+        <Badge variant="outline" color="blue" size="lg">
+          {t("members", { count: list?.members?.length })}
+        </Badge>
+      </Group>
+      <Divider my="md" />
+
       <ItemsFeed
         items={list?.items}
         archive={handleArchivedItem}
