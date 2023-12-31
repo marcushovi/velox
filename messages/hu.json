@@ -1,0 +1,142 @@
+{
+    "LocaleSwitcher": {
+      "current": "jelenlegi",
+      "locale": "{locale, select, sk {Szlovák} en {Angol} cz {Cseh} de {Német} fr {Francia} es {Spanyol} ua {Ukrán} pl {Lengyel} hu {Magyar} other {Ismeretlen}}"
+    },
+    "web": {
+      "menu": {
+        "api": "API dokumentáció",
+        "app": "Alkalmazás"
+      },
+      "title": "Egy teljesen felszerelt bevásárlólista alkalmazás",
+      "description": "Teljesen funkcionális, hozzáférhető webalkalmazások gyorsabban, mint valaha - És még sok más úton van.",
+      "signIn": "Bejelentkezés",
+      "signOut": "Kijelentkezés",
+      "app": "Kezdje az alkalmazást"
+    },
+    "app": {
+      "menu": {
+        "createList": "Lista létrehozása",
+        "active": "Aktív",
+        "archive": "Archivált",
+        "homepage": "Főoldal",
+        "signOut": "Kijelentkezés"
+      },
+      "list": {
+        "owner": "Tulajdonos",
+        "active": "Aktív",
+        "archive": "Archivált",
+        "members": "Tagok",
+        "showDetails": "Részletek",
+        "empty": "Nincs listája"
+      },
+      "item": {
+        "task": "{count, plural, =0 {# feladat} =1 {# feladat} other {# feladat}}",
+        "members": "{count, plural, =0 {# tag} =1 {# tag} other {# tag}}",
+        "createTask": "Feladat létrehozása",
+        "inProcess": {
+          "label": "Folyamatban",
+          "empty": "Nincs <guidelines>folyamatban</guidelines> lévő elem."
+        },
+        "purchased": {
+          "label": "Megvásárolt",
+          "empty": "Nincs <guidelines>megvásárolt</guidelines> elem."
+        },
+        "archived": {
+          "label": "Archivált",
+          "empty": "Nincs <guidelines>archivált</guidelines> elem."
+        },
+        "edit": "Szerkesztés",
+        "archive": "Archiválás",
+        "unarchive": "Archívumból kivétele",
+        "delete": "Törlés"
+      },
+      "modals": {
+        "item": {
+          "delete": {
+            "title": "Elem törlése",
+            "confirm": "Elem törlése",
+            "cancel": "Nem, ne törölje",
+            "message": "Biztosan törölni szeretné az elemet: <guidelines>{item}</guidelines>? Ez a művelet visszafordíthatatlan, az adatok helyreállításához lépjen kapcsolatba a támogatással."
+          },
+          "modal": {
+            "name": {
+              "label": "Név",
+              "placeholder": "Írja be az elem nevét"
+            },
+            "quantity": {
+              "label": "Mennyiség",
+              "placeholder": "Adja meg a mennyiséget"
+            },
+            "archived": "Archivált",
+            "notArchived": "Nem archivált",
+            "create": {
+              "title": "Új elem létrehozása",
+              "confirm": "Elem létrehozása"
+            },
+            "edit": {
+              "title": "Elem szerkesztése",
+              "confirm": "Változtatások mentése"
+            },
+            "cancel": "Mégse",
+            "validation": {
+              "name": "A névnek 1 és 255 karakter között kell lennie",
+              "quantity": "A mennyiség legfeljebb 255 karakter hosszú lehet"
+            }
+          }
+        },
+        "memberDelete": {
+          "title": "Kilépés a listából",
+          "confirm": "Kilépés a listából",
+          "cancel": "Nem, ne lépjen ki",
+          "message": "Biztosan ki szeretne lépni a következő listáról: <guidelines>{list}</guidelines>? Ez a művelet visszafordíthatatlan, az adatok helyreállításához lépjen kapcsolatba a támogatással."
+        },
+        "list": {
+          "delete": {
+            "title": "Lista törlése",
+            "confirm": "Lista törlése",
+            "cancel": "Nem, ne törölje",
+            "message": "Biztosan törölni szeretné a következő listát: <guidelines>{list}</guidelines>? Ez a művelet visszafordíthatatlan, az adatok helyreállításához lépjen kapcsolatba a támogatással."
+          },
+          "modal": {
+            "name": {
+              "label": "Név",
+              "placeholder": "Írja be a lista nevét"
+            },
+            "members": {
+              "label": "Tagok",
+              "placeholder": "Tagok keresése",
+              "empty": "Nincs találat..."
+            },
+            "archived": "Archivált",
+            "notArchived": "Nem archivált",
+            "create": {
+              "title": "Új bevásárlólista létrehozása",
+              "confirm": "Lista létrehozása"
+            },
+            "edit": {
+              "title": "Bevásárlólista szerkesztése",
+              "confirm": "Változtatások mentése"
+            },
+            "cancel": "Mégse",
+            "validation": {
+              "name": "A névnek 1 és 255 karakter között kell lennie"
+            }
+          }
+        }
+      },
+      "notifications": {
+        "addList": "A következő lista létrehozva: <guidelines>{list}</guidelines>.",
+        "deleteList": "A következő lista törölve: <guidelines>{list}</guidelines>.",
+        "editList": "A következő lista módosítva: <guidelines>{list}</guidelines>.",
+        "archiveList": "A következő lista {archive, select, true {archivált} other {aktív}}.",
+        "removeMember": "Kilépett a következő listából: <guidelines>{list}</guidelines>.",
+        "addItem": "Létrehozva a következő elem: <guidelines>{item}</guidelines>.",
+        "deleteItem": "Törölve a következő elem: <guidelines>{item}</guidelines>.",
+        "editItem": "Módosítva a következő elem: <guidelines>{item}</guidelines>.",
+        "archiveItem": "Az elem {archive, select, true {archivált} other {aktív}}: <guidelines>{item}</guidelines>.",
+        "purchasedItem": "Az elem {purchased, select, true {megvásárolva} other {folyamatban}}: <guidelines>{item}</guidelines>."
+      }
+    }
+  }
+  

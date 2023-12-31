@@ -1,5 +1,6 @@
 import { locales } from "@i18n.js";
 import { useLocale, useTranslations } from "next-intl";
+import { useParams } from "next/navigation";
 import { ChangeEvent, ReactNode, useTransition } from "react";
 import { useRouter, usePathname } from "@navigation.js";
 import { useState } from "react";
@@ -12,6 +13,7 @@ export function LanguageSwitcher() {
   const [opened, setOpened] = useState(false);
   const locale = useLocale();
   const router = useRouter();
+  const params = useParams();
   const [isPending, startTransition] = useTransition();
   const pathname = usePathname();
   const t = useTranslations("LocaleSwitcher");
@@ -19,7 +21,10 @@ export function LanguageSwitcher() {
   function onSelectChange(nextLocale) {
     console.log(nextLocale);
     startTransition(() => {
-      router.replace(pathname, { locale: nextLocale });
+      router.replace(
+        { pathname: pathname, params: params },
+        { locale: nextLocale }
+      );
     });
   }
 
@@ -51,6 +56,7 @@ export function LanguageSwitcher() {
       radius="md"
       width="target"
       withinPortal
+      transitionProps={{ transition: "pop", duration: 150 }}
     >
       <Menu.Target>
         <UnstyledButton
@@ -66,7 +72,7 @@ export function LanguageSwitcher() {
           <IconChevronDown size="1rem" className={classes.icon} stroke={1.5} />
         </UnstyledButton>
       </Menu.Target>
-      <Menu.Dropdown>{items}</Menu.Dropdown>
+      <Menu.Dropdown className={classes.item}>{items}</Menu.Dropdown>
     </Menu>
   );
 }

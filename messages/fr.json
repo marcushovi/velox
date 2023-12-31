@@ -1,18 +1,18 @@
 {
     "LocaleSwitcher": {
       "current": "actuel",
-      "locale": "{locale, select, sk {Slovaque} en {Anglais} cz {Tchèque} de {Allemand} fr {Français} es {Espagnol} ua {Ukrainien} other {Inconnu}}"
+      "locale": "{locale, select, sk {Slovaque} en {Anglais} cz {Tchèque} de {Allemand} fr {Français} es {Espagnol} ua {Ukrainien} pl {Polonais} hu {Hongrois} other {Inconnu}}"
     },
     "web": {
       "menu": {
         "api": "Documentation de l'API",
         "app": "Application"
       },
-      "title": "Une application de liste de courses entièrement fonctionnelle",
-      "description": "Des applications web totalement fonctionnelles et accessibles plus rapides que jamais - Et bien d'autres sont en chemin.",
+      "title": "Une application de liste de courses entièrement équipée",
+      "description": "Des applications web accessibles et entièrement fonctionnelles plus rapidement que jamais - Et bien d'autres sont en chemin.",
       "signIn": "Se connecter",
       "signOut": "Se déconnecter",
-      "app": "Commencer avec l'application"
+      "app": "Commencez avec l'application"
     },
     "app": {
       "menu": {
@@ -27,7 +27,7 @@
         "active": "Actif",
         "archive": "Archivé",
         "members": "Membres",
-        "showDetails": "Détails",
+        "showDetails": "Afficher",
         "empty": "Vous n'avez aucune liste"
       },
       "item": {
@@ -36,15 +36,15 @@
         "createTask": "Créer une tâche",
         "inProcess": {
           "label": "En cours",
-          "empty": "Vous n'avez aucun élément <guidelines> en cours </guidelines>."
+          "empty": "Vous n'avez aucun élément en <guidelines>cours</guidelines>."
         },
         "purchased": {
-          "label": "Acheté",
-          "empty": "Vous n'avez aucun élément <guidelines> acheté </guidelines>."
+          "label": "Achats effectués",
+          "empty": "Vous n'avez aucun élément <guidelines>acheté</guidelines>."
         },
         "archived": {
           "label": "Archivé",
-          "empty": "Vous n'avez aucun élément <guidelines> archivé </guidelines>."
+          "empty": "Vous n'avez aucun élément <guidelines>archivé</guidelines>."
         },
         "edit": "Éditer",
         "archive": "Archiver",
@@ -57,7 +57,7 @@
             "title": "Supprimer votre élément",
             "confirm": "Supprimer l'élément",
             "cancel": "Non, ne pas supprimer",
-            "message": "Êtes-vous sûr de vouloir supprimer votre élément <guidelines>{item}</guidelines>? Cette action est destructive et vous devrez contacter le support pour restaurer vos données."
+            "message": "Êtes-vous sûr de vouloir supprimer votre élément <guidelines>{item}</guidelines> ? Cette action est destructrice et vous devrez contacter le support pour restaurer vos données."
           },
           "modal": {
             "name": {
@@ -89,14 +89,14 @@
           "title": "Quitter votre liste",
           "confirm": "Quitter la liste",
           "cancel": "Non, ne pas quitter",
-          "message": "Êtes-vous sûr de vouloir quitter votre liste <guidelines>{list}</guidelines>? Cette action est destructive et vous devrez contacter le support pour restaurer vos données."
+          "message": "Êtes-vous sûr de vouloir quitter votre liste <guidelines>{list}</guidelines> ? Cette action est destructrice et vous devrez contacter le support pour restaurer vos données."
         },
         "list": {
           "delete": {
             "title": "Supprimer votre liste",
             "confirm": "Supprimer la liste",
             "cancel": "Non, ne pas supprimer",
-            "message": "Êtes-vous sûr de vouloir supprimer votre liste <guidelines>{list}</guidelines>? Cette action est destructive et vous devrez contacter le support pour restaurer vos données."
+            "message": "Êtes-vous sûr de vouloir supprimer votre liste <guidelines>{list}</guidelines> ? Cette action est destructrice et vous devrez contacter le support pour restaurer vos données."
           },
           "modal": {
             "name": {
@@ -124,6 +124,18 @@
             }
           }
         }
+      },
+      "notifications": {
+        "addList": "La liste <guidelines>{list}</guidelines> a été créée.",
+        "deleteList": "La liste <guidelines>{list}</guidelines> a été supprimée.",
+        "editList": "La liste <guidelines>{list}</guidelines> a été modifiée.",
+        "archiveList": "La liste <guidelines>{list}</guidelines> est {archive, select, true {archivée} other {active}}.",
+        "removeMember": "Vous quittez la liste <guidelines>{list}</guidelines>.",
+        "addItem": "L'élément <guidelines>{item}</guidelines> a été créé.",
+        "deleteItem": "L'élément <guidelines>{item}</guidelines> a été supprimé.",
+        "editItem": "L'élément <guidelines>{item}</guidelines> a été modifié.",
+        "archiveItem": "L'élément <guidelines>{item}</guidelines> est {archive, select, true {archivé} other {actif}}.",
+        "purchasedItem": "L'élément <guidelines>{item}</guidelines> {purchased, select, true {a été acheté} other {est en cours}}."
       }
     }
   }

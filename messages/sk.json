@@ -1,14 +1,14 @@
 {
   "LocaleSwitcher": {
     "current": "aktuálny",
-    "locale": "{locale, select, sk {Slovensky} en {Anglicky} cz {Česky} de {Nemecky} fr {Francúzsky} es {Španielsky} ua {Ukrajinský} other {Neznámy}}"
+    "locale": "{locale, select, sk {Slovenský} en {Anglický} cz {Český} de {Nemecký} fr {Francúzsky} es {Španielsky} ua {Ukrajinský} pl {Poľský} hu {Maďarský} other {Neznámy}}"
   },
   "web": {
     "menu": {
       "api": "API dokumentácia",
       "app": "Aplikácia"
     },
-    "title": "Plne vybavená aplikácia zoznamu nákupov",
+    "title": "Plne vybavená aplikácia Zoznam nakupov",
     "description": "Plne funkčné prístupné webové aplikácie rýchlejšie ako kedykoľvek predtým - A mnoho ďalšieho je na ceste.",
     "signIn": "Prihlásiť sa",
     "signOut": "Odhlásiť sa",
@@ -18,46 +18,46 @@
     "menu": {
       "createList": "Vytvoriť zoznam",
       "active": "Aktívne",
-      "archive": "Archivované",
+      "archive": "Archívované",
       "homepage": "Domovská stránka",
       "signOut": "Odhlásiť sa"
     },
     "list": {
       "owner": "Vlastník",
       "active": "Aktívne",
-      "archive": "Archivované",
+      "archive": "Archívované",
       "members": "Členovia",
       "showDetails": "Zobraziť",
       "empty": "Nemáte žiadne zoznamy"
     },
     "item": {
-      "task": "{count, plural, =0 {# úloh} =1 {# úloha} other {# úloh}}",
-      "members": "{count, plural, =0 {# členov} =1 {# člen} other {# členov}}",
+      "task": "{count, plural, =0 {# úloh} =1 {# úloha} few {# úlohy} other {# úloh}}",
+      "members": "{count, plural, =0 {# členov} =1 {# člen} few {# členovia} other {# členov}}",
       "createTask": "Vytvoriť úlohu",
       "inProcess": {
         "label": "V procese",
-        "empty": "Nemáte žiadne položky <guidelines> v procese </guidelines>."
+        "empty": "Nemáte žiadne položky v <guidelines>procese</guidelines>."
       },
       "purchased": {
-        "label": "Kúpené",
-        "empty": "Nemáte žiadne <guidelines> kúpené </guidelines> položky."
+        "label": "Zakúpené",
+        "empty": "Nemáte žiadne <guidelines>zakúpené</guidelines> položky."
       },
       "archived": {
-        "label": "Archivované",
-        "empty": "Nemáte žiadne <guidelines> archivované </guidelines> položky."
+        "label": "Archívované",
+        "empty": "Nemáte žiadne <guidelines>archívované</guidelines> položky."
       },
       "edit": "Upraviť",
       "archive": "Archivovať",
-      "unarchive": "Zrušiť archiváciu",
-      "delete": "Vymazať"
+      "unarchive": "Obnoviť z archívu",
+      "delete": "Zmazať"
     },
     "modals": {
       "item": {
         "delete": {
-          "title": "Vymazať vašu položku",
-          "confirm": "Vymazať položku",
-          "cancel": "Nie, nevymazávať",
-          "message": "Ste si istí, že chcete vymazať vašu položku <guidelines>{item}</guidelines>? Táto akcia je deštruktívna a budete musieť kontaktovať podporu, aby ste obnovili svoje dáta."
+          "title": "Zmazať vašu položku",
+          "confirm": "Zmazať položku",
+          "cancel": "Nie, nechcem ju zmazať",
+          "message": "Ste si istí, že chcete zmazať vašu položku <guidelines>{item}</guidelines>? Táto akcia je deštruktívna a budete musieť kontaktovať podporu, aby ste obnovili svoje údaje."
         },
         "modal": {
           "name": {
@@ -68,7 +68,7 @@
             "label": "Množstvo",
             "placeholder": "Zadajte množstvo"
           },
-          "archived": "Archivované",
+          "archived": "Archívované",
           "notArchived": "Nearchivované",
           "create": {
             "title": "Vytvoriť novú položku",
@@ -81,22 +81,22 @@
           "cancel": "Zrušiť",
           "validation": {
             "name": "Názov musí byť dlhý 1-255 znakov",
-            "quantity": "Množstvo musí byť najviac 255 znakov dlhé"
+            "quantity": "Názov musí mať maximálne 255 znakov"
           }
         }
       },
       "memberDelete": {
         "title": "Opustiť váš zoznam",
         "confirm": "Opustiť zoznam",
-        "cancel": "Nie, neopúšťajte ho",
-        "message": "Ste si istí, že chcete opustiť váš zoznam <guidelines>{list}</guidelines>? Táto akcia je deštruktívna a budete musieť kontaktovať podporu, aby ste obnovili svoje dáta."
+        "cancel": "Nie, nechcem ho opustiť",
+        "message": "Ste si istí, že chcete opustiť váš zoznam <guidelines>{list}</guidelines>? Táto akcia je deštruktívna a budete musieť kontaktovať podporu, aby ste obnovili svoje údaje."
       },
       "list": {
         "delete": {
-          "title": "Vymazať váš zoznam",
-          "confirm": "Vymazať zoznam",
-          "cancel": "Nie, nevymazávať",
-          "message": "Ste si istí, že chcete vymazať váš zoznam <guidelines>{list}</guidelines>? Táto akcia je deštruktívna a budete musieť kontaktovať podporu, aby ste obnovili svoje dáta."
+          "title": "Zmazať váš zoznam",
+          "confirm": "Zmazať zoznam",
+          "cancel": "Nie, nechcem ho zmazať",
+          "message": "Ste si istí, že chcete zmazať váš zoznam <guidelines>{list}</guidelines>? Táto akcia je deštruktívna a budete musieť kontaktovať podporu, aby ste obnovili svoje údaje."
         },
         "modal": {
           "name": {
@@ -108,14 +108,14 @@
             "placeholder": "Hľadať členov",
             "empty": "Nič sa nenašlo..."
           },
-          "archived": "Archivované",
+          "archived": "Archívované",
           "notArchived": "Nearchivované",
           "create": {
-            "title": "Vytvoriť nový zoznam nákupov",
+            "title": "Vytvoriť nový nákupný zoznam",
             "confirm": "Vytvoriť zoznam"
           },
           "edit": {
-            "title": "Upraviť zoznam nákupov",
+            "title": "Upraviť nákupný zoznam",
             "confirm": "Uložiť zmeny"
           },
           "cancel": "Zrušiť",
@@ -124,6 +124,18 @@
           }
         }
       }
+    },
+    "notifications": {
+      "addList": "Zoznam <guidelines>{list}</guidelines> bol vytvorený.",
+      "deleteList": "Zoznam <guidelines>{list}</guidelines> bol zmazaný.",
+      "editList": "Zoznam <guidelines>{list}</guidelines> bol upravený.",
+      "archiveList": "Zoznam <guidelines>{list}</guidelines> je {archive, select, true {archivovaný} other {aktívny}}.",
+      "removeMember": "Odišli ste zoznamom <guidelines>{list}</guidelines>.",
+      "addItem": "Položka <guidelines>{item}</guidelines> bola vytvorená.",
+      "deleteItem": "Položka <guidelines>{item}</guidelines> bola zmazaná.",
+      "editItem": "Položka <guidelines>{item}</guidelines> bola upravená.",
+      "archiveItem": "Položka <guidelines>{item}</guidelines> je {archive, select, true {archivovaná} other {aktívna}}.",
+      "purchasedItem": "Položka <guidelines>{item}</guidelines> {purchased, select, true {bola zakúpená} other {je v procese}}."
     }
   }
 }

@@ -1,9 +1,17 @@
 "use client";
 
-import { Badge, Button, Group, ScrollArea, Skeleton } from "@mantine/core";
-import {Link} from '@navigation.js';
+import {
+  Badge,
+  Button,
+  Group,
+  ScrollArea,
+  Skeleton,
+  Divider,
+} from "@mantine/core";
+import { Link } from "@navigation.js";
 import { useEffect, useState } from "react";
-
+import { LanguageSwitcher } from "@components/LanguageSwitcher/LanguageSwitcher";
+import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle";
 import { useShoppingList } from "@components/app/ShoppingListProvider";
 import UserSettings from "@components/app/UserSettings/UserSettings";
 import ShoppingListModal from "@components/app/modals/ShoppingListModal";
@@ -88,6 +96,12 @@ const SideMenu = ({ closeMenu }) => {
           </Button>
         </Link>
       </ScrollArea>
+
+
+      <Group justify="center" gap="xl" grow py="md">
+        <DarkModeToggle />
+        <LanguageSwitcher />
+      </Group>
 
       <div className={classes.footer}>
         <UserSettings />
