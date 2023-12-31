@@ -8,7 +8,15 @@ import {
   IconTrash,
 } from "@tabler/icons-react";
 
-import { ActionIcon, Badge, Button, Card, Group, Text } from "@mantine/core";
+import {
+  ActionIcon,
+  Badge,
+  Button,
+  Card,
+  Group,
+  Text,
+  lighten,
+} from "@mantine/core";
 import classes from "./BadgeCard.module.css";
 import { useTranslations } from "next-intl";
 
@@ -32,9 +40,7 @@ const BadgeCard = ({
           </Badge>
         );
       } else if (index === 5) {
-        return (
-            "..."
-        );
+        return "...";
       }
     });
   }
@@ -43,17 +49,24 @@ const BadgeCard = ({
   return (
     <Card withBorder radius="md" p="md">
       <Card.Section className={classes.section} mt="md">
-        <Group justify="apart">
-          <Text fz="lg" fw={500}>
-            {list.name}
-          </Text>
-          <Badge
-            size="sm"
-            variant={list.archived ? "light" : ""}
-            color={list.archived ? "gray" : "green"}
-          >
-            {list.archived ? t("archive") : t("active")}
-          </Badge>
+        <Group justify="space-between">
+          <Group justify="flex-start">
+            <Text fz="lg" fw={500}>
+              {list.name}
+            </Text>
+            <Badge
+              size="sm"
+              variant={list.archived ? "light" : ""}
+              color={list.archived ? "gray" : "green"}
+            >
+              {list.archived ? t("archive") : t("active")}
+            </Badge>
+          </Group>
+          <Group justify="center" px="md">
+            <Badge size="lg" color="blue">
+              {list.items.length}
+            </Badge>
+          </Group>
         </Group>
       </Card.Section>
 
