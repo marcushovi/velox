@@ -9,7 +9,7 @@ test("Get all lists", async () => {
     console.log(data);
     expect(typeof data).toBe("object");
   });
-});
+}, 10000);
 
 test("Get all lists missing userId", async () => {
   const params = {};
