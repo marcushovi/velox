@@ -22,7 +22,7 @@ test("Delete list", async () => {
   return POST(request, { params: params }).then(async (data) => {
     data = await data.json();
     const paramsDelete = {
-      userId: "6591af48bf1ffc0ca2334e66",
+      userId: data.owner,
       listId: data._id,
     };
 
@@ -43,7 +43,7 @@ test("Delete list", async () => {
 test("Delete list missing userId", async () => {
   const request = {
     json: () => ({
-      name: "TEST",
+      name: "TEST det",
       members: ["655d3ae9c60794183a98ea9a"],
     }),
   };
@@ -67,6 +67,11 @@ test("Delete list missing userId", async () => {
       res = await res.json();
       console.log(res);
       expect(res).toMatchObject(desiredResponse);
+
+      await DELETE({}, { params: { userId: params.userId, listId: paramsDelete.listId } }).then(async (data) => {
+        data = await data.json();
+        console.log(data);
+      });
     });
   });
 });

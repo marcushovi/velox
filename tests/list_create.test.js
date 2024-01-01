@@ -13,6 +13,7 @@ test("Create list", async () => {
   };
   return POST(request, { params: params }).then(async (data) => {
     data = await data.json();
+
     console.log(data);
     expect(data).toHaveProperty("sys.rev", 0);
     expect(data).toHaveProperty("_id");
@@ -22,7 +23,11 @@ test("Create list", async () => {
     expect(data).toHaveProperty("members");
     expect(data).toHaveProperty("items", []);
 
-    DELETE({}, { params: { userId: params.userId, listId: data._id } });
+    await DELETE({}, { params: { userId: data.owner, listId: data._id } }).then(async (data) => {
+      data = await data.json();
+      console.log(data);
+    });;
+
   });
 });
 
@@ -47,7 +52,6 @@ test("Create list missing params", async () => {
     console.log(data);
     expect(data).toMatchObject(desiredResponse);
 
-    DELETE({}, { params: { userId: params.userId, listId: data._id } });
   });
 });
 
@@ -85,6 +89,5 @@ test("Create list bad request body", async () => {
     console.log(data);
     expect(data).toMatchObject(desiredResponse);
 
-    DELETE({}, { params: { userId: params.userId, listId: data._id } });
   });
 });

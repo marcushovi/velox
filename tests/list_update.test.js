@@ -8,7 +8,7 @@ test("Update list", async () => {
 
   const request = {
     json: () => ({
-      name: "TEST EDIT",
+      name: "TEST UPDATE CHECKED",
       members: [],
     }),
   };
@@ -27,7 +27,7 @@ test("Update list", async () => {
 
     const requestBack = {
       json: () => ({
-        name: "TEST",
+        name: "TEST UPDATE",
         members: ["655d3ae9c60794183a98ea9a"],
       }),
     };
