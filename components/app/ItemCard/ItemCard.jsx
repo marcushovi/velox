@@ -75,7 +75,11 @@ const ItemCard = ({
                 arrowPosition="center"
               >
                 <Menu.Target>
-                  <ActionIcon variant="transparent" color={item.archived ? "teal" : "gray"} withBorder size="lg">
+                  <ActionIcon
+                    variant="transparent"
+                    color={item.archived ? "teal" : "gray"}
+                    size="lg"
+                  >
                     <IconDotsVertical style={{ width: "90%", height: "90%" }} />
                   </ActionIcon>
                 </Menu.Target>
