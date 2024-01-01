@@ -8,7 +8,6 @@ test("Get list", async () => {
   const request = {};
   return GET_ONE(request, { params: params }).then(async (data) => {
     data = await data.json();
-    console.log(data);
     expect(typeof data).toBe("object");
   });
 });
@@ -26,7 +25,6 @@ test("Get list missing userId", async () => {
   };
   return GET_ONE(request, { params: params }).then(async (data) => {
     data = await data.json();
-    console.log(data);
     expect(data).toMatchObject(desiredResponse);
   });
 });
