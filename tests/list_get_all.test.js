@@ -6,7 +6,6 @@ test("Get all lists", async () => {
   };
   return GET_ALL({}, { params: params }).then(async (data) => {
     data = await data.json();
-    console.log(data);
     expect(typeof data).toBe("object");
   });
 }, 10000);
@@ -21,7 +20,6 @@ test("Get all lists missing userId", async () => {
   };
   return GET_ALL({}, { params: params }).then(async (data) => {
     data = await data.json();
-    console.log(data);
     expect(data).toMatchObject(desiredResponse);
   });
 });

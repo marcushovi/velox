@@ -28,7 +28,6 @@ test("Delete list", async () => {
 
     return DELETE({}, { params: paramsDelete }).then(async (data) => {
       data = await data.json();
-      console.log(data);
       expect(data).toHaveProperty("sys");
       expect(data).toHaveProperty("_id");
       expect(data).toHaveProperty("owner");
@@ -65,12 +64,13 @@ test("Delete list missing userId", async () => {
 
     return DELETE({}, { params: paramsDelete }).then(async (res) => {
       res = await res.json();
-      console.log(res);
       expect(res).toMatchObject(desiredResponse);
 
-      await DELETE({}, { params: { userId: params.userId, listId: paramsDelete.listId } }).then(async (data) => {
+      await DELETE(
+        {},
+        { params: { userId: params.userId, listId: paramsDelete.listId } }
+      ).then(async (data) => {
         data = await data.json();
-        console.log(data);
       });
     });
   });

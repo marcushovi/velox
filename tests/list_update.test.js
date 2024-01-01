@@ -15,7 +15,6 @@ test("Update list", async () => {
 
   return PUT(request, { params: params }).then(async (data) => {
     data = await data.json();
-    console.log(data);
     expect(data).toHaveProperty("sys.rev");
     expect(data.sys.rev).toBeGreaterThan(0);
     expect(data).toHaveProperty("_id");
@@ -55,7 +54,6 @@ test("Update list missing userId", async () => {
 
   return PUT(request, { params: params }).then(async (data) => {
     data = await data.json();
-    console.log(data);
     expect(data).toMatchObject(desiredResponse);
 
     const requestBack = {
