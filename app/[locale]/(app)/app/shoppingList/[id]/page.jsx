@@ -42,7 +42,7 @@ export default function ShoppingList({ params }) {
   const [editItemOpen, setEditItemOpen] = useState(false);
   const [editListOpen, setEditListOpen] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [progress, setProgress] = useState(0);
+  const [progress, setProgress] = useState();
   const t = useTranslations("app.item");
 
   useEffect(() => {
@@ -51,20 +51,26 @@ export default function ShoppingList({ params }) {
         (item) => item._id === params.id
       )[0];
       setList(listById);
-      setProgress(
-        Math.round(
-          (list?.items?.filter((item) => item?.purchased).length /
-            list?.items?.length) *
-            100
-        )
-      );
+
       setLoading(false);
 
       // if (listById === undefined) router.push("/app");
     };
 
     if (params.id && shoppingLists !== null) getList();
-  }, [params.id, shoppingLists, session, list]);
+  }, [params.id, shoppingLists, session, list, loading]);
+
+  useEffect(() => {
+    let computedProgress = Math.round(
+      (list?.items?.filter((item) => item.purchased).length /
+        list?.items?.length) *
+        100
+    );
+    if (isNaN(computedProgress)) setProgress(0);
+    else setProgress(computedProgress);
+
+    setLoading(false);
+  }, [list]);
 
   const handleCreateItem = (item) => {
     createItem(params.id, item);
@@ -165,7 +171,6 @@ export default function ShoppingList({ params }) {
                 {progress}%
               </Text>
             }
-            transitionProps={{ transition: "pop", duration: 150 }}
           />
         )}
 
