@@ -41,7 +41,7 @@ export function HeroContentLeft() {
           <Button
             variant="gradient"
             size="xl"
-            radius="xl"
+            radius="lg"
             className={classes.control}
             onClick={signIn}
           >

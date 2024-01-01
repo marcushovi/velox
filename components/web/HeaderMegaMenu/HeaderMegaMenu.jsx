@@ -90,19 +90,23 @@ export function HeaderMegaMenu() {
                   onClose={() => setUserMenuOpened(false)}
                   onOpen={() => setUserMenuOpened(true)}
                   withinPortal
+                  visibleFrom="md"
                 >
                   <Menu.Target>
-                    <UnstyledButton
+                    <Button
                       className={cx(classes.user, {
                         [classes.userActive]: userMenuOpened,
                       })}
+                      size="md"
+                      radius="md"
+                      color="gray"
                     >
                       <Group gap={7}>
                         <Avatar
                           src={session?.user.image}
                           alt={session?.user.name}
                           radius="xl"
-                          size={20}
+                          size={30}
                         />
                         <Text fw={500} size="sm" lh={1} mr={3}>
                           {session?.user.name}
@@ -112,7 +116,7 @@ export function HeaderMegaMenu() {
                           stroke={1.5}
                         />
                       </Group>
-                    </UnstyledButton>
+                    </Button>
                   </Menu.Target>
                   <Menu.Dropdown>
                     <Menu.Item>{session?.user.email}</Menu.Item>
@@ -135,6 +139,8 @@ export function HeaderMegaMenu() {
                   {providers &&
                     Object.values(providers).map((provider) => (
                       <Button
+                        size="md"
+                        radius="md"
                         type="button"
                         key={provider.name}
                         onClick={() => {
