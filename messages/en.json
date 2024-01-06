@@ -28,7 +28,15 @@
       "archive": "Archived",
       "members": "Members",
       "showDetails": "Show Details",
-      "empty": "You do not have any lists"
+      "empty": "You do not have any lists",
+      "tooltips": {
+        "numberTasks": "Number of tasks",
+        "edit": "Edit",
+        "archive": "Archive",
+        "activate": "Activate",
+        "delete": "Delete",
+        "leaveList": "Leave list"
+      }
     },
     "item": {
       "task": "{count, plural, =0 {# tasks} =1 {# task} other {# tasks}}",

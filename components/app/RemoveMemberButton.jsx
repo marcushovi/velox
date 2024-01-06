@@ -1,14 +1,17 @@
 import { ActionIcon, Text, Mark } from "@mantine/core";
 import { IconDoorExit } from "@tabler/icons-react";
 import { useRouter } from "@navigation.js";
+import { forwardRef } from "react";
 import { modals } from "@mantine/modals";
 import { useTranslations } from "next-intl";
 
-
-const RemoveMemberButton = ({ action, list, session }) => {
+const RemoveMemberButton = forwardRef(function RemoveMemberButton({
+  action,
+  list,
+  session,
+}, ref) {
   const router = useRouter();
   const t = useTranslations("app.modals.memberDelete");
-
 
   const handleAction = () => {
     modals.openConfirmModal({
@@ -50,10 +53,11 @@ const RemoveMemberButton = ({ action, list, session }) => {
       color="red"
       aria-label="Delete button"
       onClick={handleAction}
+      ref={ref}
     >
       <IconDoorExit />
     </ActionIcon>
   );
-};
+});
 
 export default RemoveMemberButton;

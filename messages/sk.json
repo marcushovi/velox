@@ -28,7 +28,15 @@
       "archive": "Archívované",
       "members": "Členovia",
       "showDetails": "Zobraziť",
-      "empty": "Nemáte žiadne zoznamy"
+      "empty": "Nemáte žiadne zoznamy",
+      "tooltips": {
+        "numberTasks": "Počet úloh",
+        "edit": "Upraviť",
+        "archive": "Archivovať",
+        "activate": "Aktivovať",
+        "delete": "Vymazať",
+        "leaveList": "Opustiť zoznam"
+      }
     },
     "item": {
       "task": "{count, plural, =0 {# úloh} =1 {# úloha} few {# úlohy} other {# úloh}}",

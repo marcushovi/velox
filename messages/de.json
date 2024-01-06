@@ -1,142 +1,149 @@
 {
-    "LocaleSwitcher": {
-      "current": "aktuell",
-      "locale": "{locale, select, sk {Slowakisch} en {Englisch} cz {Tschechisch} de {Deutsch} fr {Französisch} es {Spanisch} ua {Ukrainisch} pl {Polnisch} hu {Ungarisch} other {Unbekannt}}"
+  "LocaleSwitcher": {
+    "current": "aktuell",
+    "locale": "{locale, select, sk {Slowakisch} en {Englisch} cz {Tschechisch} de {Deutsch} fr {Französisch} es {Spanisch} ua {Ukrainisch} pl {Polnisch} hu {Ungarisch} other {Unbekannt}}"
+  },
+  "web": {
+    "menu": {
+      "api": "API-Dokumentation",
+      "app": "Anwendung"
     },
-    "web": {
-      "menu": {
-        "api": "API-Dokumentation",
-        "app": "Anwendung"
-      },
-      "title": "Eine voll ausgestattete Einkaufslisten-App",
-      "description": "Voll funktionsfähige und zugängliche Webanwendungen schneller als je zuvor – Und viele weitere sind auf dem Weg.",
-      "signIn": "Anmelden",
-      "signOut": "Abmelden",
-      "app": "Starte mit der App"
+    "title": "Eine voll ausgestattete Einkaufslisten-App",
+    "description": "Voll funktionsfähige und zugängliche Webanwendungen schneller als je zuvor – Und viele weitere sind auf dem Weg.",
+    "signIn": "Anmelden",
+    "signOut": "Abmelden",
+    "app": "Starte mit der App"
+  },
+  "app": {
+    "menu": {
+      "createList": "Liste erstellen",
+      "active": "Aktiv",
+      "archive": "Archiviert",
+      "homepage": "Startseite",
+      "signOut": "Abmelden"
     },
-    "app": {
-      "menu": {
-        "createList": "Liste erstellen",
-        "active": "Aktiv",
-        "archive": "Archiviert",
-        "homepage": "Startseite",
-        "signOut": "Abmelden"
-      },
-      "list": {
-        "owner": "Besitzer",
-        "active": "Aktiv",
-        "archive": "Archiviert",
-        "members": "Mitglieder",
-        "showDetails": "Anzeigen",
-        "empty": "Du hast keine Listen"
-      },
-      "item": {
-        "task": "{count, plural, =0 {# Aufgaben} =1 {# Aufgabe} other {# Aufgaben}}",
-        "members": "{count, plural, =0 {# Mitglieder} =1 {# Mitglied} other {# Mitglieder}}",
-        "createTask": "Aufgabe erstellen",
-        "inProcess": {
-          "label": "In Bearbeitung",
-          "empty": "Du hast keine Elemente in <guidelines>Bearbeitung</guidelines>."
-        },
-        "purchased": {
-          "label": "Gekauft",
-          "empty": "Du hast keine <guidelines>gekauften</guidelines> Elemente."
-        },
-        "archived": {
-          "label": "Archiviert",
-          "empty": "Du hast keine <guidelines>archivierten</guidelines> Elemente."
-        },
+    "list": {
+      "owner": "Besitzer",
+      "active": "Aktiv",
+      "archive": "Archiviert",
+      "members": "Mitglieder",
+      "showDetails": "Anzeigen",
+      "empty": "Du hast keine Listen",
+      "tooltips": {
+        "numberTasks": "Anzahl der Aufgaben",
         "edit": "Bearbeiten",
         "archive": "Archivieren",
-        "unarchive": "Archivierung aufheben",
-        "delete": "Löschen"
+        "activate": "Aktivieren",
+        "delete": "Löschen",
+        "leaveList": "Liste verlassen"
+      }
+    },
+    "item": {
+      "task": "{count, plural, =0 {# Aufgaben} =1 {# Aufgabe} other {# Aufgaben}}",
+      "members": "{count, plural, =0 {# Mitglieder} =1 {# Mitglied} other {# Mitglieder}}",
+      "createTask": "Aufgabe erstellen",
+      "inProcess": {
+        "label": "In Bearbeitung",
+        "empty": "Du hast keine Elemente in <guidelines>Bearbeitung</guidelines>."
       },
-      "modals": {
-        "item": {
-          "delete": {
-            "title": "Element löschen",
-            "confirm": "Element löschen",
-            "cancel": "Nein, nicht löschen",
-            "message": "Bist du sicher, dass du dein Element <guidelines>{item}</guidelines> löschen möchtest? Diese Aktion ist endgültig und du musst den Support kontaktieren, um deine Daten wiederherzustellen."
-          },
-          "modal": {
-            "name": {
-              "label": "Name",
-              "placeholder": "Elementnamen eingeben"
-            },
-            "quantity": {
-              "label": "Menge",
-              "placeholder": "Menge eingeben"
-            },
-            "archived": "Archiviert",
-            "notArchived": "Nicht archiviert",
-            "create": {
-              "title": "Neues Element erstellen",
-              "confirm": "Element erstellen"
-            },
-            "edit": {
-              "title": "Element bearbeiten",
-              "confirm": "Änderungen speichern"
-            },
-            "cancel": "Abbrechen",
-            "validation": {
-              "name": "Name muss 1-255 Zeichen lang sein",
-              "quantity": "Menge darf maximal 255 Zeichen lang sein"
-            }
-          }
+      "purchased": {
+        "label": "Gekauft",
+        "empty": "Du hast keine <guidelines>gekauften</guidelines> Elemente."
+      },
+      "archived": {
+        "label": "Archiviert",
+        "empty": "Du hast keine <guidelines>archivierten</guidelines> Elemente."
+      },
+      "edit": "Bearbeiten",
+      "archive": "Archivieren",
+      "unarchive": "Archivierung aufheben",
+      "delete": "Löschen"
+    },
+    "modals": {
+      "item": {
+        "delete": {
+          "title": "Element löschen",
+          "confirm": "Element löschen",
+          "cancel": "Nein, nicht löschen",
+          "message": "Bist du sicher, dass du dein Element <guidelines>{item}</guidelines> löschen möchtest? Diese Aktion ist endgültig und du musst den Support kontaktieren, um deine Daten wiederherzustellen."
         },
-        "memberDelete": {
-          "title": "Liste verlassen",
-          "confirm": "Liste verlassen",
-          "cancel": "Nein, nicht verlassen",
-          "message": "Bist du sicher, dass du deine Liste <guidelines>{list}</guidelines> verlassen möchtest? Diese Aktion ist endgültig und du musst den Support kontaktieren, um deine Daten wiederherzustellen."
-        },
-        "list": {
-          "delete": {
-            "title": "Liste löschen",
-            "confirm": "Liste löschen",
-            "cancel": "Nein, nicht löschen",
-            "message": "Bist du sicher, dass du deine Liste <guidelines>{list}</guidelines> löschen möchtest? Diese Aktion ist endgültig und du musst den Support kontaktieren, um deine Daten wiederherzustellen."
+        "modal": {
+          "name": {
+            "label": "Name",
+            "placeholder": "Elementnamen eingeben"
           },
-          "modal": {
-            "name": {
-              "label": "Name",
-              "placeholder": "Listenname eingeben"
-            },
-            "members": {
-              "label": "Mitglieder",
-              "placeholder": "Mitglieder suchen",
-              "empty": "Nichts gefunden..."
-            },
-            "archived": "Archiviert",
-            "notArchived": "Nicht archiviert",
-            "create": {
-              "title": "Neue Einkaufsliste erstellen",
-              "confirm": "Liste erstellen"
-            },
-            "edit": {
-              "title": "Einkaufsliste bearbeiten",
-              "confirm": "Änderungen speichern"
-            },
-            "cancel": "Abbrechen",
-            "validation": {
-              "name": "Name muss 1-255 Zeichen lang sein"
-            }
+          "quantity": {
+            "label": "Menge",
+            "placeholder": "Menge eingeben"
+          },
+          "archived": "Archiviert",
+          "notArchived": "Nicht archiviert",
+          "create": {
+            "title": "Neues Element erstellen",
+            "confirm": "Element erstellen"
+          },
+          "edit": {
+            "title": "Element bearbeiten",
+            "confirm": "Änderungen speichern"
+          },
+          "cancel": "Abbrechen",
+          "validation": {
+            "name": "Name muss 1-255 Zeichen lang sein",
+            "quantity": "Menge darf maximal 255 Zeichen lang sein"
           }
         }
       },
-      "notifications": {
-        "addList": "Liste <guidelines>{list}</guidelines> wurde erstellt.",
-        "deleteList": "Liste <guidelines>{list}</guidelines> wurde gelöscht.",
-        "editList": "Liste <guidelines>{list}</guidelines> wurde bearbeitet.",
-        "archiveList": "Liste <guidelines>{list}</guidelines> ist {archive, select, true {archiviert} other {aktiv}}.",
-        "removeMember": "Du verlässt die Liste <guidelines>{list}</guidelines>.",
-        "addItem": "Element <guidelines>{item}</guidelines> wurde erstellt.",
-        "deleteItem": "Element <guidelines>{item}</guidelines> wurde gelöscht.",
-        "editItem": "Element <guidelines>{item}</guidelines> wurde bearbeitet.",
-        "archiveItem": "Element <guidelines>{item}</guidelines> ist {archive, select, true {archiviert} other {aktiv}}.",
-        "purchasedItem": "Element <guidelines>{item}</guidelines> {purchased, select, true {wurde gekauft} other {ist in Bearbeitung}}."
+      "memberDelete": {
+        "title": "Liste verlassen",
+        "confirm": "Liste verlassen",
+        "cancel": "Nein, nicht verlassen",
+        "message": "Bist du sicher, dass du deine Liste <guidelines>{list}</guidelines> verlassen möchtest? Diese Aktion ist endgültig und du musst den Support kontaktieren, um deine Daten wiederherzustellen."
+      },
+      "list": {
+        "delete": {
+          "title": "Liste löschen",
+          "confirm": "Liste löschen",
+          "cancel": "Nein, nicht löschen",
+          "message": "Bist du sicher, dass du deine Liste <guidelines>{list}</guidelines> löschen möchtest? Diese Aktion ist endgültig und du musst den Support kontaktieren, um deine Daten wiederherzustellen."
+        },
+        "modal": {
+          "name": {
+            "label": "Name",
+            "placeholder": "Listenname eingeben"
+          },
+          "members": {
+            "label": "Mitglieder",
+            "placeholder": "Mitglieder suchen",
+            "empty": "Nichts gefunden..."
+          },
+          "archived": "Archiviert",
+          "notArchived": "Nicht archiviert",
+          "create": {
+            "title": "Neue Einkaufsliste erstellen",
+            "confirm": "Liste erstellen"
+          },
+          "edit": {
+            "title": "Einkaufsliste bearbeiten",
+            "confirm": "Änderungen speichern"
+          },
+          "cancel": "Abbrechen",
+          "validation": {
+            "name": "Name muss 1-255 Zeichen lang sein"
+          }
+        }
       }
+    },
+    "notifications": {
+      "addList": "Liste <guidelines>{list}</guidelines> wurde erstellt.",
+      "deleteList": "Liste <guidelines>{list}</guidelines> wurde gelöscht.",
+      "editList": "Liste <guidelines>{list}</guidelines> wurde bearbeitet.",
+      "archiveList": "Liste <guidelines>{list}</guidelines> ist {archive, select, true {archiviert} other {aktiv}}.",
+      "removeMember": "Du verlässt die Liste <guidelines>{list}</guidelines>.",
+      "addItem": "Element <guidelines>{item}</guidelines> wurde erstellt.",
+      "deleteItem": "Element <guidelines>{item}</guidelines> wurde gelöscht.",
+      "editItem": "Element <guidelines>{item}</guidelines> wurde bearbeitet.",
+      "archiveItem": "Element <guidelines>{item}</guidelines> ist {archive, select, true {archiviert} other {aktiv}}.",
+      "purchasedItem": "Element <guidelines>{item}</guidelines> {purchased, select, true {wurde gekauft} other {ist in Bearbeitung}}."
     }
   }
-  
+}

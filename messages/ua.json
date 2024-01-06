@@ -1,142 +1,149 @@
 {
-    "LocaleSwitcher": {
-      "current": "поточна",
-      "locale": "{locale, select, sk {Словацька} en {Англійська} cz {Чеська} de {Німецька} fr {Французька} es {Іспанська} ua {Українська} pl {Польська} hu {Угорська} other {Невідома}}"
+  "LocaleSwitcher": {
+    "current": "поточна",
+    "locale": "{locale, select, sk {Словацька} en {Англійська} cz {Чеська} de {Німецька} fr {Французька} es {Іспанська} ua {Українська} pl {Польська} hu {Угорська} other {Невідома}}"
+  },
+  "web": {
+    "menu": {
+      "api": "Документація API",
+      "app": "Додаток"
     },
-    "web": {
-      "menu": {
-        "api": "Документація API",
-        "app": "Додаток"
-      },
-      "title": "Повнофункціональний додаток для списків покупок",
-      "description": "Повнофункціональні доступні веб-застосунки ще швидше, ніж будь-коли - І ще багато іншого на шляху.",
-      "signIn": "Увійти",
-      "signOut": "Вийти",
-      "app": "Почати роботу з додатком"
+    "title": "Повнофункціональний додаток для списків покупок",
+    "description": "Повнофункціональні доступні веб-застосунки ще швидше, ніж будь-коли - І ще багато іншого на шляху.",
+    "signIn": "Увійти",
+    "signOut": "Вийти",
+    "app": "Почати роботу з додатком"
+  },
+  "app": {
+    "menu": {
+      "createList": "Створити список",
+      "active": "Активний",
+      "archive": "Архівовано",
+      "homepage": "Головна сторінка",
+      "signOut": "Вийти"
     },
-    "app": {
-      "menu": {
-        "createList": "Створити список",
-        "active": "Активний",
-        "archive": "Архівовано",
-        "homepage": "Головна сторінка",
-        "signOut": "Вийти"
-      },
-      "list": {
-        "owner": "Власник",
-        "active": "Активний",
-        "archive": "Архівовано",
-        "members": "Учасники",
-        "showDetails": "Показати",
-        "empty": "У вас немає жодного списку"
-      },
-      "item": {
-        "task": "{count, plural, =0 {# завдань} =1 {# завдання} one {# завдання} few {# завдання} many {# завдань} other {# завдань}}",
-        "members": "{count, plural, =0 {# учасників} =1 {# учасник} one {# учасник} few {# учасники} many {# учасників} other {# учасників}}",
-        "createTask": "Створити завдання",
-        "inProcess": {
-          "label": "В процесі",
-          "empty": "У вас немає жодного елемента у <guidelines>процесі</guidelines>."
-        },
-        "purchased": {
-          "label": "Придбано",
-          "empty": "У вас немає жодного елемента <guidelines>придбаного</guidelines>."
-        },
-        "archived": {
-          "label": "Архівовано",
-          "empty": "У вас немає жодного елемента <guidelines>архівованого</guidelines>."
-        },
+    "list": {
+      "owner": "Власник",
+      "active": "Активний",
+      "archive": "Архівовано",
+      "members": "Учасники",
+      "showDetails": "Показати",
+      "empty": "У вас немає жодного списку",
+      "tooltips": {
+        "numberTasks": "Кількість завдань",
         "edit": "Редагувати",
         "archive": "Архівувати",
-        "unarchive": "Розархівувати",
-        "delete": "Видалити"
+        "activate": "Активувати",
+        "delete": "Видалити",
+        "leaveList": "Залишити список"
+      }
+    },
+    "item": {
+      "task": "{count, plural, =0 {# завдань} =1 {# завдання} one {# завдання} few {# завдання} many {# завдань} other {# завдань}}",
+      "members": "{count, plural, =0 {# учасників} =1 {# учасник} one {# учасник} few {# учасники} many {# учасників} other {# учасників}}",
+      "createTask": "Створити завдання",
+      "inProcess": {
+        "label": "В процесі",
+        "empty": "У вас немає жодного елемента у <guidelines>процесі</guidelines>."
       },
-      "modals": {
-        "item": {
-          "delete": {
-            "title": "Видалити ваш елемент",
-            "confirm": "Видалити елемент",
-            "cancel": "Ні, не видаляти",
-            "message": "Ви впевнені, що хочете видалити ваш елемент <guidelines>{item}</guidelines>? Ця дія є остаточною, і вам потрібно звернутися до підтримки, щоб відновити ваші дані."
-          },
-          "modal": {
-            "name": {
-              "label": "Назва",
-              "placeholder": "Введіть назву елемента"
-            },
-            "quantity": {
-              "label": "Кількість",
-              "placeholder": "Введіть кількість"
-            },
-            "archived": "Архівовано",
-            "notArchived": "Не архівовано",
-            "create": {
-              "title": "Створити новий елемент",
-              "confirm": "Створити елемент"
-            },
-            "edit": {
-              "title": "Редагувати елемент",
-              "confirm": "Зберегти зміни"
-            },
-            "cancel": "Скасувати",
-            "validation": {
-              "name": "Назва повинна бути від 1 до 255 символів",
-              "quantity": "Кількість повинна бути не більше 255 символів"
-            }
-          }
+      "purchased": {
+        "label": "Придбано",
+        "empty": "У вас немає жодного елемента <guidelines>придбаного</guidelines>."
+      },
+      "archived": {
+        "label": "Архівовано",
+        "empty": "У вас немає жодного елемента <guidelines>архівованого</guidelines>."
+      },
+      "edit": "Редагувати",
+      "archive": "Архівувати",
+      "unarchive": "Розархівувати",
+      "delete": "Видалити"
+    },
+    "modals": {
+      "item": {
+        "delete": {
+          "title": "Видалити ваш елемент",
+          "confirm": "Видалити елемент",
+          "cancel": "Ні, не видаляти",
+          "message": "Ви впевнені, що хочете видалити ваш елемент <guidelines>{item}</guidelines>? Ця дія є остаточною, і вам потрібно звернутися до підтримки, щоб відновити ваші дані."
         },
-        "memberDelete": {
-          "title": "Залишити ваш список",
-          "confirm": "Залишити список",
-          "cancel": "Ні, не залишати",
-          "message": "Ви впевнені, що хочете залишити ваш список <guidelines>{list}</guidelines>? Ця дія є остаточною, і вам потрібно звернутися до підтримки, щоб відновити ваші дані."
-        },
-        "list": {
-          "delete": {
-            "title": "Видалити ваш список",
-            "confirm": "Видалити список",
-            "cancel": "Ні, не видаляти",
-            "message": "Ви впевнені, що хочете видалити ваш список <guidelines>{list}</guidelines>? Ця дія є остаточною, і вам потрібно звернутися до підтримки, щоб відновити ваші дані."
+        "modal": {
+          "name": {
+            "label": "Назва",
+            "placeholder": "Введіть назву елемента"
           },
-          "modal": {
-            "name": {
-              "label": "Назва",
-              "placeholder": "Введіть назву списку"
-            },
-            "members": {
-              "label": "Учасники",
-              "placeholder": "Пошук учасників",
-              "empty": "Нічого не знайдено..."
-            },
-            "archived": "Архівовано",
-            "notArchived": "Не архівовано",
-            "create": {
-              "title": "Створити новий список покупок",
-              "confirm": "Створити список"
-            },
-            "edit": {
-              "title": "Редагувати список покупок",
-              "confirm": "Зберегти зміни"
-            },
-            "cancel": "Скасувати",
-            "validation": {
-              "name": "Назва повинна бути від 1 до 255 символів"
-            }
+          "quantity": {
+            "label": "Кількість",
+            "placeholder": "Введіть кількість"
+          },
+          "archived": "Архівовано",
+          "notArchived": "Не архівовано",
+          "create": {
+            "title": "Створити новий елемент",
+            "confirm": "Створити елемент"
+          },
+          "edit": {
+            "title": "Редагувати елемент",
+            "confirm": "Зберегти зміни"
+          },
+          "cancel": "Скасувати",
+          "validation": {
+            "name": "Назва повинна бути від 1 до 255 символів",
+            "quantity": "Кількість повинна бути не більше 255 символів"
           }
         }
       },
-      "notifications": {
-        "addList": "Список <guidelines>{list}</guidelines> був створений.",
-        "deleteList": "Список <guidelines>{list}</guidelines> був видалений.",
-        "editList": "Список <guidelines>{list}</guidelines> був відредагований.",
-        "archiveList": "Список <guidelines>{list}</guidelines> {archive, select, true {архівований} other {активний}}.",
-        "removeMember": "Ви залишаєте список <guidelines>{list}</guidelines>.",
-        "addItem": "Елемент <guidelines>{item}</guidelines> був створений.",
-        "deleteItem": "Елемент <guidelines>{item}</guidelines> був видалений.",
-        "editItem": "Елемент <guidelines>{item}</guidelines> був відредагований.",
-        "archiveItem": "Елемент <guidelines>{item}</guidelines> {archive, select, true {архівований} other {активний}}.",
-        "purchasedItem": "Елемент <guidelines>{item}</guidelines> {purchased, select, true {був придбаний} other {у процесі}}."
+      "memberDelete": {
+        "title": "Залишити ваш список",
+        "confirm": "Залишити список",
+        "cancel": "Ні, не залишати",
+        "message": "Ви впевнені, що хочете залишити ваш список <guidelines>{list}</guidelines>? Ця дія є остаточною, і вам потрібно звернутися до підтримки, щоб відновити ваші дані."
+      },
+      "list": {
+        "delete": {
+          "title": "Видалити ваш список",
+          "confirm": "Видалити список",
+          "cancel": "Ні, не видаляти",
+          "message": "Ви впевнені, що хочете видалити ваш список <guidelines>{list}</guidelines>? Ця дія є остаточною, і вам потрібно звернутися до підтримки, щоб відновити ваші дані."
+        },
+        "modal": {
+          "name": {
+            "label": "Назва",
+            "placeholder": "Введіть назву списку"
+          },
+          "members": {
+            "label": "Учасники",
+            "placeholder": "Пошук учасників",
+            "empty": "Нічого не знайдено..."
+          },
+          "archived": "Архівовано",
+          "notArchived": "Не архівовано",
+          "create": {
+            "title": "Створити новий список покупок",
+            "confirm": "Створити список"
+          },
+          "edit": {
+            "title": "Редагувати список покупок",
+            "confirm": "Зберегти зміни"
+          },
+          "cancel": "Скасувати",
+          "validation": {
+            "name": "Назва повинна бути від 1 до 255 символів"
+          }
+        }
       }
+    },
+    "notifications": {
+      "addList": "Список <guidelines>{list}</guidelines> був створений.",
+      "deleteList": "Список <guidelines>{list}</guidelines> був видалений.",
+      "editList": "Список <guidelines>{list}</guidelines> був відредагований.",
+      "archiveList": "Список <guidelines>{list}</guidelines> {archive, select, true {архівований} other {активний}}.",
+      "removeMember": "Ви залишаєте список <guidelines>{list}</guidelines>.",
+      "addItem": "Елемент <guidelines>{item}</guidelines> був створений.",
+      "deleteItem": "Елемент <guidelines>{item}</guidelines> був видалений.",
+      "editItem": "Елемент <guidelines>{item}</guidelines> був відредагований.",
+      "archiveItem": "Елемент <guidelines>{item}</guidelines> {archive, select, true {архівований} other {активний}}.",
+      "purchasedItem": "Елемент <guidelines>{item}</guidelines> {purchased, select, true {був придбаний} other {у процесі}}."
     }
   }
-  
+}
