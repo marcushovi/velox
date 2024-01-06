@@ -1,11 +1,11 @@
 import { Analytics } from "@vercel/analytics/react";
 
 import Provider from "@components/Provider";
-import { NextIntlClientProvider, useMessages } from "next-intl";
 import { ShoppingListProvider } from "@components/app/ShoppingListProvider";
 import { UserProvider } from "@components/app/UserProvider";
 import "@mantine/core/styles.css";
 import "@mantine/notifications/styles.css";
+import { NextIntlClientProvider, useMessages } from "next-intl";
 
 import { ColorSchemeScript, MantineProvider } from "@mantine/core";
 import { ModalsProvider } from "@mantine/modals";
