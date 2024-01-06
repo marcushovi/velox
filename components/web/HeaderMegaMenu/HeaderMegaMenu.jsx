@@ -44,12 +44,16 @@ export function HeaderMegaMenu() {
     const getPro = async () => {
       const res = await getProviders();
       setProviders(res);
-      setLoading(false);
+      setTimeout(() => {
+        setLoading(false);
+      }, 500);
     };
 
     const isLoggedIn = async () => {
       setIsLoggedIn(true);
-      setLoading(false);
+      setTimeout(() => {
+        setLoading(false);
+      }, 500);
     };
 
     if (session?.user?.id === undefined) getPro();
@@ -79,7 +83,7 @@ export function HeaderMegaMenu() {
           </Group>
 
           {loading ? (
-            <Skeleton height={40} width={300} radius="md" p="md" />
+            <Skeleton height={40} width={490} radius="md" p="md" />
           ) : (
             <Group>
               {isLoggedIn ? (
@@ -99,7 +103,6 @@ export function HeaderMegaMenu() {
                       })}
                       size="md"
                       radius="md"
-                      color="gray"
                     >
                       <Group gap={7}>
                         <Avatar

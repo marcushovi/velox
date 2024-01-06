@@ -5,7 +5,7 @@ function AppLogo() {
   return (
     <Image
       className={classes.invert}
-      src="/velox.svg"
+      src="/assets/images/velox.svg"
       alt="Velox Logo"
       width={100}
       height={37}
