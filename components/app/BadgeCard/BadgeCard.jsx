@@ -15,7 +15,7 @@ import {
   Card,
   Group,
   Text,
-  lighten,
+  Tooltip,
 } from "@mantine/core";
 import classes from "./BadgeCard.module.css";
 import { useTranslations } from "next-intl";
@@ -63,9 +63,17 @@ const BadgeCard = ({
             </Badge>
           </Group>
           <Group justify="center" px="md">
-            <Badge size="lg" color="blue">
-              {list.items.length}
-            </Badge>
+            <Tooltip
+              label={t("tooltips.numberTasks")}
+              closeDelay={200}
+              withArrow
+              arrowSize={8}
+              arrowRadius={2}
+            >
+              <Badge size="lg" color="blue">
+                {list.items.length}
+              </Badge>
+            </Tooltip>
           </Group>
         </Group>
       </Card.Section>
@@ -83,7 +91,6 @@ const BadgeCard = ({
 
       <Card.Section className={classes.section} mt="md">
         <Group gap={7} mt={5}>
-          {" "}
           <Text className={classes.label} c="dimmed">
             {t("members")}:
           </Text>
@@ -96,42 +103,72 @@ const BadgeCard = ({
           {t("showDetails")}
         </Button>
         {!disabled ? (
-          <>
-            <ActionIcon
-              variant="transparent"
-              size="xl"
-              aria-label="Edit button"
-              onClick={handleEdit}
+          <Tooltip.Group openDelay={500} closeDelay={200}>
+            <Tooltip
+              label={t("tooltips.edit")}
+              withArrow
+              arrowSize={8}
+              arrowRadius={2}
             >
-              <IconEdit />
-            </ActionIcon>
-            <ActionIcon
-              variant="transparent"
-              size="xl"
-              color="teal"
-              aria-label="Archive button"
-              onClick={handleArchive}
+              <ActionIcon
+                variant="transparent"
+                size="xl"
+                aria-label="Edit button"
+                onClick={handleEdit}
+              >
+                <IconEdit />
+              </ActionIcon>
+            </Tooltip>
+            <Tooltip
+              label={
+                list.archived ? t("tooltips.activate") : t("tooltips.archive")
+              }
+              withArrow
+              arrowSize={8}
+              arrowRadius={2}
             >
-              {list.archived ? <IconArchiveOff /> : <IconArchive />}
-            </ActionIcon>
-            <ActionIcon
-              variant="transparent"
-              size="xl"
-              color="red"
-              aria-label="Delete button"
-              onClick={handleDelete}
+              <ActionIcon
+                variant="transparent"
+                size="xl"
+                color="teal"
+                aria-label="Archive button"
+                onClick={handleArchive}
+              >
+                {list.archived ? <IconArchiveOff /> : <IconArchive />}
+              </ActionIcon>
+            </Tooltip>
+            <Tooltip
+              label={t("tooltips.delete")}
+              withArrow
+              arrowSize={8}
+              arrowRadius={2}
             >
-              <IconTrash />
-            </ActionIcon>
-          </>
+              <ActionIcon
+                variant="transparent"
+                size="xl"
+                color="red"
+                aria-label="Delete button"
+                onClick={handleDelete}
+              >
+                <IconTrash />
+              </ActionIcon>
+            </Tooltip>
+          </Tooltip.Group>
         ) : (
-          <>
+          <Tooltip
+            label={t("tooltips.leaveList")}
+            withArrow
+            arrowSize={8}
+            arrowRadius={2}
+            openDelay={500}
+            closeDelay={200}
+          >
             <RemoveMemberButton
               action={handleRemoveMember}
               list={list}
               session={session}
             />
-          </>
+          </Tooltip>
         )}
       </Group>
     </Card>
