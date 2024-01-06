@@ -24,6 +24,7 @@ const RootLayout = ({ children, params: { locale } }) => {
   return (
     <html lang={locale}>
       <head>
+        <link rel="icon" href="/assets/icons/velox-icon.svg" sizes="any" />
         <ColorSchemeScript defaultColorScheme="auto" />
       </head>
       <body>
