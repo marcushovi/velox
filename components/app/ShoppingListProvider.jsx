@@ -1,10 +1,10 @@
 "use client";
 
-import { notifications } from "@mantine/notifications";
 import { Mark } from "@mantine/core";
+import { notifications } from "@mantine/notifications";
 import { useSession } from "next-auth/react";
-import { createContext, useContext, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const ShoppingListContext = createContext();
 

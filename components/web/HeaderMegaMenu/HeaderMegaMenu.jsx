@@ -1,6 +1,6 @@
 "use client";
 import AppLogo from "@components/AppLogo/AppLogo";
-import { Link } from "@navigation.js";
+import { LanguageSwitcher } from "@components/LanguageSwitcher/LanguageSwitcher";
 import {
   Avatar,
   Box,
@@ -14,19 +14,18 @@ import {
   Skeleton,
   Stack,
   Text,
-  UnstyledButton,
   rem,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+import { Link } from "@navigation.js";
 import { IconChevronDown, IconLogout } from "@tabler/icons-react";
 import cx from "clsx";
 import classes from "./HeaderMegaMenu.module.css";
-import { LanguageSwitcher } from "@components/LanguageSwitcher/LanguageSwitcher";
 
 import DarkModeToggle from "@components/DarkModeToggle/DarkModeToggle";
 import { getProviders, signIn, signOut, useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+import { useEffect, useState } from "react";
 
 export function HeaderMegaMenu() {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =

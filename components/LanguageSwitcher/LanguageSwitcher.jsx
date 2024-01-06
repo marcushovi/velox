@@ -1,11 +1,10 @@
 import { locales } from "@i18n.js";
+import { Badge, Group, Menu, UnstyledButton } from "@mantine/core";
+import { usePathname, useRouter } from "@navigation.js";
+import { IconChevronDown } from "@tabler/icons-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
-import { ChangeEvent, ReactNode, useTransition } from "react";
-import { useRouter, usePathname } from "@navigation.js";
-import { useState } from "react";
-import { UnstyledButton, Menu, Badge, Group } from "@mantine/core";
-import { IconChevronDown } from "@tabler/icons-react";
+import { useState, useTransition } from "react";
 import ReactCountryFlag from "react-country-flag";
 import classes from "./LanguageSwitcher.module.css";
 

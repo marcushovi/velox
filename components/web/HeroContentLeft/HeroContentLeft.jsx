@@ -1,11 +1,11 @@
 "use client";
 
 import { Button, Container, Overlay, Text, Title } from "@mantine/core";
-import { signIn, useSession } from "next-auth/react";
-import classes from "./HeroContentLeft.module.css";
-import { useTranslations } from "next-intl";
 import { Link } from "@navigation.js";
+import { signIn, useSession } from "next-auth/react";
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
+import classes from "./HeroContentLeft.module.css";
 
 export function HeroContentLeft() {
   const { data: session } = useSession();
