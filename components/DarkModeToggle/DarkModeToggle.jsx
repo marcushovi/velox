@@ -35,6 +35,7 @@ export default function DarkModeToggle() {
       aria-label="Toggle color scheme"
       color={color}
       loading={loading}
+      loaderProps={{ type: 'dots' }}
     >
       <IconSun className={cx(classes.icon, classes.light)} stroke={1.5} />
       <IconMoon className={cx(classes.icon, classes.dark)} stroke={1.5} />

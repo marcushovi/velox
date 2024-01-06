@@ -5,11 +5,19 @@ import { signIn, useSession } from "next-auth/react";
 import classes from "./HeroContentLeft.module.css";
 import { useTranslations } from "next-intl";
 import { Link } from "@navigation.js";
-
+import { useEffect, useState } from "react";
 
 export function HeroContentLeft() {
   const { data: session } = useSession();
+  const [loading, setLoading] = useState(true);
   const t = useTranslations("web");
+
+  useEffect(() => {
+    if (session !== undefined)
+      setTimeout(() => {
+        setLoading(false);
+      }, 500);
+  }, [session]);
 
   return (
     <div className={classes.hero}>
@@ -19,22 +27,22 @@ export function HeroContentLeft() {
         zIndex={0}
       />
       <Container className={classes.container} size="md">
-        <Title className={classes.title}>
-        {t("title")}
-        </Title>
+        <Title className={classes.title}>{t("title")}</Title>
         <Text className={classes.description} size="xl" mt="xl">
-        {t("description")}
+          {t("description")}
         </Text>
 
-        {session?.user ? (
+        {session?.user?.id ? (
           <Link href="/app">
             <Button
               variant="gradient"
               size="xl"
-              radius="xl"
+              radius="lg"
               className={classes.control}
+              loading={loading}
+              loaderProps={{ type: "dots" }}
             >
-              {t("app")}
+              {!loading ? t("app") : ""}
             </Button>
           </Link>
         ) : (
@@ -44,8 +52,10 @@ export function HeroContentLeft() {
             radius="lg"
             className={classes.control}
             onClick={signIn}
+            loading={loading}
+            loaderProps={{ type: "dots" }}
           >
-            {t("signIn")}
+            {!loading ? t("signIn") : ""}
           </Button>
         )}
       </Container>

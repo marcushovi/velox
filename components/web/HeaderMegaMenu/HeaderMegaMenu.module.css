@@ -56,16 +56,23 @@
 }
 
 .user {
-  color: light-dark(var(--mantine-color-black), var(--mantine-color-dark-0));
+  color: light-dark(
+    var(--mantine-color-black),
+    var(--mantine-color-dark-0)
+  ) !important;
+  background-color: light-dark(
+    var(--mantine-color-gray-2),
+    var(--mantine-color-dark-4)
+  ) !important;
   padding: var(--mantine-spacing-sm) var(--mantine-spacing-md);
   border-radius: var(--mantine-radius-md);
   transition: background-color 100ms ease;
 
   &:hover {
     background-color: light-dark(
-      var(--mantine-color-white),
+      var(--mantine-color-gray-4),
       var(--mantine-color-dark-8)
-    );
+    ) !important;
   }
 
   @media (max-width: $mantine-breakpoint-xs) {
@@ -79,5 +86,3 @@
     var(--mantine-color-dark-8)
   );
 }
-
-

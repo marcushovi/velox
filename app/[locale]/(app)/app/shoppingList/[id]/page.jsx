@@ -58,7 +58,7 @@ export default function ShoppingList({ params }) {
     };
 
     if (params.id && shoppingLists !== null) getList();
-  }, [params.id, shoppingLists, session, list, loading]);
+  }, [params.id, shoppingLists, session, list]);
 
   useEffect(() => {
     let computedProgress = Math.round(
@@ -68,8 +68,6 @@ export default function ShoppingList({ params }) {
     );
     if (isNaN(computedProgress)) setProgress(0);
     else setProgress(computedProgress);
-
-    setLoading(false);
   }, [list]);
 
   const handleCreateItem = (item) => {
