@@ -1,10 +1,10 @@
 import { Analytics } from "@vercel/analytics/react";
 
 import Provider from "@components/Provider";
-import { NextIntlClientProvider, useMessages } from "next-intl";
 import { HeaderMegaMenu } from "@components/web/HeaderMegaMenu/HeaderMegaMenu";
 import { ColorSchemeScript, MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
+import { NextIntlClientProvider, useMessages } from "next-intl";
 
 export const metadata = {
   title: "Velox Web",
