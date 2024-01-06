@@ -1,7 +1,7 @@
 "use client";
 
-import { useSession } from "next-auth/react";
 import { useRouter } from "@navigation.js";
+import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 
 import BadgeCard from "@components/app/BadgeCard/BadgeCard";
@@ -28,7 +28,7 @@ const ShoppingLists = ({
   if (data.length === 0) {
     return (
       <Text ta="center" c="dimmed" size="lg" fw={700}>
-        {t('list.empty')}
+        {t("list.empty")}
       </Text>
     );
   }
@@ -101,7 +101,7 @@ const ShoppingListsFeed = () => {
 
   const handleDelete = (list) => {
     modals.openConfirmModal({
-      title: t('modals.list.delete.title'),
+      title: t("modals.list.delete.title"),
       centered: true,
       children: (
         <Text size="sm">
@@ -115,7 +115,10 @@ const ShoppingListsFeed = () => {
           })}
         </Text>
       ),
-      labels: { confirm: t('modals.list.delete.confirm'), cancel: t('modals.list.delete.cancel') },
+      labels: {
+        confirm: t("modals.list.delete.confirm"),
+        cancel: t("modals.list.delete.cancel"),
+      },
       confirmProps: { color: "red" },
       onConfirm: () => deleteShoppingList(list),
     });

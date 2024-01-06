@@ -9,12 +9,12 @@ import {
   UnstyledButton,
   rem,
 } from "@mantine/core";
+import { useRouter } from "@navigation.js";
 import { IconChevronRight, IconHome, IconLogout } from "@tabler/icons-react";
 import { signOut, useSession } from "next-auth/react";
-import { useRouter } from "@navigation.js";
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import classes from "./UserSettings.module.css";
-import { useTranslations } from "next-intl";
 
 const UserSettings = () => {
   const { data: session } = useSession();

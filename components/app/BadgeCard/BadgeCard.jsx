@@ -17,8 +17,8 @@ import {
   Text,
   Tooltip,
 } from "@mantine/core";
-import classes from "./BadgeCard.module.css";
 import { useTranslations } from "next-intl";
+import classes from "./BadgeCard.module.css";
 
 const BadgeCard = ({
   list,

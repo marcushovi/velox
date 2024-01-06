@@ -10,9 +10,9 @@ import {
   IconCircleCheckFilled,
   IconProgress,
 } from "@tabler/icons-react";
+import { useTranslations } from "next-intl";
 import ItemCard from "./ItemCard/ItemCard";
 import ItemModal from "./modals/ItemModal";
-import { useTranslations } from "next-intl";
 
 const ItemsFeed = ({ items, edit, remove, purchased, archive }) => {
   const [editItem, setEditItem] = useState({ open: false, item: {} });

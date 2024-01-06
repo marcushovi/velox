@@ -7,8 +7,8 @@ import {
 } from "@mantine/core";
 import { IconMoon, IconSun } from "@tabler/icons-react";
 import cx from "clsx";
-import classes from "./DarkModeToggle.module.css";
 import { useEffect, useState } from "react";
+import classes from "./DarkModeToggle.module.css";
 
 export default function DarkModeToggle() {
   const { setColorScheme } = useMantineColorScheme();
@@ -35,7 +35,7 @@ export default function DarkModeToggle() {
       aria-label="Toggle color scheme"
       color={color}
       loading={loading}
-      loaderProps={{ type: 'dots' }}
+      loaderProps={{ type: "dots" }}
     >
       <IconSun className={cx(classes.icon, classes.light)} stroke={1.5} />
       <IconMoon className={cx(classes.icon, classes.dark)} stroke={1.5} />

@@ -1,15 +1,14 @@
-import { ActionIcon, Text, Mark } from "@mantine/core";
-import { IconDoorExit } from "@tabler/icons-react";
-import { useRouter } from "@navigation.js";
-import { forwardRef } from "react";
+import { ActionIcon, Mark, Text } from "@mantine/core";
 import { modals } from "@mantine/modals";
+import { useRouter } from "@navigation.js";
+import { IconDoorExit } from "@tabler/icons-react";
 import { useTranslations } from "next-intl";
+import { forwardRef } from "react";
 
-const RemoveMemberButton = forwardRef(function RemoveMemberButton({
-  action,
-  list,
-  session,
-}, ref) {
+const RemoveMemberButton = forwardRef(function RemoveMemberButton(
+  { action, list, session },
+  ref
+) {
   const router = useRouter();
   const t = useTranslations("app.modals.memberDelete");
 

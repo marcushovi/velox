@@ -12,7 +12,14 @@ import classes from "./ComboBox.module.css";
 
 const ITEMS_LIMIT = 30;
 
-export default function SearchableMultiSelect({ data = [], value, setValue, label, placeholder, empty}) {
+export default function SearchableMultiSelect({
+  data = [],
+  value,
+  setValue,
+  label,
+  placeholder,
+  empty,
+}) {
   const combobox = useCombobox({
     onDropdownClose: () => combobox.resetSelectedOption(),
     onDropdownOpen: () => combobox.updateSelectedOptionIndex("active"),

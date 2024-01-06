@@ -3,9 +3,9 @@
 import {
   IconArchive,
   IconArchiveOff,
+  IconDotsVertical,
   IconEdit,
   IconTrash,
-  IconDotsVertical,
 } from "@tabler/icons-react";
 import { useState } from "react";
 
@@ -13,15 +13,15 @@ import {
   ActionIcon,
   Card,
   Checkbox,
-  Group,
-  Text,
-  Stack,
-  Menu,
-  rem,
   Grid,
+  Group,
+  Menu,
+  Stack,
+  Text,
+  rem,
 } from "@mantine/core";
-import classes from "./ItemCard.module.css";
 import { useTranslations } from "next-intl";
+import classes from "./ItemCard.module.css";
 
 const ItemCard = ({
   item,

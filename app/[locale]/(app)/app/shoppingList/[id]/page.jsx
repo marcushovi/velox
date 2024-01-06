@@ -9,21 +9,21 @@ import {
   ActionIcon,
   Badge,
   Button,
+  Center,
   Divider,
   Group,
+  RingProgress,
   SimpleGrid,
   Skeleton,
-  Title,
   Text,
-  RingProgress,
-  Center,
+  Title,
   rem,
 } from "@mantine/core";
-import { IconSettings, IconCheck } from "@tabler/icons-react";
+import { IconCheck, IconSettings } from "@tabler/icons-react";
 import { useSession } from "next-auth/react";
+import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useTranslations } from "next-intl";
 
 export default function ShoppingList({ params }) {
   const { data: session } = useSession();

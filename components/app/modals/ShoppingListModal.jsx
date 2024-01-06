@@ -109,9 +109,9 @@ function ShoppingListModal({
             data={allUsers}
             value={listMembers}
             setValue={setListMembers}
-            label={t('members.label')}
-            placeholder={t('members.placeholder')}
-            empty={t('members.empty')}
+            label={t("members.label")}
+            placeholder={t("members.placeholder")}
+            empty={t("members.empty")}
           />
 
           {editingList ? (
