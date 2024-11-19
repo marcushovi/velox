@@ -68,6 +68,20 @@ export function HeaderMegaMenu() {
             <a href="#" className={classes.link}>
               {t("menu.api")}
             </a>
+            <a
+              href="https://www.marekhovancak.com"
+              target="_blank"
+              className={classes.link}
+            >
+              Marek Hovančák
+            </a>
+            <a
+              href="https://github.com/marcushovi/velox"
+              target="_blank"
+              className={classes.link}
+            >
+              Github
+            </a>
             {isLoggedIn ? (
               loading ? (
                 <Skeleton height={40} width={44} radius="md" p="md" />
@@ -182,6 +196,20 @@ export function HeaderMegaMenu() {
           <Group h="100%" gap={0}>
             <a href="#" className={classes.link}>
               {t("menu.api")}
+            </a>
+            <a
+              href="https://www.marekhovancak.com"
+              target="_blank"
+              className={classes.link}
+            >
+              Marek Hovančák
+            </a>
+            <a
+              href="https://github.com/marcushovi/velox"
+              target="_blank"
+              className={classes.link}
+            >
+              Github
             </a>
             {isLoggedIn ? (
               loading ? (
