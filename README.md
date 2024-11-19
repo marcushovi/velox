@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Velox
 
-## Getting Started
+[https://velox-lemon.vercel.app](https://velox-lemon.vercel.app/en)
 
-First, run the development server:
+Shopping list application with the ability to share lists. The app is also translated into 9 languages.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Images
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+![Velox App](./velox-image-2.png)
+![Velox App](./velox-image-1.png)
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Google Sign in method.
+- Create,Modify and delete list/tasks.
+- Add, remove members
+- User can leave list if he is not the owner of list.
+- Simple statistics for each list.
+- Archived list.
+- Sharing lists.
+- Translated into 9 languages
 
-## Learn More
+## Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **Frontend**: Next.js
+- **Backend**: MongoDB, Mongoose, Bcrypt
+- **Styling**: Mantine
+- **Database**: MongoDB
+- **Authentication**: NextAuth.js
